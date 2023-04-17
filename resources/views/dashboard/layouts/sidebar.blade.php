@@ -6,37 +6,64 @@
         <li>
           <a href="#pageAbsensi" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Absensi</a>
           <ul class="collapse list-unstyled" id="pageAbsensi">
+            @can('siswa')
+              <li>
+                  <a href="#">Lihat Absensi</a>
+              </li>
+            @endcan
+            @can('guru')
+              <li>
+                  <a href="#">Lihat Absensi</a>
+              </li>
+            @endcan
+            @can('pembimbing-lapangan')
             <li>
                 <a href="#">Lihat Absensi</a>
             </li>
-            <li>
-                <a href="#">Isi Absensi</a>
-            </li>
+              <li>
+                  <a href="#">Isi Absensi</a>
+              </li>
+            @endcan
           </ul>
         </li>
         <li>
           <a href="#pageLogbook" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Logbook</a>
           <ul class="collapse list-unstyled" id="pageLogbook">
-            <li>
-                <a href="#">Lihat Logbook</a>
-            </li>
-            <li>
-                <a href="#">Isi Logbook</a>
-            </li>
+            @can('guru')
+              <li>
+                  <a href="#">Lihat Logbook</a>
+              </li>
+            @endcan
+            @can('pembimbing-lapangan')
+              <li>
+                  <a href="#">Lihat Logbook</a>
+              </li>
+            @endcan
+            @can('siswa')
+              <li>
+                  <a href="#">Isi Logbook</a>
+              </li>
+            @endcan
           </ul>
         </li>
         <li>
           <a href="#pageNilai" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Nilai</a>
           <ul class="collapse list-unstyled" id="pageNilai">
-            <li>
+            @can('siswa')
+              <li>
                 <a href="#">Lihat Nilai Saya</a>
-            </li>
-            <li>
+              </li>
+            @endcan
+            @can('guru')
+              <li>
                 <a href="#">Lihat Nilai Siswa</a>
-            </li>
-            <li>
+              </li>
+            @endcan
+            @can('pembimbing-lapangan')
+              <li>
                 <a href="#">Isi Nilai</a>
-            </li>
+              </li>
+            @endcan
           </ul>
         </li>
         <li>
