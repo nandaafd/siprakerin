@@ -7,17 +7,6 @@
         @csrf
     
         <div class="form-floating">
-            
-            @if (session('username'))
-            <div class="alert alert-success" role="alert">
-                <p>Catat dan simpan data berikut ini: <br>Username: {{ session('username') }}</p>
-            </div>
-            @endif
-            @if (session('password'))
-            <div class="alert alert-success" role="alert">
-                <p>Password: {{ session('password') }}</p>
-            </div>
-            @endif
             <input type="email" class="form-control @error('email')
                 is-invalid
             @enderror" name="email" id="email" autofocus required value="{{ old('email') }}">
