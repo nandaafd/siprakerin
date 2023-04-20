@@ -31,7 +31,7 @@ class AbsensiController extends Controller
             $absensis = Absensi::where('pembimbing_lapangan_id', $pembimbing_lapangan->id)->paginate(7);
             return view('dashboard.absensi.index', ['absensis' => $absensis]);
         } else {
-            $absensis = Absensi::paginate(7);
+            $absensis = Absensi::paginate(10);
             return view('dashboard.absensi.index', ['absensis' => $absensis]);
         }
     }

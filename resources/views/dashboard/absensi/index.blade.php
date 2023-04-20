@@ -54,6 +54,7 @@
         </tr>
     @endforeach
   </table>
+  {{ $absensis->links() }}
   @endisset
 
 
