@@ -13,4 +13,19 @@ class Siswa extends Model
         'id'
     ];
 
+    public function absensi()
+    {
+        return $this->hasMany(Absensi::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function pembimbing_lapangan()
+    {
+        return $this->belongsTo(PembimbingLapangan::class);
+    }
+
 }

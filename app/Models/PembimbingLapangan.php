@@ -8,4 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class PembimbingLapangan extends Model
 {
     use HasFactory;
+
+    public function absensi()
+    {
+        return $this->hasManyThrough(Absensi::class, Siswa::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function siswa()
+    {
+        return $this->hasMany(Siswa::class);
+    }
 }

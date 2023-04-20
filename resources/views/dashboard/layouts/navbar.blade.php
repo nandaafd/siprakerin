@@ -11,17 +11,14 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="nav navbar-nav ml-auto">
-          <li class="nav-item active">
-              <a class="nav-link" href="#">Home</a>
+          <li class="nav-item">
+              <a class="nav-link" href="#">#Link1</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
+              <a class="nav-link" href="#">#Link2</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="#">Portfolio</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
+              <a class="nav-link" href="#">#Link3</a>
           </li>
           <li class="nav-link">
             <form action="/logout" method="POST">

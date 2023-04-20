@@ -1,67 +1,69 @@
 <nav id="sidebar">
     <div class="p-4 pt-5">
       <a href="#" class="img logo rounded-circle" style="background-image: url({{ asset('assets/images/utm.jpg') }});"></a>
-      <p class="mb-2 text-center">welcome, {role} {name}</p>
+      <p class="mb-2 text-center">welcome, 
+        {{-- {{ Auth::user()->role->name }} --}}
+        {{ Auth::user()->fullname }}</p>
       <ul class="list-unstyled components mb-5">
-        <li>
+        <li class="{{ Request::is('absensi*') ? 'active' : '' }}">
           <a href="#pageAbsensi" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Absensi</a>
           <ul class="collapse list-unstyled" id="pageAbsensi">
             @can('siswa')
-              <li>
-                  <a href="#">Lihat Absensi</a>
+              <li class="{{ Request::is('absensi') ? 'active' : '' }}">
+                  <a href="/absensi">Lihat Absensi</a>
               </li>
             @endcan
             @can('guru')
-              <li>
-                  <a href="#">Lihat Absensi</a>
+              <li class="{{ Request::is('absensi') ? 'active' : '' }}">
+                  <a href="/absensi">Lihat Absensi</a>
               </li>
             @endcan
             @can('pembimbing-lapangan')
-            <li>
-                <a href="#">Lihat Absensi</a>
+            <li class="{{ Request::is('absensi') ? 'active' : '' }}">
+                <a href="/absensi">Lihat Absensi</a>
             </li>
-              <li>
-                  <a href="#">Isi Absensi</a>
+              <li class="{{ Request::is('absensi/create*') ? 'active' : '' }}">
+                  <a href="/absensi/create">Isi Absensi</a>
               </li>
             @endcan
           </ul>
         </li>
-        <li>
+        <li class="{{ Request::is('logbook*') ? 'active' : '' }}">
           <a href="#pageLogbook" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Logbook</a>
           <ul class="collapse list-unstyled" id="pageLogbook">
             @can('guru')
-              <li>
-                  <a href="#">Lihat Logbook</a>
+              <li class="{{ Request::is('logbook*') ? 'active' : '' }}">
+                  <a href="/logbook">Lihat Logbook</a>
               </li>
             @endcan
             @can('pembimbing-lapangan')
-              <li>
-                  <a href="#">Lihat Logbook</a>
+              <li class="{{ Request::is('logbook*') ? 'active' : '' }}">
+                  <a href="/logbook">Lihat Logbook</a>
               </li>
             @endcan
             @can('siswa')
-              <li>
-                  <a href="#">Isi Logbook</a>
+              <li class="{{ Request::is('isi-logbook*') ? 'active' : '' }}">
+                  <a href="/isi-logbook">Isi Logbook</a>
               </li>
             @endcan
           </ul>
         </li>
-        <li>
+        <li class="{{ Request::is('nilai*') ? 'active' : '' }}">
           <a href="#pageNilai" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Nilai</a>
           <ul class="collapse list-unstyled" id="pageNilai">
             @can('siswa')
-              <li>
-                <a href="#">Lihat Nilai Saya</a>
+              <li class="{{ Request::is('nilai*') ? 'active' : '' }}">
+                <a href="/nilai">Lihat Nilai Saya</a>
               </li>
             @endcan
             @can('guru')
-              <li>
-                <a href="#">Lihat Nilai Siswa</a>
+              <li class="{{ Request::is('nilai*') ? 'active' : '' }}">
+                <a href="/nilai">Lihat Nilai Siswa</a>
               </li>
             @endcan
             @can('pembimbing-lapangan')
-              <li>
-                <a href="#">Isi Nilai</a>
+              <li class="{{ Request::is('isi-nilai*') ? 'active' : '' }}">
+                <a href="/isi-nilai">Isi Nilai</a>
               </li>
             @endcan
           </ul>
