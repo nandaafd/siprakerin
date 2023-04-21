@@ -52,18 +52,21 @@
           <a href="#pageNilai" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Nilai</a>
           <ul class="collapse list-unstyled" id="pageNilai">
             @can('siswa')
-              <li class="{{ Request::is('nilai*') ? 'active' : '' }}">
+              <li class="{{ Request::is('nilai') ? 'active' : '' }}">
                 <a href="/nilai">Lihat Nilai Saya</a>
               </li>
             @endcan
             @can('guru')
-              <li class="{{ Request::is('nilai*') ? 'active' : '' }}">
+              <li class="{{ Request::is('nilai') ? 'active' : '' }}">
                 <a href="/nilai">Lihat Nilai Siswa</a>
               </li>
             @endcan
             @can('pembimbing-lapangan')
-              <li class="{{ Request::is('isi-nilai*') ? 'active' : '' }}">
-                <a href="/isi-nilai">Isi Nilai</a>
+            <li class="{{ Request::is('nilai') ? 'active' : '' }}">
+              <a href="/nilai">Lihat Nilai Siswa</a>
+            </li>
+              <li class="{{ Request::is('nilai/create') ? 'active' : '' }}">
+                <a href="/nilai/create">Isi Nilai</a>
               </li>
             @endcan
           </ul>

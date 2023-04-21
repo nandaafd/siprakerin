@@ -28,4 +28,9 @@ class Siswa extends Model
         return $this->belongsTo(PembimbingLapangan::class);
     }
 
+    public function nilai()
+    {
+        return $this->hasMany(Nilai::class);
+    }
+
 }
