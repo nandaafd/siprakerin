@@ -33,4 +33,9 @@ class Siswa extends Model
         return $this->hasMany(Nilai::class);
     }
 
+    public function logbook()
+    {
+        return $this->hasMany(Logbook::class);
+    }
+
 }

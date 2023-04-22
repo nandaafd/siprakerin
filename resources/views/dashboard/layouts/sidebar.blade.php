@@ -32,18 +32,21 @@
           <a href="#pageLogbook" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Logbook</a>
           <ul class="collapse list-unstyled" id="pageLogbook">
             @can('guru')
-              <li class="{{ Request::is('logbook*') ? 'active' : '' }}">
+              <li class="{{ Request::is('logbook') ? 'active' : '' }}">
                   <a href="/logbook">Lihat Logbook</a>
               </li>
             @endcan
             @can('pembimbing-lapangan')
-              <li class="{{ Request::is('logbook*') ? 'active' : '' }}">
+              <li class="{{ Request::is('logbook') ? 'active' : '' }}">
                   <a href="/logbook">Lihat Logbook</a>
               </li>
             @endcan
             @can('siswa')
-              <li class="{{ Request::is('isi-logbook*') ? 'active' : '' }}">
-                  <a href="/isi-logbook">Isi Logbook</a>
+              <li class="{{ Request::is('logbook') ? 'active' : '' }}">
+                  <a href="/logbook">Lihat Logbook</a>
+              </li>
+              <li class="{{ Request::is('logbook/create') ? 'active' : '' }}">
+                  <a href="/logbook/create">Isi Logbook</a>
               </li>
             @endcan
           </ul>

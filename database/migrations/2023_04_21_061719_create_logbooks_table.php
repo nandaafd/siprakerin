@@ -1,9 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
@@ -14,11 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('nilais', function (Blueprint $table) {
+        Schema::create('logbooks', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('siswa_id');
             $table->foreign('siswa_id')->references('id')->on('siswas');
-            $table->integer('nilai_total')->default(0);
+            $table->string('impresi');
+            $table->string('catatan_kegiatan');
+            $table->date('tanggal');
+            $table->timestamps();
         });
     }
 
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nilais');
+        Schema::dropIfExists('logbooks');
     }
 };

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LogbookController;
 use App\Http\Controllers\NilaiController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -29,4 +30,5 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/dashboard', function(){return view('dashboard.index');})->name('dashboard');
     Route::resource('/absensi', AbsensiController::class);
     Route::resource('/nilai', NilaiController::class);
+    Route::resource('/logbook', LogbookController::class);
 });

@@ -64,17 +64,13 @@ class NilaiController extends Controller
     {
         $validatedData = $request->validate([
             'siswa' => 'required',
-            'nilai_A' => 'required|numeric|min:0|max:100',
-            'nilai_B' => 'required|numeric|min:0|max:100',
-            'nilai_C' => 'required|numeric|min:0|max:100',
+            'nilai_rata_rata' => 'required|numeric|min:0|max:100',
         ]);
 
         $nilai = new Nilai;
         $nilai->siswa_id = $request->siswa;
         $nilai->pembimbing_lapangan_id = $request->pembimbing_lapangan;
-        $nilai->nilai_A = $request->nilai_A;
-        $nilai->nilai_B = $request->nilai_B;
-        $nilai->nilai_C = $request->nilai_C;
+        $nilai->nilai_rata_rata = $request->nilai_rata_rata;
         $nilai->save();
 
         return redirect()->route('nilai.index')->with('success', 'Data nilai berhasil disimpan');
