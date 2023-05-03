@@ -30,7 +30,7 @@
         <th>Siswa</th>
         <th>NISN</th>
         <th>Pembimbing Lapangan</th>
-        <th>Nilai Total</th>
+        <th>Nilai Rata-Rata</th>
         @can('pembimbing-lapangan')
           <th>Action</th>
         @endcan
