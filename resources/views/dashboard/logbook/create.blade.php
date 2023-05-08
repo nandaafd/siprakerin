@@ -17,7 +17,14 @@
     </div>
     <div class="mb-3">
       <label for="impresi" class="form-label">Impresi</label>
-      <input type="text" value="{{ old('impresi') }}" class="form-control @error('impresi') is-invalid @enderror" name="impresi">
+      <select class="form-select @error('impresi') is-invalid @enderror" value="{{ old('impresi') }}" aria-label="Default select example" name="impresi">
+        <option selected>Pilih impresi anda..</option>
+        <option value="Sangat seru">Sangat seru</option>
+        <option value="Seru">Seru</option>
+        <option value="Biasa saja">Biasa saja</option>
+        <option value="Kurang">Kurang</option>
+      </select>
+      {{-- <input type="text" value="{{ old('impresi') }}" class="form-control @error('impresi') is-invalid @enderror" name="impresi"> --}}
       @error('impresi')
           <div class="invalid-feedback">
               {{ $message }}

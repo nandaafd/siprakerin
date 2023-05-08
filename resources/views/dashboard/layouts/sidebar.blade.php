@@ -13,6 +13,11 @@
                   <a href="/absensi">Lihat Absensi</a>
               </li>
             @endcan
+            @can('admin')
+            <li class="{{ Request::is('absensi') ? 'active' : '' }}">
+                <a href="/absensi">Lihat Absensi</a>
+            </li>
+          @endcan
             @can('guru')
               <li class="{{ Request::is('absensi') ? 'active' : '' }}">
                   <a href="/absensi">Lihat Absensi</a>
@@ -36,6 +41,11 @@
                   <a href="/logbook">Lihat Logbook</a>
               </li>
             @endcan
+            @can('admin')
+            <li class="{{ Request::is('logbook') ? 'active' : '' }}">
+                <a href="/logbook">Lihat Logbook</a>
+            </li>
+           @endcan
             @can('pembimbing-lapangan')
               <li class="{{ Request::is('logbook') ? 'active' : '' }}">
                   <a href="/logbook">Lihat Logbook</a>
@@ -59,6 +69,11 @@
                 <a href="/nilai">Lihat Nilai Saya</a>
               </li>
             @endcan
+            @can('admin')
+            <li class="{{ Request::is('nilai') ? 'active' : '' }}">
+              <a href="/nilai">Lihat Nilai Saya</a>
+            </li>
+            @endcan
             @can('guru')
               <li class="{{ Request::is('nilai') ? 'active' : '' }}">
                 <a href="/nilai">Lihat Nilai Siswa</a>
@@ -74,11 +89,39 @@
             @endcan
           </ul>
         </li>
-        <li>
-          <a href="#">Menu 4</a>
-        </li>
-        <li>
-          <a href="#">Menu 5</a>
+        <li class="{{ Request::is('siswa') ? 'active' : '' }}">
+          <a href="#pageSiswa" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Siswa</a>
+          <ul class="collapse list-unstyled" id="pageSiswa">
+            @can('admin')
+            <li class="{{ Request::is('x-tkj') ? 'active' : '' }}">
+              <a href="/x-tkj">X-TKJ</a>
+            </li>
+            <li class="{{ Request::is('xi-tkj') ? 'active' : '' }}">
+              <a href="/xi-tkj">XI-TKJ</a>
+            </li>
+            <li class="{{ Request::is('xii-tkj') ? 'active' : '' }}">
+              <a href="/xii-tkj">XII-TKJ</a>
+            </li>
+            <li class="{{ Request::is('x-pbs') ? 'active' : '' }}">
+              <a href="/x-pbs">X-PBS</a>
+            </li>
+            <li class="{{ Request::is('xi-pbs') ? 'active' : '' }}">
+              <a href="/xi-pbs">XI-PBS</a>
+            </li>
+            <li class="{{ Request::is('xii-pbs') ? 'active' : '' }}">
+              <a href="/xii-pbs">XII-PBS</a>
+            </li>
+            <li class="{{ Request::is('x-tkr') ? 'active' : '' }}">
+              <a href="/x-tkr">X-TKR</a>
+            </li>
+            <li class="{{ Request::is('xi-tkr') ? 'active' : '' }}">
+              <a href="/xi-tkr">XI-TKR</a>
+            </li>
+            <li class="{{ Request::is('xii-tkr') ? 'active' : '' }}">
+              <a href="/xii-tkr">XII-TKR</a>
+            </li>
+            @endcan
+          </ul>
         </li>
       </ul>
   

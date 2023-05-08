@@ -23,7 +23,7 @@ class Siswa extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function pembimbing_lapangan()
+    public function pembimbingLapangan()
     {
         return $this->belongsTo(PembimbingLapangan::class);
     }

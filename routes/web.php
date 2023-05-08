@@ -4,6 +4,7 @@ use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LogbookController;
 use App\Http\Controllers\NilaiController;
+use App\Http\Controllers\SiswaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +30,9 @@ Route::post('/logout', [AuthController::class, 'logout']);
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/dashboard', function(){return view('dashboard.index');})->name('dashboard');
     Route::resource('/absensi', AbsensiController::class);
+    Route::get('x-tkj/edit/{id}','App\Http\Controllers\SiswaController@edit');
+    Route::post('x-tkj/update','App\Http\Controllers\SiswaController@update');
+    Route::resource('/x-tkj', SiswaController::class);
     Route::resource('/nilai', NilaiController::class);
     Route::resource('/logbook', LogbookController::class);
 });

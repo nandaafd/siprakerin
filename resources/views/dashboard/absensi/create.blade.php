@@ -30,7 +30,14 @@
     </div>
     <div class="mb-3">
       <label for="ket_kehadiran" class="form-label">Keterangan Kehadiran</label>
-      <input type="text" value="{{ old('ket_kehadiran') }}" class="form-control @error('ket_kehadiran') is-invalid @enderror" name="ket_kehadiran">
+      {{-- <input type="text" value="{{ old('ket_kehadiran') }}" class="form-control @error('ket_kehadiran') is-invalid @enderror" name="ket_kehadiran"> --}}
+      <select class="form-select @error('ket_kehadiran') is-invalid @enderror" value="{{ old('impresi') }}" aria-label="Default select example" name="ket_kehadiran">
+        <option selected>Pilih kehadiran..</option>
+        <option value="Hadir">Hadir</option>
+        <option value="Izin">Izin</option>
+        <option value="Sakit">Sakit</option>
+        <option value="Absen">Absen</option>
+      </select>
       @error('ket_kehadiran')
           <div class="invalid-feedback">
               {{ $message }}
