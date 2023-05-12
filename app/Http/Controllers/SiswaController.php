@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kelas;
+use App\Models\PembimbingLapangan;
 use App\Models\Siswa;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -12,14 +13,18 @@ class SiswaController extends Controller
     public function index()
     {   
         $siswa = Siswa::all();
+        
         return view('dashboard.siswa.x-tkj' ,compact('siswa'));
+        $pl = PembimbingLapangan::all();
+        return view('dashboard.siswa.edit',compact('pl'));
         $kelas = Kelas::all();
-
     }
 
     public function create()
     {
-        return view('dashboard.siswa.create');
+        $kelas = Kelas::all();
+        $pembimbing = PembimbingLapangan::all();
+        return view('dashboard.siswa.create',compact('kelas','pembimbing'));
     }
 
     public function store(Request $request, Siswa $siswa)
@@ -59,10 +64,12 @@ class SiswaController extends Controller
         //
     }
 
-    public function edit(Siswa $siswa,$id)
+    public function edit($id)
     {
         $siswa = Siswa::where('id',$id)->get();
-        return view('dashboard.siswa.edit',compact('siswa'));
+        $kelas = Kelas::all();
+        $pembimbing = PembimbingLapangan::all();
+        return view('dashboard.siswa.edit',compact('siswa','kelas','pembimbing'));
     }
 
     public function update(Request $request)
@@ -73,6 +80,7 @@ class SiswaController extends Controller
         Siswa::where('id',$request->id)->update([
             'nisn'=>$request->nisn,
             'alamat'=>$request->alamat,
+            'kelas_id'=>$request->kelas,
             'no_telpon'=>$request->no_telpon,
             'pembimbing_lapangan_id'=>$request->pembimbing_lapangan,
         ]);

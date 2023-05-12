@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('nisn')->unique();
             $table->unsignedBigInteger('kelas_id')->nullable();
-            $table->foreign('kelas_id')->references('id')->on('kelass');
+            $table->foreign('kelas_id')->references('id')->on('kelas');
             $table->string('no_telpon');
             $table->string('alamat');
             $table->string('foto_profil')->nullable();

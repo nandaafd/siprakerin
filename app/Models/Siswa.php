@@ -17,7 +17,9 @@ class Siswa extends Model
     {
         return $this->hasMany(Absensi::class);
     }
-
+    public function kelas(){
+        return $this->belongsTo(Kelas::class);
+    }
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -37,8 +39,6 @@ class Siswa extends Model
     {
         return $this->hasMany(Logbook::class);
     }
-    public function siswa(){
-        return $this->belongsTo(Kelas::class);
-    }
+    
 
 }

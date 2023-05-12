@@ -24,10 +24,10 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{$data->user->fullname}}</td>
                     <td>{{$data->nisn}}</td>
-                    {{-- <td>{{$data->kelas->id}}</td> --}}
+                    <td>{{$data->kelas->kelas}}</td>
                     <td>{{$data->alamat}}</td>
                     <td>{{$data->no_telpon}}</td>
-                    <td>{{ $data->pembimbingLapangan ? $data->pembimbingLapangan->user->fullname : 'N/A' }}</td>
+                    <td>{{$data->pembimbingLapangan ? $data->pembimbingLapangan->user->fullname : 'N/A'}}</td>
 
                     <td>
                         <form action="{{ route('x-tkj.destroy', $data->id) }}" method="POST">
