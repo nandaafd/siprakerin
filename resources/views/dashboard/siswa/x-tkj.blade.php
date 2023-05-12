@@ -6,7 +6,7 @@
 <div id="content" class="px-4 py-1 p-md-5">
     @include('dashboard.layouts.navbar')
     <section>
-        <a href="/absensi/create" class="btn btn-primary mb-2"><i class="bi bi-plus-square"></i> Tambah Data Siswa</a>
+        <a href="/x-tkj/create" class="btn btn-primary mb-2"><i class="bi bi-plus-square"></i> Tambah Data Siswa</a>
         <div>
             <table class="table table-hover">
                 <tr>
@@ -24,10 +24,11 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{$data->user->fullname}}</td>
                     <td>{{$data->nisn}}</td>
-                    <td>kelas</td>
+                    {{-- <td>{{$data->kelas->id}}</td> --}}
                     <td>{{$data->alamat}}</td>
                     <td>{{$data->no_telpon}}</td>
-                    <td>{{$data->pembimbing_lapangan_id}}</td>
+                    <td>{{ $data->pembimbingLapangan ? $data->pembimbingLapangan->user->fullname : 'N/A' }}</td>
+
                     <td>
                         <form action="{{ route('x-tkj.destroy', $data->id) }}" method="POST">
                           @csrf
@@ -38,7 +39,6 @@
                     </td>
                 </tr>
                 @empty
-                    
                 @endforelse>
             </table>
         </div>

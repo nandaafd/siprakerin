@@ -37,5 +37,8 @@ class Siswa extends Model
     {
         return $this->hasMany(Logbook::class);
     }
+    public function siswa(){
+        return $this->belongsTo(Kelas::class);
+    }
 
 }
