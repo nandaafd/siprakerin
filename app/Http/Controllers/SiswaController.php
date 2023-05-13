@@ -14,7 +14,7 @@ class SiswaController extends Controller
     {   
         $siswa = Siswa::all();
         
-        return view('dashboard.siswa.x-tkj' ,compact('siswa'));
+        return view('dashboard.siswa.index' ,compact('siswa'));
         $pl = PembimbingLapangan::all();
         return view('dashboard.siswa.edit',compact('pl'));
         $kelas = Kelas::all();
@@ -31,17 +31,19 @@ class SiswaController extends Controller
     {
         $password = $request->password;
         $date = date('Y-m-d');
-        // $validatedData = $request->validate([
-        //     'nama'=>'required',
-        //     'nisn'=>'required',
-        //     'alamat'=>'required',
-        //     'no_telpon'=>'required',
-        //     'pembimbing_lapangan'=>'required',
-        // ]);
+        $validatedData = $request->validate([
+            'nama_lengkap'=>'required',
+            'nama_panggilan'=>'required',
+            'email'=>'required',
+            'password'=>'required',
+            'kelas'=>'required',
+            'nisn'=>'required',
+            'alamat'=>'required',
+            'no_telpon'=>'required',
+        ]);
         $user = User::create([
             'fullname'=>$request->nama_lengkap,
             'nickname'=>$request->nama_panggilan,
-            'fullname'=>$request->nama_lengkap,
             'email'=>$request->email,
             'email_verified_at'=>$date,
             'password'=>bcrypt($password),
@@ -56,7 +58,7 @@ class SiswaController extends Controller
             'alamat'=>$request->alamat,
             'pembimbing_lapangan_id'=>$request->pembimbing_lapangan,
         ]);
-        return redirect('/x-tkj');
+        return redirect('/siswa');
     }
 
     public function show(Siswa $siswa)
@@ -84,12 +86,12 @@ class SiswaController extends Controller
             'no_telpon'=>$request->no_telpon,
             'pembimbing_lapangan_id'=>$request->pembimbing_lapangan,
         ]);
-        return redirect('/x-tkj');
+        return redirect('/siswa');
     }
 
     public function destroy($id)
     {
         Siswa::where('id',$id)->delete();
-        return redirect('/x-tkj')->with('success', 'Data absensi berhasil dihapus');
+        return redirect('/siswa')->with('success', 'Data absensi berhasil dihapus');
     }
 }

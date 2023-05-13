@@ -6,9 +6,10 @@
 <div id="content" class="px-4 py-1 p-md-5">
     @include('dashboard.layouts.navbar')
     <section>
-        <form action="/x-tkj" method="post">
+        <form action="/siswa" method="post">
             @csrf
             @method('post')
+            <input type="text" hidden name="role" id="role" value="4">
             <div class="mb-3">
               <label for="nama" class="form-label">Nama Lengkap</label> 
               <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" value="">
@@ -23,11 +24,10 @@
               </div>
               <div class="mb-3">
                 <label for="kelas" class="form-label">Kelas</label>
-                <input type="text" name="kelas" id="">
                 <select class="form-select" aria-label="Default select example" name="kelas">
                   <option value="">Pilih kelas..</option>
                   @foreach ($kelas as $kls)
-                  <option value="{{$kls->id}}">{{$kls->kelas}}</option>
+                  <option value="{{$kls->id}}">{{$kls->nama_kelas}}</option>
                   @endforeach
                 </select>
               </div>
@@ -46,7 +46,6 @@
               <div class="mb-3">
                 <label for="no_telpon" class="form-label">Password</label>
                 <input type="text" class="form-control" id="Password" name="password" value="">
-                <input type="text" name="role" id="role" hidden value="3">
               </div>
               <div class="mb-3">
                 <label for="pembimbing_lapangan" class="form-label">Pembimbing Lapangan</label>

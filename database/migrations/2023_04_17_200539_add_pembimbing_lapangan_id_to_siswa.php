@@ -6,27 +6,17 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
-        Schema::table('siswas', function (Blueprint $table) {
+        Schema::table('siswa', function (Blueprint $table) {
             $table->unsignedBigInteger('pembimbing_lapangan_id')->nullable();
-            $table->foreign('pembimbing_lapangan_id')->references('id')->on('pembimbing_lapangans');
+            $table->foreign('pembimbing_lapangan_id')->references('id')->on('pembimbing_lapangan');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
-        Schema::table('siswas', function (Blueprint $table) {
+        Schema::table('siswa', function (Blueprint $table) {
             $table->dropForeign(['pembimbing_lapangan_id']);
             $table->dropColumn('pembimbing_lapangan_id');
         });

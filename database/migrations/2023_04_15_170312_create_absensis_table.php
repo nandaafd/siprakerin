@@ -7,30 +7,21 @@ use League\CommonMark\Extension\Table\Table;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
-        Schema::create('absensis', function (Blueprint $table) {
+        Schema::create('absensi', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('siswa_id');
-            $table->foreign('siswa_id')->references('id')->on('siswas');
+            $table->foreign('siswa_id')->references('id')->on('siswa');
             $table->string('ket_kehadiran');
             $table->date('tanggal');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
-        Schema::dropIfExists('absensis');
+        Schema::dropIfExists('absensi');
     }
 };

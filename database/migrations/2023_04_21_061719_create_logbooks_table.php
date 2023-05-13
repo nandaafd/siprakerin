@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('logbooks', function (Blueprint $table) {
+        Schema::create('logbook', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('siswa_id');
-            $table->foreign('siswa_id')->references('id')->on('siswas');
+            $table->foreign('siswa_id')->references('id')->on('siswa');
             $table->string('impresi');
             $table->string('catatan_kegiatan');
             $table->date('tanggal');
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('logbooks');
+        Schema::dropIfExists('logbook');
     }
 };

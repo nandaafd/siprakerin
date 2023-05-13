@@ -93,32 +93,8 @@
           <a href="#pageSiswa" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Siswa</a>
           <ul class="collapse list-unstyled" id="pageSiswa">
             @can('admin')
-            <li class="{{ Request::is('x-tkj') ? 'active' : '' }}">
-              <a href="/x-tkj">X-TKJ</a>
-            </li>
-            <li class="{{ Request::is('xi-tkj') ? 'active' : '' }}">
-              <a href="/xi-tkj">XI-TKJ</a>
-            </li>
-            <li class="{{ Request::is('xii-tkj') ? 'active' : '' }}">
-              <a href="/xii-tkj">XII-TKJ</a>
-            </li>
-            <li class="{{ Request::is('x-pbs') ? 'active' : '' }}">
-              <a href="/x-pbs">X-PBS</a>
-            </li>
-            <li class="{{ Request::is('xi-pbs') ? 'active' : '' }}">
-              <a href="/xi-pbs">XI-PBS</a>
-            </li>
-            <li class="{{ Request::is('xii-pbs') ? 'active' : '' }}">
-              <a href="/xii-pbs">XII-PBS</a>
-            </li>
-            <li class="{{ Request::is('x-tkr') ? 'active' : '' }}">
-              <a href="/x-tkr">X-TKR</a>
-            </li>
-            <li class="{{ Request::is('xi-tkr') ? 'active' : '' }}">
-              <a href="/xi-tkr">XI-TKR</a>
-            </li>
-            <li class="{{ Request::is('xii-tkr') ? 'active' : '' }}">
-              <a href="/xii-tkr">XII-TKR</a>
+            <li class="{{ Request::is('siswa') ? 'active' : '' }}">
+              <a href="/siswa">Data Siswa</a>
             </li>
             @endcan
           </ul>

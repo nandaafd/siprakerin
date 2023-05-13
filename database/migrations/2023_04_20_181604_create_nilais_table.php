@@ -7,31 +7,23 @@ use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
-        Schema::create('nilais', function (Blueprint $table) {
+        Schema::create('nilai', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('siswa_id');
-            $table->foreign('siswa_id')->references('id')->on('siswas');
+            $table->foreign('siswa_id')->references('id')->on('siswa');
             $table->unsignedBigInteger('pembimbing_lapangan_id');
-            $table->foreign('pembimbing_lapangan_id')->references('id')->on('pembimbing_lapangans');
+            $table->foreign('pembimbing_lapangan_id')->references('id')->on('pembimbing_lapangan');
             $table->integer('nilai_rata_rata')->default(0);
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+  
     public function down()
     {
-        Schema::dropIfExists('nilais');
+        Schema::dropIfExists('nilai');
     }
 };

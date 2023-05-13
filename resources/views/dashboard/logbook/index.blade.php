@@ -29,7 +29,7 @@
         <th>No.</th>
         <th>Siswa</th>
         <th>NISN</th>
-        <th>Pembimbing Lapangan</th>
+        {{-- <th>Pembimbing Lapangan</th> --}}
         <th>Impresi</th>
         <th>Catatan Kegiatan</th>
         <th>Tanggal</th>
@@ -42,7 +42,7 @@
             <td>{{ $loop->iteration }}</td>
             <td>{{ $logbook->siswa->user->fullname }}</td>
             <td>{{ $logbook->siswa->nisn }}</td>
-            <td>{{ $logbook->siswa->pembimbing_lapangan->user->fullname }}</td>
+            {{-- <td>{{ $logbook->siswa->pembimbing_lapangan->user->fullname }}</td> --}}
             <td>{{ $logbook->impresi }}</td>
             <td>{{ $logbook->catatan_kegiatan }}</td>
             <td>{{ $logbook->tanggal }}</td>

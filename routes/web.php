@@ -30,9 +30,9 @@ Route::post('/logout', [AuthController::class, 'logout']);
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/dashboard', function(){return view('dashboard.index');})->name('dashboard');
     Route::resource('/absensi', AbsensiController::class);
-    Route::get('x-tkj/edit/{id}','App\Http\Controllers\SiswaController@edit');
-    Route::post('x-tkj/update','App\Http\Controllers\SiswaController@update');
-    Route::resource('/x-tkj', SiswaController::class);
+    Route::get('siswa/edit/{id}','App\Http\Controllers\SiswaController@edit');
+    Route::post('siswa/update','App\Http\Controllers\SiswaController@update');
+    Route::resource('/siswa', SiswaController::class);
     Route::resource('/nilai', NilaiController::class);
     Route::resource('/logbook', LogbookController::class);
 });

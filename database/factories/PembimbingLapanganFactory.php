@@ -10,11 +10,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class PembimbingLapanganFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+
     public function definition()
     {
         return [

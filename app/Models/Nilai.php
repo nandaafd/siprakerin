@@ -9,6 +9,7 @@ class Nilai extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+    protected $table = 'nilai';
     
     public function siswa()
     {

@@ -10,6 +10,7 @@ class Absensi extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+    protected $table = 'absensi';
 
     public function siswa()
     {

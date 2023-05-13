@@ -12,6 +12,7 @@ class Siswa extends Model
     protected $guarded = [
         'id'
     ];
+    protected $table = 'siswa';
 
     public function absensi()
     {

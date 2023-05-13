@@ -6,7 +6,7 @@
 <div id="content" class="px-4 py-1 p-md-5">
     @include('dashboard.layouts.navbar')
     <section>
-      <form action="/x-tkj/update" method="post">
+      <form action="/siswa/update" method="post">
       @foreach ($siswa as $data)
           @csrf
           <input type="text" hidden name="id" value="{{$data->id}}">
@@ -22,9 +22,16 @@
             <div class="mb-3">
               <label for="kelas" class="form-label">Kelas</label>
               <select class="form-select" aria-label="Default select example" name="kelas">
-                @foreach ($kelas as $kls) 
-                <option value="{{$kls->id}}" {{$kls->id == $data->kelas->id ? 'selected' : ''}}>{{$kls->kelas}}</option>
-                @endforeach
+                @if ($data->kelas_id == null)
+                  <option value="">Belum punya kelas</option>
+                  @foreach ($kelas as $kls) 
+                  <option value="{{$kls->id}}">{{$kls->nama_kelas}}</option>
+                  @endforeach
+                @else
+                  @foreach ($kelas as $kls) 
+                  <option value="{{$kls->id}}" {{$kls->id == $data->kelas->id ? 'selected' : ''}}>{{$kls->kelas}}</option>
+                  @endforeach
+                @endif
               </select>
             </div>
             <div class="mb-3">
@@ -39,14 +46,14 @@
               <label for="pembimbing_lapangan" class="form-label">Pembimbing Lapangan</label>
               <select class="form-select" aria-label="Default select example" name="pembimbing_lapangan">
                 @if ($data->pembimbingLapangan == null)
-                <option value="">Belum Punya Pembimbing </option>
-                @foreach ($pembimbing as $pl)
-                <option value="{{$pl->id}}">{{$pl->user->fullname}}</option>
-                @endforeach
+                  <option value="">Belum Punya Pembimbing </option>
+                  @foreach ($pembimbing as $pl)
+                  <option value="{{$pl->id}}">{{$pl->user->fullname}}</option>
+                  @endforeach
                 @else 
-                @foreach ($pembimbing as $pl)
-                <option value="{{$pl->id}}" {{$pl->id == $data->pembimbingLapangan->user->id ? 'selected' : ''}}>{{$pl->user->fullname}}</option>
-                @endforeach
+                  @foreach ($pembimbing as $pl)
+                  <option value="{{$pl->id}}" {{$pl->id == $data->pembimbingLapangan->user->id ? 'selected' : ''}}>{{$pl->user->fullname}}</option>
+                  @endforeach
                 @endif
               </select>
             </div>    

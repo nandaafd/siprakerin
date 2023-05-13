@@ -10,6 +10,7 @@ class Logbook extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+    protected $table = 'logbook';
 
     public function siswa()
     {

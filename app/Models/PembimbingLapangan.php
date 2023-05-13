@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class PembimbingLapangan extends Model
 {
     use HasFactory;
+    protected $guarded = ['id'];
+    protected $table = 'pembimbing_lapangan';
 
     public function absensi()
     {
