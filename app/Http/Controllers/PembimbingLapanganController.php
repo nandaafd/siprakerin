@@ -3,83 +3,82 @@
 namespace App\Http\Controllers;
 
 use App\Models\PembimbingLapangan;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class PembimbingLapanganController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+    public function index(Request $request)
     {
-        //
+        $filter_perusahaan = $request->perusahaan;
+        $pembimbing = PembimbingLapangan::where('asal_perusahaan','like','%'.$filter_perusahaan.'%')->get();
+        return view('dashboard.pembimbing.index',compact('pembimbing','filter_perusahaan'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('dashboard.pembimbing.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(Request $request, PembimbingLapangan $pembimbing)
     {
-        //
+        
+        $password = $request->password;
+        $date = date('Y-m-d');
+        $validatedData = $request->validate([
+            'nama_lengkap'=>'required',
+            'nama_panggilan'=>'required',
+            'email'=>'required',
+            'password'=>'required',
+            'asal_perusahaan'=>'required',
+            'no_telpon'=>'required',
+        ]);
+        $user = User::create([
+            'fullname'=>$request->nama_lengkap,
+            'nickname'=>$request->nama_panggilan,
+            'email'=>$request->email,
+            'email_verified_at'=>$date,
+            'password'=>bcrypt($password),
+            'role_id'=>$request->role
+        ])->id;
+        $pl = $pembimbing->create([
+            'user_id'=>$user,
+            'asal_perusahaan'=>$request->asal_perusahaan,
+            'no_telpon'=>$request->no_telpon,
+        ]);
+        return redirect('/pembimbing-lapangan');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\PembimbingLapangan  $pembimbingLapangan
-     * @return \Illuminate\Http\Response
-     */
     public function show(PembimbingLapangan $pembimbingLapangan)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\PembimbingLapangan  $pembimbingLapangan
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(PembimbingLapangan $pembimbingLapangan)
+    public function edit($id)
     {
-        //
+        $pembimbing = PembimbingLapangan::where('id',$id)->get();
+        return view('dashboard.pembimbing.edit',compact('pembimbing'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\PembimbingLapangan  $pembimbingLapangan
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, PembimbingLapangan $pembimbingLapangan)
+
+    public function update(Request $request)
     {
-        //
+        User::where('id',$request->user_id)->update([
+            'fullname'=>$request->nama_lengkap,
+            'nickname'=>$request->nama_panggilan,
+        ]);
+        PembimbingLapangan::where('id',$request->id)->update([
+            'asal_perusahaan'=>$request->asal_perusahaan,
+            'no_telpon'=>$request->no_telpon
+        ]);
+        return redirect('pembimbing-lapangan');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\PembimbingLapangan  $pembimbingLapangan
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(PembimbingLapangan $pembimbingLapangan)
+    public function destroy($id)
     {
-        //
+        PembimbingLapangan::where('id',$id)->delete();
+        return redirect('/pembimbing-lapangan')->with('success', 'Data berhasil dihapus');
     }
 }

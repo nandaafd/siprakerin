@@ -77,7 +77,8 @@ class SiswaController extends Controller
     public function update(Request $request)
     {
         User::where('id',$request->user_id)->update([
-            'fullname'=>$request->nama,
+            'fullname'=>$request->nama_lengkap,
+            'fullname'=>$request->nama_panggilan,
         ]);
         Siswa::where('id',$request->id)->update([
             'nisn'=>$request->nisn,

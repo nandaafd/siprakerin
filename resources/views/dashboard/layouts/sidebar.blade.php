@@ -89,15 +89,11 @@
             @endcan
           </ul>
         </li>
-        <li class="{{ Request::is('siswa') ? 'active' : '' }}">
-          <a href="#pageSiswa" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Siswa</a>
-          <ul class="collapse list-unstyled" id="pageSiswa">
-            @can('admin')
-            <li class="{{ Request::is('siswa') ? 'active' : '' }}">
-              <a href="/siswa">Data Siswa</a>
-            </li>
-            @endcan
-          </ul>
+        <li class="{{ Request::is('siswa*') ? 'active' : '' }}">
+          <a href="/siswa" class="">Siswa</a>
+        </li>
+        <li class="{{ Request::is('pembimbing-lapangan*') ? 'active' : '' }}">
+          <a href="/pembimbing-lapangan" class="">Pembimbing Lapangan</a>
         </li>
       </ul>
   

@@ -34,7 +34,8 @@
                 <h5 id="filter-info">Hasil filter : <span> {{$kls->nama_kelas}}</span></h5>
             @endif 
             @endforeach
-            <table class="table table-hover">
+            <table class="table mb-0 text-center table-striped table-sm">
+                <thead class="thead-dark">
                 <tr>
                     <th>No</th>
                     <th>Nama</th>
@@ -42,9 +43,11 @@
                     <th>Kelas</th>
                     <th>Alamat</th>
                     <th>No Telpon</th>
+                    <th>email</th>
                     <th>Pembimbing Lapangan</th>
-                    <th>Aksi</th>
+                    <th colspan="2">Aksi</th>
                 </tr>
+                </thead>
                 @forelse ($siswa as $data)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
@@ -53,14 +56,16 @@
                     <td>{{$data->kelas ? $data->kelas->nama_kelas : 'N/A'}}</td>
                     <td>{{$data->alamat}}</td>
                     <td>{{$data->no_telpon}}</td>
+                    <td>{{$data->user->email}}</td>
                     <td>{{$data->pembimbingLapangan ? $data->pembimbingLapangan->user->fullname : 'N/A'}}</td>
-
                     <td>
                         <form action="{{ route('siswa.destroy', $data->id) }}" method="POST">
                           @csrf
                           @method('DELETE')
                           <button type="submit" class="btn btn-danger" title="Hapus data" onclick="return confirm('Apakah anda yakin ingin menghapus?')"><i class="bi bi-trash3-fill"></i></button>
                         </form>
+                    </td>
+                    <td>
                         <a href="/siswa/edit/{{$data->id}}" class="btn btn-primary" title="edit"><i class="bi bi-pencil"></i></a>            
                     </td>
                 </tr>

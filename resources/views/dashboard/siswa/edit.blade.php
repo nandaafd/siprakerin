@@ -12,8 +12,12 @@
           <input type="text" hidden name="id" value="{{$data->id}}">
           <input type="text" hidden name="user_id" value="{{$data->user_id}}">
           <div class="mb-3">
-            <label for="nama" class="form-label">Nama</label> 
-            <input type="text" class="form-control" id="nama" name="nama" value="{{$data->user->fullname}}">
+            <label for="nama_lengkap" class="form-label">Nama Lengkap</label> 
+            <input type="text" class="form-control" id="nama" name="nama_lengkap" value="{{$data->user->fullname}}">
+          </div>
+          <div class="mb-3">
+            <label for="nama_panggilan" class="form-label">Nama Panggilan</label> 
+            <input type="text" class="form-control" id="nama_panggilan" name="nama_panggilan" value="{{$data->user->nickname}}">
           </div>
           <div class="mb-3">
               <label for="nisn" class="form-label">NISN</label>
@@ -29,7 +33,7 @@
                   @endforeach
                 @else
                   @foreach ($kelas as $kls) 
-                  <option value="{{$kls->id}}" {{$kls->id == $data->kelas->id ? 'selected' : ''}}>{{$kls->kelas}}</option>
+                  <option value="{{$kls->id}}" {{$kls->id == $data->kelas->id ? 'selected' : ''}}>{{$kls->nama_kelas}}</option>
                   @endforeach
                 @endif
               </select>
