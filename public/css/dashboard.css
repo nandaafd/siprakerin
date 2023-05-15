@@ -1,0 +1,10 @@
+.btn{
+    border: none;
+}
+#filter-info{
+    font-size: 16px;
+    font-weight: 500;
+}
+span{
+    color: orange;
+}

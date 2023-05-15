@@ -10,14 +10,14 @@ use Illuminate\Http\Request;
 
 class SiswaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {   
-        $siswa = Siswa::all();
-        
-        return view('dashboard.siswa.index' ,compact('siswa'));
-        $pl = PembimbingLapangan::all();
-        return view('dashboard.siswa.edit',compact('pl'));
+        $filter_kelas = $request->kelas_id;
+        $siswa = Siswa::where('kelas_id','like','%'.$filter_kelas.'%')
+                        ->get();
         $kelas = Kelas::all();
+        $pembimbing = PembimbingLapangan::all();
+        return view('dashboard.siswa.index' ,compact('siswa','kelas','filter_kelas'));
     }
 
     public function create()

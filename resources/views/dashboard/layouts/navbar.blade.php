@@ -11,15 +11,6 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="nav navbar-nav ml-auto">
-          <li class="nav-item">
-              <a class="nav-link" href="#">#Link1</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="#">#Link2</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="#">#Link3</a>
-          </li>
           <li class="nav-link">
             <form action="/logout" method="POST">
                 @csrf

@@ -6,8 +6,34 @@
 <div id="content" class="px-4 py-1 p-md-5">
     @include('dashboard.layouts.navbar')
     <section>
-        <a href="/siswa/create" class="btn btn-primary mb-2"><i class="bi bi-plus-square"></i> Tambah Data Siswa</a>
+        <div class="row">
+            <div class="col-9">
+                <form action="" method="get" class="row row-cols-sm-auto g-1 mb-4">
+                        <div class="col-sm">
+                            <select class="form-select form-select-sm" aria-label="Default select example" name="kelas_id" id="filter_kelas">
+                                <option value="">Pilih kelas..</option>
+                                @foreach ($kelas as $kls)
+                                <option value="{{$kls->id}}">{{$kls->nama_kelas}}</option>
+                                @endforeach
+                              </select>
+                        </div>
+                        <div class="col-sm">
+                            <button type="submit" class="btn btn-primary btn-sm">Search</button>
+                            <button type="submit" class="btn btn-secondary btn-sm" id="btn-reset">Reset</button>
+                        </div>
+                    </form>
+            </div>
+            <div class="col-3">
+                <a href="/siswa/create" class="btn btn-primary mb-2"><i class="bi bi-plus-square"></i> Tambah Data Siswa</a>
+            </div>
+        </div>
         <div>
+            @foreach ($kelas as $kls)
+                
+            @if ($filter_kelas == $kls->id)
+                <h5 id="filter-info">Hasil filter : <span> {{$kls->nama_kelas}}</span></h5>
+            @endif 
+            @endforeach
             <table class="table table-hover">
                 <tr>
                     <th>No</th>
