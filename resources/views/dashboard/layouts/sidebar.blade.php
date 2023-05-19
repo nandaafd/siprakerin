@@ -3,7 +3,7 @@
       <a href="#" class="img logo rounded-circle" style="background-image: url({{ asset('assets/images/utm.jpg') }});"></a>
       <p class="mb-2 text-center">welcome, 
         {{-- {{ Auth::user()->role->name }} --}}
-        {{ Auth::user()->fullname }}</p>
+        {{ Auth::user()->nickname }}</p>
       <ul class="list-unstyled components mb-5">
         <li class="{{ Request::is('absensi*') ? 'active' : '' }}">
           <a href="#pageAbsensi" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Absensi</a>
@@ -94,6 +94,9 @@
         </li>
         <li class="{{ Request::is('pembimbing-lapangan*') ? 'active' : '' }}">
           <a href="/pembimbing-lapangan" class="">Pembimbing Lapangan</a>
+        </li>
+        <li class="{{ Request::is('data-guru*') ? 'active' : '' }}">
+          <a href="/data-guru" class="">Guru</a>
         </li>
       </ul>
   

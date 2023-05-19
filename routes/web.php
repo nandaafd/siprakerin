@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GuruController;
 use App\Http\Controllers\LogbookController;
 use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\PembimbingController;
@@ -32,12 +33,11 @@ Route::post('/logout', [AuthController::class, 'logout']);
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/dashboard', function(){return view('dashboard.index');})->name('dashboard');
     Route::resource('/absensi', AbsensiController::class);
-    Route::get('siswa/edit/{id}','App\Http\Controllers\SiswaController@edit');
-    Route::post('siswa/update','App\Http\Controllers\SiswaController@update');
     Route::resource('/siswa', SiswaController::class);
     Route::resource('/pembimbing-lapangan', PembimbingLapanganController::class);
-    Route::get('pembimbing-lapangan/edit/{id}','App\Http\Controllers\PembimbingLapanganController@edit');
-    Route::post('pembimbing-lapangan/update','App\Http\Controllers\PembimbingLapanganController@update');
     Route::resource('/nilai', NilaiController::class);
+    Route::resource('/data-guru', GuruController::class);
+    Route::get('data-guru/edit/{id}','App\Http\Controllers\GuruController@edit');
+    Route::post('data-guru/update','App\Http\Controllers\GuruController@update');
     Route::resource('/logbook', LogbookController::class);
 });

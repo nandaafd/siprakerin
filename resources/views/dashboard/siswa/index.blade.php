@@ -59,14 +59,14 @@
                     <td>{{$data->user->email}}</td>
                     <td>{{$data->pembimbingLapangan ? $data->pembimbingLapangan->user->fullname : 'N/A'}}</td>
                     <td>
-                        <form action="{{ route('siswa.destroy', $data->id) }}" method="POST">
+                        <form action="{{ route('siswa.destroy', $data->user_id) }}" method="POST">
                           @csrf
                           @method('DELETE')
                           <button type="submit" class="btn btn-danger" title="Hapus data" onclick="return confirm('Apakah anda yakin ingin menghapus?')"><i class="bi bi-trash3-fill"></i></button>
                         </form>
                     </td>
                     <td>
-                        <a href="/siswa/edit/{{$data->id}}" class="btn btn-primary" title="edit"><i class="bi bi-pencil"></i></a>            
+                        <a href="{{route('siswa.edit',$data->id)}}" class="btn btn-primary" title="edit"><i class="bi bi-pencil"></i></a>            
                     </td>
                 </tr>
                 @empty

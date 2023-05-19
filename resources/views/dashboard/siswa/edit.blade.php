@@ -6,9 +6,10 @@
 <div id="content" class="px-4 py-1 p-md-5">
     @include('dashboard.layouts.navbar')
     <section>
-      <form action="/siswa/update" method="post">
       @foreach ($siswa as $data)
+      <form action="{{route('siswa.update',$data->id)}}" method="post">
           @csrf
+          @method('put')
           <input type="text" hidden name="id" value="{{$data->id}}">
           <input type="text" hidden name="user_id" value="{{$data->user_id}}">
           <div class="mb-3">

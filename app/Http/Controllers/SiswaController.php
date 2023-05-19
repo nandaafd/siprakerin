@@ -92,7 +92,8 @@ class SiswaController extends Controller
 
     public function destroy($id)
     {
-        Siswa::where('id',$id)->delete();
+        Siswa::where('user_id',$id)->delete();
+        User::where('id',$id)->delete();
         return redirect('/siswa')->with('success', 'Data absensi berhasil dihapus');
     }
 }

@@ -38,4 +38,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(PembimbingLapangan::class);
     }
+    public function guru()
+    {
+        return $this->hasMany(Guru::class);
+    }
 }

@@ -77,8 +77,9 @@ class PembimbingLapanganController extends Controller
     }
 
     public function destroy($id)
-    {
-        PembimbingLapangan::where('id',$id)->delete();
+    {   
+        PembimbingLapangan::where('user_id',$id)->delete();
+        User::where('id',$id)->delete();                     
         return redirect('/pembimbing-lapangan')->with('success', 'Data berhasil dihapus');
     }
 }
