@@ -7,6 +7,7 @@ use App\Http\Controllers\LogbookController;
 use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\PembimbingController;
 use App\Http\Controllers\PembimbingLapanganController;
+use App\Http\Controllers\PrakerinController;
 use App\Http\Controllers\SiswaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -37,7 +38,6 @@ Route::group(['middleware' => ['auth']], function(){
     Route::resource('/pembimbing-lapangan', PembimbingLapanganController::class);
     Route::resource('/nilai', NilaiController::class);
     Route::resource('/data-guru', GuruController::class);
-    Route::get('data-guru/edit/{id}','App\Http\Controllers\GuruController@edit');
-    Route::post('data-guru/update','App\Http\Controllers\GuruController@update');
     Route::resource('/logbook', LogbookController::class);
+    Route::resource('/data-prakerin', PrakerinController::class);
 });
