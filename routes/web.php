@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\LogbookController;
+use App\Http\Controllers\MitraController;
 use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\PembimbingController;
 use App\Http\Controllers\PembimbingLapanganController;
@@ -42,4 +43,5 @@ Route::group(['middleware' => ['auth']], function(){
     Route::resource('/logbook', LogbookController::class);
     Route::resource('/data-prakerin', PrakerinController::class);
     Route::resource('/data-berita', BeritaController::class);
+    Route::resource('/data-mitra', MitraController::class);
 });

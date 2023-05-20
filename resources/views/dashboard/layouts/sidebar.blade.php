@@ -1,9 +1,8 @@
 <nav id="sidebar">
     <div class="p-4 pt-5">
-      <a href="#" class="img logo rounded-circle" style="background-image: url({{ asset('assets/images/utm.jpg') }});"></a>
+      <img src="{{asset('images/logo1.png')}}" alt="" class="mx-4 mb-3">
       <p class="mb-2 text-center">welcome, 
-        {{-- {{ Auth::user()->role->name }} --}}
-        {{ Auth::user()->nickname }}</p>
+        <span>{{ Auth::user()->nickname }}</span></p>
       <ul class="list-unstyled components mb-5">
         <li class="{{ Request::is('absensi*') ? 'active' : '' }}">
           <a href="#pageAbsensi" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Absensi</a>
@@ -103,6 +102,9 @@
         </li>
         <li class="{{ Request::is('data-berita*') ? 'active' : '' }}">
           <a href="/data-berita" class="">Berita & Informasi</a>
+        </li>
+        <li class="{{ Request::is('data-mitra*') ? 'active' : '' }}">
+          <a href="/data-mitra" class="">Mitra</a>
         </li>
       </ul>
   
