@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\LogbookController;
 use App\Http\Controllers\NilaiController;
@@ -40,4 +41,5 @@ Route::group(['middleware' => ['auth']], function(){
     Route::resource('/data-guru', GuruController::class);
     Route::resource('/logbook', LogbookController::class);
     Route::resource('/data-prakerin', PrakerinController::class);
+    Route::resource('/data-berita', BeritaController::class);
 });

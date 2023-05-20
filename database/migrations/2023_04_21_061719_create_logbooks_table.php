@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('siswa_id');
             $table->foreign('siswa_id')->references('id')->on('siswa');
             $table->string('impresi');
-            $table->string('catatan_kegiatan');
+            $table->string('catatan_kegiatan',512);
             $table->date('tanggal');
             $table->timestamps();
         });

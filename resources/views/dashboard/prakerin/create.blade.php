@@ -44,7 +44,7 @@
               </div>
               <div class="mb-3">
                 <label for="bukti" class="form-label">Bukti Diterima <span style="font-size:12px;">*jika ada/tidak wajib</span></label>
-                <input type="file" class="form-control" id="bukti">
+                <input type="file" class="form-control" id="bukti" name="bukti">
               </div> 
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>

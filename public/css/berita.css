@@ -1,0 +1,10 @@
+#judul{
+    text-transform: uppercase;
+    font-weight: 600;
+}
+span{
+    /* margin-right: 10px; */
+}
+#penulis{
+    text-transform: capitalize; 
+}
