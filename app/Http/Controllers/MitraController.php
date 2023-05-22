@@ -60,7 +60,7 @@ class MitraController extends Controller
 
 
     public function destroy($id)
-    {
+    {   
         Mitra::where('id',$id)->delete();
         return redirect('/data-mitra')->with('success', 'Data berhasil dihapus');
     }

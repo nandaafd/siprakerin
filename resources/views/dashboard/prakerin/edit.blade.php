@@ -7,10 +7,11 @@
     @include('dashboard.layouts.navbar')
     <section>
         @foreach ($prakerin as $data)
-        <form action="{{route('data-prakerin.update',$data->id)}}" method="post">
+        <form action="{{route('data-prakerin.update',$data->id)}}" method="post" enctype="multipart/form-data">
             @csrf
             @method('put')
             <input type="text" hidden name="id" id="" value="{{$data->id}}">
+            <input type="text" hidden name="oldImage" value="{{$data->bukti_diterima}}">
             <div class="mb-3">
               <label for="nama" class="form-label">Nama</label> 
               <input type="text" class="form-control" id="nama" name="nama" value="{{$data->nama}}">
@@ -40,12 +41,17 @@
                 <input type="text" class="form-control" id="alamat" name="alamat" value="{{$data->alamat_mitra}}">
               </div>    
               <div class="mb-3">
-                <label for="kontak" class="form-label">Kontak Perusahaan</label>
+                <label for="kontak" class="form-label">Kontak Perusahaan <span style="font-size: 12px">*Email/Nomor Telepon</span></label>
                 <input type="text" class="form-control" id="kontak" name="kontak" value="{{$data->kontak_perusahaan}}">
               </div>
               <div class="mb-3">
                 <label for="bukti" class="form-label">Bukti Diterima <span style="color:red; font-size:12px;">*jika ada/tidak wajib</span></label>
-                <input type="file" class="form-control" id="bukti" value="{{$data->bukti_diterima}}">
+                @if ($data->bukti_diterima == null)
+                  <p>belum memiliki file bukti</p>
+                @else
+                  <img src="{{asset('storage/'. $data->bukti_diterima)}}" alt="" class="d-block mb-3" style="max-width:170px;">
+                @endif
+                <input type="file" class="form-control" id="bukti" value="{{$data->bukti_diterima}}" name="bukti">
               </div> 
               @endforeach
             <button type="submit" class="btn btn-primary">Submit</button>

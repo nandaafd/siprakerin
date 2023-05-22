@@ -43,6 +43,7 @@
                         <th>Mitra</th>
                         <th>Bidang Mitra</th>
                         <th>Alamat Mitra</th>
+                        <th>Bukti</th>
                         <th>Kontak</th>
                         <th colspan="2">Aksi</th>
                     </tr>
@@ -57,6 +58,7 @@
                         <td>{{$data->bidang_mitra}}</td>
                         <td>{{$data->alamat_mitra}}</td>
                         <td>{{$data->kontak_perusahaan}}</td>
+                        <td> <a href="{{route('data-prakerin.show',$data->id)}}">Lihat bukti</a></td>
                         <td>
                             <form action="{{ route('data-prakerin.destroy',$data->id) }}" method="POST">
                             @csrf
@@ -72,7 +74,10 @@
             </table>
         </div>
     </section>
+    
 </div>
 </div>
+
+
 
 @endsection

@@ -6,7 +6,7 @@
 <div id="content" class="px-4 py-1 p-md-5">
     @include('dashboard.layouts.navbar')
     <section>
-        <form action="/data-prakerin" method="post">
+        <form action="/data-prakerin" method="post" enctype="multipart/form-data">
             @csrf
             @method('post')
             <div class="mb-3">
@@ -39,7 +39,7 @@
                 <input type="text" class="form-control" id="alamat" name="alamat" value="">
               </div>    
               <div class="mb-3">
-                <label for="kontak" class="form-label">Kontak Perusahaan</label>
+                <label for="kontak" class="form-label">Kontak Perusahaan <span style="font-size: 12px">*Email/Nomor Telepon</span></label>
                 <input type="text" class="form-control" id="kontak" name="kontak" value="">
               </div>
               <div class="mb-3">

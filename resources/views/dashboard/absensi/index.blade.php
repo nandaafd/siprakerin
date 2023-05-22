@@ -31,7 +31,7 @@
         <th>Pembimbing Lapangan</th>
         <th>Keterangan Kehadiran</th>
         <th>Tanggal</th>
-        @can('pembimbing-lapangan')
+        @can('admin')
           <th>Action</th>
         @endcan
     </tr>
@@ -42,7 +42,7 @@
             <td>{{ $absensi->pembimbingLapangan->user->fullname }}</td>
             <td>{{ $absensi->ket_kehadiran }}</td>
             <td>{{ $absensi->tanggal }}</td>
-            @can('pembimbing-lapangan')    
+            @can('admin')    
               <td>
                 <form action="{{ route('absensi.destroy', $absensi->id) }}" method="POST">
                   @csrf
