@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Berita;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BeritaController extends Controller
 {
@@ -26,21 +27,29 @@ class BeritaController extends Controller
             'terbit'=>'required',
             'penulis'=>'required',
             // 'isi_berita'=>'required',
+            'gambar'=>'image|file|max:2048'
         ]);
+        if ($request->hasFile('gambar')) {
+            $path = $request->file('gambar')->store('gambar-berita');
+        }else{
+            $path = null;
+        }
         Berita::create([
             'judul'=>$request->judul,
             'tanggal_terbit'=>$request->terbit,
             'penulis'=>$request->penulis,
             'isi_berita'=>$request->isi_berita,
+            'gambar'=>$path
         ]);
         return redirect('/data-berita');
     }
 
     public function show($id)
     {
+        $gambar = Berita::where('id',$id)->value('gambar');
         $htmlCode = Berita::where('id',$id)->value('isi_berita');
         $berita = Berita::where('id',$id)->get();
-        return view('dashboard.berita.show',compact('berita','htmlCode'));
+        return view('dashboard.berita.show',compact('berita','htmlCode','gambar'));
     }
 
     public function edit($id)
@@ -51,11 +60,27 @@ class BeritaController extends Controller
 
     public function update(Request $request, $id)
     {
+        $validatedData = $request->validate([
+            'judul'=>'required',
+            'terbit'=>'required',
+            'penulis'=>'required',
+            // 'isi_berita'=>'required',
+            'gambar'=>'image|file|max:2048'
+        ]);
+        if ($request->hasFile('gambar')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $path = $request->file('gambar')->store('gambar-berita');
+        }else{
+            $path = null;
+        }
         Berita::where('id',$id)->update([
             'judul'=>$request->judul,
             'tanggal_terbit'=>$request->terbit,
             'penulis'=>$request->penulis,
             'isi_berita'=>$request->isi_berita,
+            'gambar'=>$path
         ]);
         return redirect('/data-berita');
     }
