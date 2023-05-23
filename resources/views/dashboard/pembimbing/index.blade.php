@@ -38,10 +38,9 @@
                     <tr>
                         <th>No</th>
                         <th>Nama Lengkap</th>
-                        <th>Nama Panggilan</th>
                         <th>Email</th>
                         <th>Perusahaan</th>
-                        <th>No Telpon</th>
+                        <th>Data Lengkap</th>
                         <th colspan="2">Aksi</th>
                     </tr>
                 </thead>
@@ -49,10 +48,9 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{$data->user->fullname}}</td>
-                        <td>{{$data->user->nickname}}</td>
                         <td>{{$data->user->email}}</td>
                         <td>{{$data->asal_perusahaan}}</td>
-                        <td>{{$data->no_telpon}}</td>
+                        <td><a href="{{route('pembimbing-lapangan.show',$data->id)}}">Lihat data</a></td>
                         <td>
                             <form action="{{ route('pembimbing-lapangan.destroy',$data->user_id) }}" method="POST">
                             @csrf

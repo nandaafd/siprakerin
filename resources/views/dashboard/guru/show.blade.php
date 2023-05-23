@@ -7,7 +7,7 @@
     @include('dashboard.layouts.navbar')
     <section>
         @if ($guru == null)
-                <h4 class="badge-danger mx-auto text-center">Siswa ini tidak memiliki atau mengunggah file bukti diterima prakerin</h4> 
+                <h4 class="badge-danger mx-auto text-center">User ini tidak memiliki foto profil</h4> 
             @else
                 <h4>Foto Profil :</h4>
                 <img src="{{asset('storage/'. $guru)}}" alt="" class="img img-fluid">    

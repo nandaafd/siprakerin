@@ -6,6 +6,7 @@ use App\Models\PembimbingLapangan;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Storage;
 
 class PembimbingLapanganController extends Controller
 {
@@ -34,7 +35,13 @@ class PembimbingLapanganController extends Controller
             'password'=>'required',
             'asal_perusahaan'=>'required',
             'no_telpon'=>'required',
+            'foto_profil'=>'image|file|max:2048'
         ]);
+        if ($request->hasFile('foto_profil')) {
+            $path = $request->file('foto_profil')->store('foto-profil');
+        }else{
+            $path = null;
+        }
         $user = User::create([
             'fullname'=>$request->nama_lengkap,
             'nickname'=>$request->nama_panggilan,
@@ -47,13 +54,16 @@ class PembimbingLapanganController extends Controller
             'user_id'=>$user,
             'asal_perusahaan'=>$request->asal_perusahaan,
             'no_telpon'=>$request->no_telpon,
+            'foto_profil'=>$path
         ]);
         return redirect('/pembimbing-lapangan');
     }
 
-    public function show(PembimbingLapangan $pembimbingLapangan)
+    public function show($id)
     {
-        //
+        $pembimbing = PembimbingLapangan::where('id',$id)->get();
+        $pl = PembimbingLapangan::where('id',$id)->get()->value('foto_profil');
+        return view('dashboard.pembimbing.show',compact('pl','pembimbing'));
     }
 
     public function edit($id)
@@ -63,15 +73,31 @@ class PembimbingLapanganController extends Controller
     }
 
 
-    public function update(Request $request)
+    public function update(Request $request,$id)
     {
+        $validatedData = $request->validate([
+            'nama_lengkap'=>'required',
+            'nama_panggilan'=>'required',
+            'asal_perusahaan'=>'required',
+            'no_telpon'=>'required',
+            'foto_profil'=>'image|file|max:2048'
+        ]);
+        if ($request->hasFile('foto_profil')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $path = $request->file('foto_profil')->store('foto-profil');
+        }else{
+            $path = null;
+        }
         User::where('id',$request->user_id)->update([
             'fullname'=>$request->nama_lengkap,
             'nickname'=>$request->nama_panggilan,
         ]);
-        PembimbingLapangan::where('id',$request->id)->update([
+        PembimbingLapangan::where('id',$id)->update([
             'asal_perusahaan'=>$request->asal_perusahaan,
-            'no_telpon'=>$request->no_telpon
+            'no_telpon'=>$request->no_telpon,
+            'foto_profil'=>$path
         ]);
         return redirect('pembimbing-lapangan');
     }
