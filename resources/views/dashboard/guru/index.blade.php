@@ -37,6 +37,7 @@
                         <th>Email</th>
                         <th>NIP/NIY</th>
                         <th>No Telpon</th>
+                        <th>Foto Profil</th>
                         <th colspan="2">Aksi</th>
                     </tr>
                 </thead>
@@ -48,6 +49,7 @@
                         <td>{{$data->user->email}}</td>
                         <td>{{$data->nip_niy}}</td>
                         <td>{{$data->no_telpon}}</td>
+                        <td><a href="{{route('data-guru.show',$data->id)}}">Lihat foto</a></td>
                         <td>
                             <form action="{{ route('data-guru.destroy', $data->user_id)}}" method="POST">
                             @csrf

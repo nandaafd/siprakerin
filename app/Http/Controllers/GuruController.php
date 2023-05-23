@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Guru;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class GuruController extends Controller
 {
@@ -31,7 +32,13 @@ class GuruController extends Controller
             'password'=>'required',
             'nip'=>'required',
             'no_telpon'=>'required',
+            'foto_profil'=>'image|file|max:2048'
         ]);
+        if ($request->hasFile('foto_profil')) {
+            $path = $request->file('foto_profil')->store('foto-profil');
+        }else{
+            $path = null;
+        }
         $user = User::create([
             'fullname'=>$request->nama_lengkap,
             'nickname'=>$request->nama_panggilan,
@@ -44,14 +51,16 @@ class GuruController extends Controller
         $guru = Guru::create([
             'user_id'=>$user,
             'nip_niy'=>$request->nip,
-            'no_telpon'=>$request->no_telpon
+            'no_telpon'=>$request->no_telpon,
+            'foto_profil'=>$path
         ]);
         return redirect('/data-guru');
     }
 
     public function show($id)
     {
-        //
+        $guru = Guru::where('id',$id)->get()->value('foto_profil');
+        return view('dashboard.guru.show',compact('guru'));
     }
 
     public function edit($id)
@@ -60,15 +69,32 @@ class GuruController extends Controller
         return view('dashboard.guru.edit',compact('guru'));
     }
 
-    public function update(Request $request)
+    public function update(Request $request,$id)
     {
+        // ddd($request);
+        $validatedData = $request->validate([
+            'nama_lengkap'=>'required',
+            'nama_panggilan'=>'required',
+            'nip'=>'required',
+            'no_telpon'=>'required',
+            'foto_profil'=>'image|file|max:2048'
+        ]);
+        if ($request->hasFile('foto_profil')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $path = $request->file('foto_profil')->store('foto-profil');
+        }else{
+            $path = null;
+        }
         User::where('id',$request->user_id)->update([
             'fullname'=>$request->nama_lengkap,
             'nickname'=>$request->nama_panggilan,
         ]);
-        Guru::where('id',$request->id)->update([
+        Guru::where('id',$id)->update([
             'nip_niy'=>$request->nip,
-            'no_telpon'=>$request->no_telpon
+            'no_telpon'=>$request->no_telpon,
+            'foto_profil'=>$path
         ]);
         return redirect('/data-guru');
     }
