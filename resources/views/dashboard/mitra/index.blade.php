@@ -49,7 +49,7 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{$data->nama_mitra}}</td>
-                        <td>{{$data->foto_mitra}}</td>
+                        <td><a href="{{route('data-mitra.show',$data->id)}}">Lihat foto</a></td>
                         <td>{{$data->alamat}}</td>
                         <td>{{$data->bidang}}</td> 
                         <td>{{$data->kuota}}</td> 

@@ -6,7 +6,7 @@
 <div id="content" class="px-4 py-1 p-md-5">
     @include('dashboard.layouts.navbar')
     <section>
-        <form action="/data-mitra" method="post">
+        <form action="/data-mitra" method="post" enctype="multipart/form-data">
             @csrf
             @method('post')
             <div class="mb-3">

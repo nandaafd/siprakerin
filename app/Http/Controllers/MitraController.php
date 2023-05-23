@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Mitra;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class MitraController extends Controller
 {
@@ -26,19 +27,28 @@ class MitraController extends Controller
             'alamat'=>'required',
             'bidang'=>'required',
             'kuota'=>'required',
+            'gambar'=>'image|file|max:2048'
         ]);
+        if ($request->hasFile('gambar')) {
+            $path = $request->file('gambar')->store('gambar-mitra');
+        }else{
+            $path = null;
+        }
         Mitra::create([
             'nama_mitra'=>$request->nama,
             'alamat'=>$request->alamat,
             'bidang'=>$request->bidang,
             'kuota'=>$request->kuota,
+            'foto_mitra'=>$path
         ]);
         return redirect('/data-mitra');
     }
 
     public function show($id)
     {
-        //
+        $gambar = Mitra::where('id',$id)->get()->value('foto_mitra');
+        $mitra = Mitra::where('id',$id)->get();
+        return view('dashboard.mitra.show',compact('mitra','gambar'));
     }
 
     public function edit($id)
@@ -49,11 +59,27 @@ class MitraController extends Controller
 
     public function update(Request $request, $id)
     {
+        $validatedData = $request->validate([
+            'nama'=>'required',
+            'alamat'=>'required',
+            'bidang'=>'required',
+            'kuota'=>'required',
+            'gambar'=>'image|file|max:2048'
+        ]);
+        if ($request->hasFile('gambar')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $path = $request->file('gambar')->store('gambar-mitra');
+        }else{
+            $path = null;
+        }
         Mitra::where('id',$id)->update([
             'nama_mitra'=>$request->nama,
             'alamat'=>$request->alamat,
             'bidang'=>$request->bidang,
             'kuota'=>$request->kuota,
+            'foto_mitra'=>$path
         ]);
         return redirect('data-mitra');
     }
