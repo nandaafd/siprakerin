@@ -6,7 +6,7 @@
 <div id="content" class="px-4 py-1 p-md-5">
     @include('dashboard.layouts.navbar')
     <section>
-        <form action="/siswa" method="post">
+        <form action="/siswa" method="post" enctype="multipart/form-data">
             @csrf
             @method('post')
             <input type="text" hidden name="role" id="role" value="4">
@@ -55,7 +55,11 @@
                   <option value="{{$pl->id}}">{{$pl->user->fullname}}</option>
                   @endforeach
                 </select>
-              </div>    
+              </div> 
+              <div class="mb-3">
+                <label for="foto_profil" class="form-label">Foto Profil <span style="font-size:12px;">*jika ada/tidak wajib</span></label>
+                <input type="file" class="form-control" id="foto_profil" name="foto_profil">
+              </div>   
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
     </section>

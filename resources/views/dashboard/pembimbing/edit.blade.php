@@ -10,7 +10,7 @@
         <form action="{{route('pembimbing-lapangan.update',$data->id)}}" method="post" enctype="multipart/form-data">
             @csrf
             @method('put')
-            <input type="text" name="foto_profil" value="{{$data->foto_profil}}">
+            <input type="text" hidden name="oldImage" value="{{$data->foto_profil}}">
             <input type="text" hidden name="id" value="{{$data->id}}">
             <input type="text" hidden name="user_id" value="{{$data->user_id}}">
             <div class="mb-3">

@@ -7,6 +7,7 @@ use App\Models\PembimbingLapangan;
 use App\Models\Siswa;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SiswaController extends Controller
 {
@@ -40,7 +41,13 @@ class SiswaController extends Controller
             'nisn'=>'required',
             'alamat'=>'required',
             'no_telpon'=>'required',
+            'foto_profil'=>'image|file|max:2048'
         ]);
+        if ($request->hasFile('foto_profil')) {
+            $path = $request->file('foto_profil')->store('foto-profil');
+        }else{
+            $path = null;
+        }
         $user = User::create([
             'fullname'=>$request->nama_lengkap,
             'nickname'=>$request->nama_panggilan,
@@ -57,13 +64,16 @@ class SiswaController extends Controller
             'no_telpon'=>$request->no_telpon,
             'alamat'=>$request->alamat,
             'pembimbing_lapangan_id'=>$request->pembimbing_lapangan,
+            'foto_profil'=>$path
         ]);
         return redirect('/siswa');
     }
 
-    public function show(Siswa $siswa)
+    public function show($id)
     {
-        //
+        $siswa = Siswa::where('id',$id)->get();
+        $foto_profil = Siswa::where('id',$id)->get()->value('foto_profil');
+        return view('dashboard.siswa.show',compact('foto_profil','siswa'));
     }
 
     public function edit($id)
@@ -76,6 +86,23 @@ class SiswaController extends Controller
 
     public function update(Request $request)
     {
+        $validatedData = $request->validate([
+            'nama_lengkap'=>'required',
+            'nama_panggilan'=>'required',
+            'kelas'=>'required',
+            'nisn'=>'required',
+            'alamat'=>'required',
+            'no_telpon'=>'required',
+            'foto_profil'=>'image|file|max:2048'
+        ]);
+        if ($request->hasFile('foto_profil')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $path = $request->file('foto_profil')->store('foto-profil');
+        }else{
+            $path = null;
+        }
         User::where('id',$request->user_id)->update([
             'fullname'=>$request->nama_lengkap,
             'fullname'=>$request->nama_panggilan,
@@ -86,6 +113,7 @@ class SiswaController extends Controller
             'kelas_id'=>$request->kelas,
             'no_telpon'=>$request->no_telpon,
             'pembimbing_lapangan_id'=>$request->pembimbing_lapangan,
+            'foto_profil'=>$path
         ]);
         return redirect('/siswa');
     }

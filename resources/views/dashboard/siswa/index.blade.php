@@ -41,10 +41,8 @@
                     <th>Nama</th>
                     <th>NISN</th>
                     <th>Kelas</th>
-                    <th>Alamat</th>
-                    <th>No Telpon</th>
                     <th>email</th>
-                    <th>Pembimbing Lapangan</th>
+                    <th>Data Lengkap</th>
                     <th colspan="2">Aksi</th>
                 </tr>
                 </thead>
@@ -54,10 +52,9 @@
                     <td>{{$data->user->fullname}}</td>
                     <td>{{$data->nisn}}</td>
                     <td>{{$data->kelas ? $data->kelas->nama_kelas : 'N/A'}}</td>
-                    <td>{{$data->alamat}}</td>
-                    <td>{{$data->no_telpon}}</td>
                     <td>{{$data->user->email}}</td>
-                    <td>{{$data->pembimbingLapangan ? $data->pembimbingLapangan->user->fullname : 'N/A'}}</td>
+                    {{-- <td>{{$data->pembimbingLapangan ? $data->pembimbingLapangan->user->fullname : 'N/A'}}</td> --}}
+                    <td><a href="{{route('siswa.show',$data->id)}}">Lihat data</a></td>
                     <td>
                         <form action="{{ route('siswa.destroy', $data->user_id) }}" method="POST">
                           @csrf

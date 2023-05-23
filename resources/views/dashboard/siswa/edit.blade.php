@@ -7,9 +7,10 @@
     @include('dashboard.layouts.navbar')
     <section>
       @foreach ($siswa as $data)
-      <form action="{{route('siswa.update',$data->id)}}" method="post">
+      <form action="{{route('siswa.update',$data->id)}}" method="post" enctype="multipart/form-data">
           @csrf
           @method('put')
+          <input type="text" hidden name="oldImage" value="{{$data->foto_profil}}">
           <input type="text" hidden name="id" value="{{$data->id}}">
           <input type="text" hidden name="user_id" value="{{$data->user_id}}">
           <div class="mb-3">
@@ -61,6 +62,15 @@
                   @endforeach
                 @endif
               </select>
+            </div>
+            <div class="mb-3">
+              <label for="foto_profil" class="form-label">Foto Profil <span style="font-size:12px;">*jika ada/tidak wajib</span></label>
+              @if ($data->foto_profil == null)
+                <p class="">data ini tidak memiliki gambar</p>
+              @else
+                <img src="{{asset('storage/'. $data->foto_profil)}}" alt="" class="d-block mb-3" style="max-width:170px;">
+              @endif
+              <input type="file" class="form-control" id="foto_profil" name="foto_profil">
             </div>    
             @endforeach
           <button type="submit" class="btn btn-primary">Submit</button>
