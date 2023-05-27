@@ -11,6 +11,8 @@ use App\Http\Controllers\PembimbingController;
 use App\Http\Controllers\PembimbingLapanganController;
 use App\Http\Controllers\PrakerinController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\siprakerin\HomeController;
+use App\Http\Controllers\siprakerin\ProfilController;
 use App\Http\Controllers\SiswaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -26,16 +28,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
 
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::resource('/register',RegisterController::class);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout']);
 
-Route::group(['middleware' => ['auth']], function(){
+Route::group(['middleware' => ['admin']], function(){
     Route::get('/dashboard', function(){return view('dashboard.index');})->name('dashboard');
     Route::resource('/absensi', AbsensiController::class);
     Route::resource('/siswa', SiswaController::class);
@@ -46,4 +45,8 @@ Route::group(['middleware' => ['auth']], function(){
     Route::resource('/data-prakerin', PrakerinController::class);
     Route::resource('/data-berita', BeritaController::class);
     Route::resource('/data-mitra', MitraController::class);
+});
+Route::group(['middleware' => ['auth']], function(){
+    Route::resource('/home',HomeController::class);
+    Route::resource('/profil',ProfilController::class);
 });

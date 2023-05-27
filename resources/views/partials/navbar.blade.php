@@ -22,7 +22,7 @@
         </li>
       </ul>
        @if (Auth::user())
-          <a href="" class="btn btn-primary"  id="btn-profil-nav">Profil</a>
+          <a href="{{url('/profil')}}" class="btn btn-primary"  id="btn-profil-nav">Profil</a>
         @else
           <a href="{{url('/login')}}" class="btn btn-primary" id="btn-login-nav">Login</a> 
        @endif
