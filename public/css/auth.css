@@ -41,7 +41,12 @@ a{
     text-decoration: none;
 }
 #text{
-    color: grey;
+    color: rgb(158, 158, 158);
+    font-size: 18px;
+}
+#text2{
+  color: rgb(185, 185, 185);
+  font-size: 14px;
 }
 #img-left{
     /* margin-left: -10px; */
@@ -51,4 +56,17 @@ a{
 }
 #pilih-kelas{
     font-size: 16px;
+}
+#password-login{
+  width: 95%;
+}
+#email-login{
+  width: 95%;
+}
+#btn-login{
+  margin-top: 60px;
+  width: 95%;
+}
+#show-password{
+  margin-left: 30px;
 }
