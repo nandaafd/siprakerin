@@ -36,9 +36,18 @@ body{
   .btn-primary{
     width: 100%;
     background-color: #0064D3;
+    border: none;
   }
+  .btn-primary:hover{
+    background-color: yellow;
+    color: black;
+  }
+  
 a{
     text-decoration: none;
+}
+a:hover{
+  color: black;
 }
 #text{
     color: rgb(158, 158, 158);
