@@ -64,6 +64,7 @@ class PrakerinController extends Controller
 
     public function update(Request $request)
     {
+        $old_image = $request->oldImage;
         $validatedData = $request->validate([
             'nama'=>'required',
             'prodi'=>'required',
@@ -80,7 +81,7 @@ class PrakerinController extends Controller
             }
             $path = $request->file('bukti')->store('bukti');
         }else{
-            $path = null;
+            $path = $old_image;
         }
         Prakerin::where('id',$request->id)->update([
             'nama'=>$request->nama,

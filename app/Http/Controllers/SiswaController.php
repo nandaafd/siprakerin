@@ -86,6 +86,7 @@ class SiswaController extends Controller
 
     public function update(Request $request)
     {
+        $old_image = $request->oldImage;
         $validatedData = $request->validate([
             'nama_lengkap'=>'required',
             'nama_panggilan'=>'required',
@@ -101,11 +102,11 @@ class SiswaController extends Controller
             }
             $path = $request->file('foto_profil')->store('foto-profil');
         }else{
-            $path = null;
+            $path = $old_image;
         }
         User::where('id',$request->user_id)->update([
             'fullname'=>$request->nama_lengkap,
-            'fullname'=>$request->nama_panggilan,
+            'nickname'=>$request->nama_panggilan,
         ]);
         Siswa::where('id',$request->id)->update([
             'nisn'=>$request->nisn,

@@ -60,6 +60,7 @@ class BeritaController extends Controller
 
     public function update(Request $request, $id)
     {
+        $old_image = $request->oldImage;
         $validatedData = $request->validate([
             'judul'=>'required',
             'terbit'=>'required',
@@ -73,7 +74,7 @@ class BeritaController extends Controller
             }
             $path = $request->file('gambar')->store('gambar-berita');
         }else{
-            $path = null;
+            $path = $old_image;
         }
         Berita::where('id',$id)->update([
             'judul'=>$request->judul,

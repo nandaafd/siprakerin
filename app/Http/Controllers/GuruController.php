@@ -71,7 +71,7 @@ class GuruController extends Controller
 
     public function update(Request $request,$id)
     {
-        // ddd($request);
+        $old_image = $request->oldImage;
         $validatedData = $request->validate([
             'nama_lengkap'=>'required',
             'nama_panggilan'=>'required',
@@ -85,7 +85,7 @@ class GuruController extends Controller
             }
             $path = $request->file('foto_profil')->store('foto-profil');
         }else{
-            $path = null;
+            $path = $old_image;
         }
         User::where('id',$request->user_id)->update([
             'fullname'=>$request->nama_lengkap,

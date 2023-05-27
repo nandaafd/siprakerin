@@ -38,7 +38,7 @@
                 <thead class="thead-dark">
                 <tr>
                     <th>No</th>
-                    <th>Nama</th>
+                    <th>Nama</th>   
                     <th>NISN</th>
                     <th>Kelas</th>
                     <th>email</th>

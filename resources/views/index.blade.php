@@ -1,5 +1,6 @@
 @extends('layouts.main')
 @section('content')
+
 <section id="hero" class="mx-auto">
   <div class="row">
     <div class="col-md-6" id="tagline">

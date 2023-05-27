@@ -59,6 +59,7 @@ class MitraController extends Controller
 
     public function update(Request $request, $id)
     {
+        $old_image = $request->oldImage;
         $validatedData = $request->validate([
             'nama'=>'required',
             'alamat'=>'required',
@@ -72,7 +73,7 @@ class MitraController extends Controller
             }
             $path = $request->file('gambar')->store('gambar-mitra');
         }else{
-            $path = null;
+            $path = $old_image;
         }
         Mitra::where('id',$id)->update([
             'nama_mitra'=>$request->nama,
