@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.page')
 @section('content')
 <div id="profil-page" class="mx-auto mb-5">
     <h2 class="">Edit Profile</h2>
@@ -73,8 +73,10 @@
                   <img src="{{asset('storage/'. $data->foto_profil)}}" alt="" class="d-block mb-3" style="max-width:170px;">
                 @endif
                 <input type="file" class="form-control" id="foto_profil" name="foto_profil">
-              </div>    
-            <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+              <p>Pastikan data yang anda masukkan sudah benar!
+                </p>    
+              <button type="submit" id="btn-ubahpass" class="btn btn-primary w-100">Simpan</button>
           </form> 
         @endforeach
     @elseif(Auth::user()->role->name == 'guru')
@@ -114,7 +116,7 @@
                 @endif
                 <input type="file" class="form-control" id="foto_profil" name="foto_profil">
               </div>  
-            <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" id="btn-ubahpass" class="btn btn-primary w-100">Simpan</button>
           </form>
         @endforeach
     @elseif(Auth::user()->role->name == 'pembimbing_lapangan')
@@ -155,12 +157,13 @@
                 @endif
                 <input type="file" class="form-control" id="foto_profil" name="foto_profil">
               </div>   
-            <button type="submit" class="btn btn-primary w-100">Submit</button>
+            <button type="submit" id="btn-ubahpass" class="btn btn-primary w-100">Simpan</button>
           </form>
         @endforeach
     @elseif(Auth::user()->role->name == 'admin')
 
     @endif
+    <a href="{{url('/ubah-password')}}" class="btn btn-outline-danger my-2 w-100">Ubah Password</a>
 </div>
 </div>
 

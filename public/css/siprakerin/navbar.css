@@ -41,12 +41,24 @@
     color: black;
     background-color: yellow;
 }
-#btn-profil-nav{
-
+#btn-profil-nav:hover{
+    color: black;
+    background-color: yellow;
 }
 #nav-menu .nav-item a:hover{
     color: yellow;
     border-bottom: 3px solid yellow;
+}
+#btn-idn{
+    border: none;
+    background-color: transparent;
+    border-radius: 10px;
+}
+#btn-idn:hover{
+    background-color: rgb(243, 243, 243);
+}
+#btn-idn img{
+    width: 40px;
 }
 
 @media screen and (max-width : 500px) {

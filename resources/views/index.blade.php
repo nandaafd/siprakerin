@@ -39,7 +39,7 @@
   <div class="row text-center mx-auto py-4 menu">
     <div class="col">
       <div class="menu-box mx-auto py-1">
-        <a href="" class="text-center mx-auto">
+        <a href="{{url('/daftar-prakerin')}}" class="text-center mx-auto">
           <img src="{{asset('images/ikon/notebook.gif')}}" alt="" class="ikon-daftar">
           <p>Daftar</p>
         </a>

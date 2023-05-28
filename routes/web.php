@@ -12,6 +12,8 @@ use App\Http\Controllers\PembimbingLapanganController;
 use App\Http\Controllers\PrakerinController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\siprakerin\HomeController;
+use App\Http\Controllers\siprakerin\PendaftaranController;
+use App\Http\Controllers\siprakerin\PrakerinController as SiprakerinPrakerinController;
 use App\Http\Controllers\siprakerin\ProfilController;
 use App\Http\Controllers\SiswaController;
 use Illuminate\Support\Facades\Auth;
@@ -27,7 +29,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/', function () {
+    return redirect('/home');
+});
 
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::resource('/register',RegisterController::class);
@@ -47,6 +51,9 @@ Route::group(['middleware' => ['admin']], function(){
     Route::resource('/data-mitra', MitraController::class);
 });
 Route::group(['middleware' => ['auth']], function(){
+    Route::get('/ubah-password', 'App\Http\Controllers\ChangePasswordController@showChangePasswordForm')->name('password.change');
+    Route::post('/ubah-password', 'App\Http\Controllers\ChangePasswordController@changePassword')->name('password.update');
     Route::resource('/home',HomeController::class);
     Route::resource('/profil',ProfilController::class);
+    Route::resource('/daftar-prakerin',PendaftaranController::class);
 });
