@@ -18,8 +18,47 @@
     padding: 3% 3%;
     
 }
-
-
+#prakerin-header{
+    background-color: white;
+    margin-top: 5%;
+    margin-left: 20px;
+    padding: 30px 30px 30px 30px;
+    font-family: 'Poppins','sans-serif';
+}
+#prakerin-data{
+    background-color: white;
+    margin-top: 2%;
+    margin-left: 20px;
+    padding: 30px 30px 30px 30px;
+    font-family: 'Poppins','sans-serif';
+}
+#prakerin-data span{
+    color: #FF6B00;
+}
+#prakerin-data i{
+    font-size: 14px;
+}
+#prakerin-data .btn{
+    padding: 2px 5px;
+}
+#prakerin-data #bukti{
+    text-decoration: none;
+    color: #0064D3;
+}
+#prakerin-page{
+    background-color: white;
+    margin-top: 2%;
+    margin-left: 20px;
+    padding: 30px 30px 30px 30px;
+    font-family: 'Poppins','sans-serif';
+}
+#btn-submitdaftar{
+    border: none;
+}
+#btn-submitdaftar:hover{
+    background-color: yellow;
+    color: black;
+}
 #profil-page{
     background-color: white;
     margin-top: 5%;

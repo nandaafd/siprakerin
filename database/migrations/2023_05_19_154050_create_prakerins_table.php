@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('alamat_mitra');
             $table->string('bukti_diterima')->nullable();
             $table->string('kontak_perusahaan');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('user');
             $table->timestamps();
         });
     }

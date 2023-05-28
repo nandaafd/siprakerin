@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Prakerin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class PrakerinController extends Controller
@@ -22,6 +23,7 @@ class PrakerinController extends Controller
 
     public function store(Request $request)
     {
+        $user_id = Auth::user()->id;
         $validatedData = $request->validate([
             'nama'=>'required',
             'prodi'=>'required',
@@ -45,7 +47,8 @@ class PrakerinController extends Controller
             'bidang_mitra'=>$request->bidang,
             'alamat_mitra'=>$request->alamat,
             'kontak_perusahaan'=>$request->kontak,
-            'bukti_diterima'=>$path
+            'bukti_diterima'=>$path,
+            'user_id'=>$user_id
         ]);
         return redirect('/data-prakerin');
     }
@@ -99,6 +102,6 @@ class PrakerinController extends Controller
     public function destroy($id)
     {
         Prakerin::where('id',$id)->delete();
-        return redirect('/data-prakerin')->with('success', 'Data absensi berhasil dihapus');
+        return redirect('/daftar-prakerin')->with('success', 'Data absensi berhasil dihapus');
     }
 }
