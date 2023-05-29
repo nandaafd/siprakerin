@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\siprakerin;
 
+use App\Http\Controllers\Controller;
+use Illuminate\Auth\Access\GateServiceProvider;
 use App\Models\Logbook;
 use App\Models\Siswa;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Gate;
 
 class LogbookController extends Controller
 {
@@ -26,16 +28,16 @@ class LogbookController extends Controller
             $logbooks = Logbook::paginate(10);
         }
         else {
-            return view('dashboard.logbook.index')->with('messageWarning', 'Maaf, anda tidak memiliki akses untuk melihat logbook');
+            return view('siprakerin-page.logbook.index')->with('messageWarning', 'Maaf, anda tidak memiliki akses untuk melihat logbook');
         }
-        return view('dashboard.logbook.index', ['logbooks' => $logbooks]);
+        return view('siprakerin-page.logbook.index',compact('logbooks'));
     }
 
     public function create()
     {
         $siswa = Auth::user()->siswa->first();
 
-        return view('dashboard.logbook.create', [
+        return view('siprakerin-page.logbook.create', [
             'siswa' => $siswa->id,
         ]);
     }
@@ -56,27 +58,26 @@ class LogbookController extends Controller
         $logbook->tanggal = $request->tanggal;
         $logbook->save();
 
-        return redirect('/logbook')->with('success', 'Data logbook berhasil disimpan');
+        return redirect('/logbooks')->with('success', 'Data logbook berhasil disimpan');
     }
 
-    public function show(Logbook $logbook)
+    public function show($id)
     {
         //
     }
 
-    public function edit(Logbook $logbook)
+    public function edit($id)
     {
         //
     }
 
-    public function update(Request $request, Logbook $logbook)
+    public function update(Request $request, $id)
     {
         //
     }
 
-    public function destroy(Logbook $logbook)
+    public function destroy($id)
     {
-        $logbook->delete();
-        return redirect('/logbook')->with('success', 'Data logbook berhasil dihapus');
+        //
     }
 }

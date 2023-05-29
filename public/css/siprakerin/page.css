@@ -114,3 +114,26 @@
     color: black;
     background-color: yellow;
 }
+#logbook-page{
+    background-color: white;
+    margin-top: 2%;
+    margin-left: 20px;
+    padding: 30px 30px 30px 30px;
+    font-family: 'Poppins','sans-serif';
+}
+#btn-addlogbook{
+    background-color: #0064D3;
+    border: none;
+}
+#btn-addlogbook:hover{
+    background-color: yellow;
+    color: black;
+}
+#btn-submitlogbook{
+    background-color: #0064D3;
+    border: none;
+}
+#btn-submitlogbook:hover{
+    background-color: yellow;
+    color: black;
+}
