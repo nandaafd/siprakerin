@@ -11,8 +11,10 @@ use App\Http\Controllers\PembimbingController;
 use App\Http\Controllers\PembimbingLapanganController;
 use App\Http\Controllers\PrakerinController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\siprakerin\AbsensiSiswaController;
 use App\Http\Controllers\siprakerin\HomeController;
 use App\Http\Controllers\siprakerin\LogbookController as SiprakerinLogbookController;
+use App\Http\Controllers\siprakerin\MitraController as SiprakerinMitraController;
 use App\Http\Controllers\siprakerin\PendaftaranController;
 use App\Http\Controllers\siprakerin\PrakerinController as SiprakerinPrakerinController;
 use App\Http\Controllers\siprakerin\ProfilController;
@@ -38,6 +40,7 @@ Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::resource('/register',RegisterController::class);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout']);
+Route::resource('/home',HomeController::class);
 
 Route::group(['middleware' => ['admin']], function(){
     Route::get('/dashboard', function(){return view('dashboard.index');})->name('dashboard');
@@ -54,8 +57,9 @@ Route::group(['middleware' => ['admin']], function(){
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/ubah-password', 'App\Http\Controllers\ChangePasswordController@showChangePasswordForm')->name('password.change');
     Route::post('/ubah-password', 'App\Http\Controllers\ChangePasswordController@changePassword')->name('password.update');
-    Route::resource('/home',HomeController::class);
     Route::resource('/profil',ProfilController::class);
     Route::resource('/daftar-prakerin',PendaftaranController::class);
     Route::resource('/logbooks',SiprakerinLogbookController::class);
+    Route::resource('/absensi-siswa',AbsensiSiswaController::class);
+    Route::resource('/mitra',SiprakerinMitraController::class);
 });
