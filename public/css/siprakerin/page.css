@@ -153,3 +153,21 @@
     background-color: yellow;
     color: black;
 }
+#content-mitra{
+    background-color: rgb(244, 244, 244);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    min-height: 320px;
+    max-height: 320px;
+}
+#content-mitra #nama-mitra{
+    font-weight: 600;
+}
+#content-mitra ul li{
+    list-style-type: none;
+}
+#content-mitra #foto-mitra{
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 50%;
+}
