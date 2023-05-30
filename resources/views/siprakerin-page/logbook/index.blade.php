@@ -26,9 +26,8 @@
         </div>
         <div class="row">
             <div class="col" id="logbook-page" class="">
-                @can('siswa')
-                    <a href="/logbooks/create" id="btn-addlogbook" class="btn btn-primary mb-2"><i class="bi bi-plus-square"></i> Isi Logbook</a>
-                @endcan
+                <h4 class="mb-3">Data Logbook Siswa</h4>
+                
                 @if(session('success'))
                     <div class="alert alert-success">
                         {{ session('success') }}
@@ -39,8 +38,29 @@
                         {{ session('messageWarning') }}
                     </div>
                 @endif
+                <div class="row">
+                    <div class="col-9">
+                        <form action="" method="get" class="row row-cols-sm-auto g-1 mb-4">
+                                <div class="col-sm">
+                                   <p class="mx-2 my-auto">Filter</p>
+                                </div>
+                                <div class="col-sm">
+                                    <input type="date" name="tanggal" id="" class="form-control form-control-sm">
+                                </div>
+                                <div class="col-sm">
+                                    <button type="submit" class="btn btn-primary btn-sm">Search</button>
+                                    <button type="submit" class="btn btn-secondary btn-sm" id="btn-reset">Reset</button>
+                                </div>
+                        </form>
+                    </div>
+                    <div class="col-3">
+                        @can('siswa')
+                            <a href="/logbooks/create" id="btn-addlogbook" class="btn btn-primary mb-2"><i class="bi bi-plus-square"></i> Isi Logbook</a>
+                        @endcan
+                    </div>
+                </div>
                 @isset($logbooks)
-                <table class="table table-hover table-striped">
+                <table class="table table-hover">
                     <tr>
                         <th>No.</th>
                         <th>Siswa</th>
