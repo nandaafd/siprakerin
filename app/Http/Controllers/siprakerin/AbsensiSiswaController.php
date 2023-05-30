@@ -16,6 +16,7 @@ class AbsensiSiswaController extends Controller
 
     public function index()
     {
+        
         if (Gate::allows('pembimbing-lapangan')) {
             $pembimbing_lapangan = Auth::user()->pembimbingLapangan->first();
             if (!$pembimbing_lapangan) {
@@ -23,12 +24,16 @@ class AbsensiSiswaController extends Controller
             }
             $siswas = Siswa::where('pembimbing_lapangan_id', $pembimbing_lapangan->id)->get();
             if ($siswas->isEmpty()) {
-                return view('siprakerin-page.absensi.index')->with('message', 'Maaf, anda tidak memiliki mahasiswa bimbingan');
+                return view('siprakerin-page.absensi.index')->with('message', 'Maaf, anda tidak memiliki siswa');
             }
-            $absensis = Absensi::where('pembimbing_lapangan_id', $pembimbing_lapangan->id)->paginate(7);
+            $absensis = Absensi::where('pembimbing_lapangan_id', $pembimbing_lapangan->id)->orderBy('tanggal','desc')->paginate(7);
             return view('siprakerin-page.absensi.index', ['absensis' => $absensis]);
-        } else {
-            $absensis = Absensi::paginate(10);
+        } elseif (Gate::allows('siswa')) {
+            $siswa_id = Auth::user()->siswa[0]['id'];
+            $absen_siswa = Absensi::where('siswa_id',$siswa_id)->orderBy('tanggal','desc')->paginate(10);
+            return view('siprakerin-page.absensi.index', ['absen_siswa' => $absen_siswa]);
+        }else {
+            $absensis = Absensi::orderBy('tanggal','desc')->paginate(10);
             return view('siprakerin-page.absensi.index', ['absensis' => $absensis]);
         }
     }

@@ -137,3 +137,19 @@
     background-color: yellow;
     color: black;
 }
+#btn-addabsen{
+    background-color: #0064D3;
+    border: none;
+}
+#btn-addabsen:hover{
+    background-color: yellow;
+    color: black;
+}
+#btn-submitabsen{
+    background-color: #0064D3;
+    border: none;
+}
+#btn-submitabsen:hover{
+    background-color: yellow;
+    color: black;
+}

@@ -4,12 +4,12 @@
     <div class="col" id="prakerin-header">
         <div class="row">
           <div class="col-9">
-            <h2 style="font-weight: 600;">Mulai <span style="color:#FF6B00;"> Mimpi Dan Petualanganmu </span> 
-              Dengan Mendaftar Prakerin Sekarang Juga!</h2>
-            <h4>Jangan sampai terlambat ya..</h4>
+            <h2 style="font-weight: 600;">Disini, Anda Dapat Mengisi Kehadiran Siswa Dengan 
+                <span style="color:#FF6B00;">Mudah</span> Setiap Harinya!</h2>
+            <h4>Terus awasi mereka ya..</h4>
           </div>
           <div class="col-3">
-            <img id="vector1" class="img-fluid" src="{{asset('images/vector1.png')}}" alt="" srcset="">
+            <img id="vector1" class="img-fluid" src="{{asset('images/vector4.png')}}" alt="" srcset="">
           </div>
         </div>
     </div>
@@ -61,7 +61,7 @@
                   </div>
               @enderror
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" id="btn-submitabsen">Submit</button>
           </form>
     </div>
 </div>
