@@ -10,13 +10,17 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\StoreAbsensiRequest;
 use App\Http\Requests\UpdateAbsensiRequest;
+use App\Models\PembimbingLapangan;
 
 class AbsensiSiswaController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        
+        $tanggal = $request->tanggal;
+        $ket = $request->ket;
+        $pl = PembimbingLapangan::all();
+        $pemb = $request->pl;
         if (Gate::allows('pembimbing-lapangan')) {
             $pembimbing_lapangan = Auth::user()->pembimbingLapangan->first();
             if (!$pembimbing_lapangan) {
@@ -26,15 +30,39 @@ class AbsensiSiswaController extends Controller
             if ($siswas->isEmpty()) {
                 return view('siprakerin-page.absensi.index')->with('message', 'Maaf, anda tidak memiliki siswa');
             }
-            $absensis = Absensi::where('pembimbing_lapangan_id', $pembimbing_lapangan->id)->orderBy('tanggal','desc')->paginate(7);
-            return view('siprakerin-page.absensi.index', ['absensis' => $absensis]);
+            $query = Absensi::query();
+            if ($tanggal) {
+                $query->where('tanggal',$tanggal);
+            }
+            if ($ket) {
+                $query->where('ket_kehadiran',$ket);
+            }
+            $absensis = $query->where('pembimbing_lapangan_id', $pembimbing_lapangan->id)->orderBy('tanggal','desc')->paginate(7);
+            return view('siprakerin-page.absensi.index', compact('absensis','pl'));
         } elseif (Gate::allows('siswa')) {
+            $query = Absensi::query();
             $siswa_id = Auth::user()->siswa[0]['id'];
-            $absen_siswa = Absensi::where('siswa_id',$siswa_id)->orderBy('tanggal','desc')->paginate(10);
-            return view('siprakerin-page.absensi.index', ['absen_siswa' => $absen_siswa]);
+            if ($tanggal) {
+                $query->where('tanggal',$tanggal);
+            }
+            if ($ket) {
+                $query->where('ket_kehadiran',$ket);
+            }
+            $absen_siswa = $query->where('siswa_id',$siswa_id)->orderBy('tanggal','desc')->paginate(10);
+            return view('siprakerin-page.absensi.index',  compact('absen_siswa','pl'));
         }else {
-            $absensis = Absensi::orderBy('tanggal','desc')->paginate(10);
-            return view('siprakerin-page.absensi.index', ['absensis' => $absensis]);
+            $query = Absensi::query();
+            if ($tanggal) {
+                $query->where('tanggal',$tanggal);
+            }
+            if ($pemb) {
+                $query->where('pembimbing_lapangan_id',$pemb);
+            }
+            if ($ket) {
+                $query->where('ket_kehadiran',$ket);
+            }
+            $absensis = $query->orderBy('tanggal','desc')->paginate(10);
+            return view('siprakerin-page.absensi.index', compact('absensis','pl'));
         }
     }
 
