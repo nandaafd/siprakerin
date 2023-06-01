@@ -5,6 +5,7 @@ namespace App\Http\Controllers\siprakerin;
 use App\Http\Controllers\Controller;
 use App\Models\Prakerin;
 use App\Models\Siswa;
+use App\Models\Status;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -14,9 +15,10 @@ class PendaftaranController extends Controller
 
     public function index()
     {
+        $status = Status::get()->value('pendaftaran');
         $user_id = Auth::user()->id;
         $prakerin = Prakerin::where('user_id',$user_id)->get();
-        return view('siprakerin-page.prakerin.index',compact('prakerin'));
+        return view('siprakerin-page.prakerin.index',compact('prakerin','status'));
     }
 
     public function create()

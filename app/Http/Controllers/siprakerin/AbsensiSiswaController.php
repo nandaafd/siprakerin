@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\StoreAbsensiRequest;
 use App\Http\Requests\UpdateAbsensiRequest;
 use App\Models\PembimbingLapangan;
+use App\Models\Status;
 
 class AbsensiSiswaController extends Controller
 {
@@ -19,6 +20,7 @@ class AbsensiSiswaController extends Controller
     {
         $tanggal = $request->tanggal;
         $ket = $request->ket;
+        $status = Status::get()->value('absensi');
         $pl = PembimbingLapangan::all();
         $pemb = $request->pl;
         if (Gate::allows('pembimbing-lapangan')) {
@@ -62,7 +64,7 @@ class AbsensiSiswaController extends Controller
                 $query->where('ket_kehadiran',$ket);
             }
             $absensis = $query->orderBy('tanggal','desc')->paginate(10);
-            return view('siprakerin-page.absensi.index', compact('absensis','pl'));
+            return view('siprakerin-page.absensi.index', compact('absensis','pl','status'));
         }
     }
 

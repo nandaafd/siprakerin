@@ -1,5 +1,6 @@
 @extends('layouts.page')
 @section('content')
+@if ($status == 'buka')
 <div class="row">
     <div class="col" id="prakerin-header">
         <div class="row">
@@ -55,4 +56,12 @@
         @endisset
     </div>
 </div>
+@else
+    <div class="row">
+      <div class="col text-center mt-5">
+        <img src="{{asset('images/closed.png')}}" class="img-fluid" style="max-width: 550px" alt="">
+        <h2 style="color:gray;">Oops.. Pendaftaran Sedang Ditutup Nih</h2>
+      </div>
+    </div>
+@endif
 @endsection

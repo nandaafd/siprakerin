@@ -100,7 +100,7 @@
                 <form action="{{url('/register')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('post')
-                    <input type="text" hidden name="role" id="role" value="2">
+                    <input type="text" hidden name="role" id="role" value="4">
                     <input type="text" hidden name="siswa" value="siswa">
                     <div class="mb-3 form-floating">
                         <input type="text" placeholder="Nama Lengkap" class="form-control  @error('nama_lengkap') is-invalid @enderror" id="nama_lengkap" name="nama_lengkap" value="">

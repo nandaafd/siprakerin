@@ -24,6 +24,7 @@ use App\Http\Controllers\siprakerin\PendaftaranController;
 use App\Http\Controllers\siprakerin\PrakerinController as SiprakerinPrakerinController;
 use App\Http\Controllers\siprakerin\ProfilController;
 use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\StatusController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -61,6 +62,7 @@ Route::group(['middleware' => ['admin']], function(){
     Route::resource('/data-berita', BeritaController::class);
     Route::resource('/data-mitra', MitraController::class);
     Route::resource('/berkas', BerkasController::class);
+    Route::resource('/status',StatusController::class);
 });
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/ubah-password', 'App\Http\Controllers\ChangePasswordController@showChangePasswordForm')->name('password.change');

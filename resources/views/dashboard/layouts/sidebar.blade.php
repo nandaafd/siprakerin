@@ -7,84 +7,30 @@
         <li class="{{ Request::is('absensi*') ? 'active' : '' }}">
           <a href="#pageAbsensi" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Absensi</a>
           <ul class="collapse list-unstyled" id="pageAbsensi">
-            @can('siswa')
-              <li class="{{ Request::is('absensi') ? 'active' : '' }}">
-                  <a href="/absensi">Lihat Absensi</a>
-              </li>
-            @endcan
             @can('admin')
             <li class="{{ Request::is('absensi') ? 'active' : '' }}">
                 <a href="/absensi">Lihat Absensi</a>
             </li>
           @endcan
-            @can('guru')
-              <li class="{{ Request::is('absensi') ? 'active' : '' }}">
-                  <a href="/absensi">Lihat Absensi</a>
-              </li>
-            @endcan
-            @can('pembimbing-lapangan')
-            <li class="{{ Request::is('absensi') ? 'active' : '' }}">
-                <a href="/absensi">Lihat Absensi</a>
-            </li>
-              <li class="{{ Request::is('absensi/create*') ? 'active' : '' }}">
-                  <a href="/absensi/create">Isi Absensi</a>
-              </li>
-            @endcan
           </ul>
         </li>
         <li class="{{ Request::is('logbook*') ? 'active' : '' }}">
           <a href="#pageLogbook" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Logbook</a>
           <ul class="collapse list-unstyled" id="pageLogbook">
-            @can('guru')
-              <li class="{{ Request::is('logbook') ? 'active' : '' }}">
-                  <a href="/logbook">Lihat Logbook</a>
-              </li>
-            @endcan
             @can('admin')
             <li class="{{ Request::is('logbook') ? 'active' : '' }}">
                 <a href="/logbook">Lihat Logbook</a>
             </li>
            @endcan
-            @can('pembimbing-lapangan')
-              <li class="{{ Request::is('logbook') ? 'active' : '' }}">
-                  <a href="/logbook">Lihat Logbook</a>
-              </li>
-            @endcan
-            @can('siswa')
-              <li class="{{ Request::is('logbook') ? 'active' : '' }}">
-                  <a href="/logbook">Lihat Logbook</a>
-              </li>
-              <li class="{{ Request::is('logbook/create') ? 'active' : '' }}">
-                  <a href="/logbook/create">Isi Logbook</a>
-              </li>
-            @endcan
           </ul>
         </li>
         <li class="{{ Request::is('nilai*') ? 'active' : '' }}">
           <a href="#pageNilai" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Nilai</a>
           <ul class="collapse list-unstyled" id="pageNilai">
-            @can('siswa')
-              <li class="{{ Request::is('nilai') ? 'active' : '' }}">
-                <a href="/nilai">Lihat Nilai Saya</a>
-              </li>
-            @endcan
             @can('admin')
             <li class="{{ Request::is('nilai') ? 'active' : '' }}">
-              <a href="/nilai">Lihat Nilai Saya</a>
+              <a href="/nilai">Lihat Nilai</a>
             </li>
-            @endcan
-            @can('guru')
-              <li class="{{ Request::is('nilai') ? 'active' : '' }}">
-                <a href="/nilai">Lihat Nilai Siswa</a>
-              </li>
-            @endcan
-            @can('pembimbing-lapangan')
-            <li class="{{ Request::is('nilai') ? 'active' : '' }}">
-              <a href="/nilai">Lihat Nilai Siswa</a>
-            </li>
-              <li class="{{ Request::is('nilai/create') ? 'active' : '' }}">
-                <a href="/nilai/create">Isi Nilai</a>
-              </li>
             @endcan
           </ul>
         </li>
@@ -108,6 +54,9 @@
         </li>
         <li class="{{ Request::is('berkas*') ? 'active' : '' }}">
           <a href="/berkas" class="">Berkas</a>
+        </li>
+        <li class="{{ Request::is('status*') ? 'active' : '' }}">
+          <a href="/status" class="">Status</a>
         </li>
       </ul>
   

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Nilai;
 use App\Models\PembimbingLapangan;
 use App\Models\Siswa;
+use App\Models\Status;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -75,6 +76,7 @@ class NilaiSiswaController extends Controller
 
     public function edit($id)
     {
+        $status = Status::get()->value('penilaian');
         $pembimbing_lapangan = PembimbingLapangan::all();
         $siswas = Siswa::all();
         $nilais = Nilai::where('id',$id)->get();
@@ -82,6 +84,7 @@ class NilaiSiswaController extends Controller
         return view('siprakerin-page.nilai.edit', [
             'siswas' => $siswas,
             'nilais'=>$nilais,
+            'status'=>$status,
             'pembimbing_lapangan' => $pembimbing_lapangan
         ]);
     }

@@ -1,5 +1,6 @@
 @extends('layouts.page')
 @section('content')
+@if ($status == 'buka')
 <div class="row">
     <div class="col" id="prakerin-header">
         <div class="row">
@@ -14,6 +15,8 @@
         </div>
     </div>
 </div>
+
+  
 <div class="row {{$prakerin->where('user_id',Auth::user()->id)->isEmpty() ? 'd-none':'' }}">
     <div class="col" id="prakerin-data">
         <h5><span>{{Auth::user()->nickname}},</span> ini adalah data pendaftaran anda</h5>
@@ -115,4 +118,12 @@
     
     </div>
 </div>
+@else
+    <div class="row">
+      <div class="col text-center mt-5">
+        <img src="{{asset('images/closed.png')}}" class="img-fluid" style="max-width: 550px" alt="">
+        <h2 style="color:gray;">Oops.. Pendaftaran Sedang Ditutup Nih</h2>
+      </div>
+    </div>
+@endif
 @endsection

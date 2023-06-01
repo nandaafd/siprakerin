@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Auth\Access\GateServiceProvider;
 use App\Models\Logbook;
 use App\Models\Siswa;
+use App\Models\Status;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,6 +16,7 @@ class LogbookController extends Controller
 
     public function index(Request $request)
     {
+        $status = Status::get()->value('logbook');
         $tanggal = $request->tanggal;
         if (Gate::allows('siswa')) {
             $siswa = Auth::user()->siswa->first();
@@ -43,7 +45,7 @@ class LogbookController extends Controller
         else {
             return view('siprakerin-page.logbook.index')->with('messageWarning', 'Maaf, anda tidak memiliki akses untuk melihat logbook');
         }
-        return view('siprakerin-page.logbook.index',compact('logbooks'));
+        return view('siprakerin-page.logbook.index',compact('logbooks','status'));
     }
 
     public function create()
