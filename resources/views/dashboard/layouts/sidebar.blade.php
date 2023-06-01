@@ -106,6 +106,9 @@
         <li class="{{ Request::is('data-mitra*') ? 'active' : '' }}">
           <a href="/data-mitra" class="">Mitra</a>
         </li>
+        <li class="{{ Request::is('berkas*') ? 'active' : '' }}">
+          <a href="/berkas" class="">Berkas</a>
+        </li>
       </ul>
   
       {{-- <div class="footer">
