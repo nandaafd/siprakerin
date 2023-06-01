@@ -32,7 +32,7 @@
         <th>Keterangan Kehadiran</th>
         <th>Tanggal</th>
         @can('admin')
-          <th>Action</th>
+          <th colspan="2">Action</th>
         @endcan
     </tr>
     @foreach ($absensis as $absensi)    
@@ -50,6 +50,9 @@
                   <button type="submit" class="btn btn-danger" title="Hapus data" onclick="return confirm('Apakah anda yakin ingin menghapus?')"><i class="bi bi-trash3-fill"></i></button>
                 </form>            
               </td>
+              <td>
+                <a href="{{route('absensi.edit',$absensi->id)}}" class="btn btn-primary" title="edit"><i class="bi bi-pencil"></i></a>            
+            </td>
             @endcan
         </tr>
     @endforeach

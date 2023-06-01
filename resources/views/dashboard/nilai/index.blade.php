@@ -9,9 +9,7 @@
   @include('dashboard.layouts.navbar')
 
 
-  @can('pembimbing-lapangan')
       <a href="/nilai/create" class="btn btn-primary mb-2"><i class="bi bi-plus-square"></i> Tambah Nilai Siswa</a>
-  @endcan
   @if(session('success'))
       <div class="alert alert-success">
           {{ session('success') }}
@@ -31,8 +29,9 @@
         <th>NISN</th>
         <th>Pembimbing Lapangan</th>
         <th>Nilai Rata-Rata</th>
-        @can('pembimbing-lapangan')
-          <th>Action</th>
+        <th>Nilai Dalam Huruf</th>
+        @can('admin')
+          <th colspan="2">Action</th>
         @endcan
     </tr>
     @foreach ($nilais as $nilai)    
@@ -42,7 +41,8 @@
             <td>{{ $nilai->siswa->nisn }}</td>
             <td>{{ $nilai->pembimbing_lapangan->user->fullname }}</td>
             <td>{{ $nilai->nilai_rata_rata }}</td>
-            @can('pembimbing-lapangan')    
+            <td>{{ $nilai->nilai_huruf }}</td>
+            @can('admin')    
               <td>
                 <form action="{{ route('nilai.destroy', $nilai->id) }}" method="POST">
                   @csrf
@@ -50,6 +50,9 @@
                   <button type="submit" class="btn btn-danger" title="Hapus data" onclick="return confirm('Apakah anda yakin ingin menghapus?')"><i class="bi bi-trash3-fill"></i></button>
                 </form>            
               </td>
+              <td>
+                <a href="{{route('nilai.edit',$nilai->id)}}" class="btn btn-primary" title="edit"><i class="bi bi-pencil"></i></a>            
+            </td>
             @endcan
         </tr>
     @endforeach

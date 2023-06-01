@@ -33,8 +33,8 @@
         <th>Impresi</th>
         <th>Catatan Kegiatan</th>
         <th>Tanggal</th>
-        @can('siswa')
-          <th>Action</th>
+        @can('admin')
+          <th colspan="2">Action</th>
         @endcan
     </tr>
     @foreach ($logbooks as $logbook)    
@@ -46,7 +46,7 @@
             <td>{{ $logbook->impresi }}</td>
             <td>{{ $logbook->catatan_kegiatan }}</td>
             <td>{{ $logbook->tanggal }}</td>
-            @can('siswa')    
+            @can('admin')    
               <td>
                 <form action="{{ route('logbook.destroy', $logbook->id) }}" method="POST">
                   @csrf
@@ -54,6 +54,9 @@
                   <button type="submit" class="btn btn-danger" title="Hapus data" onclick="return confirm('Apakah anda yakin ingin menghapus?')"><i class="bi bi-trash3-fill"></i></button>
                 </form>            
               </td>
+              <td>
+                <a href="{{route('logbook.edit',$logbook->id)}}" class="btn btn-primary" title="edit"><i class="bi bi-pencil"></i></a>            
+            </td>
             @endcan
         </tr>
     @endforeach
