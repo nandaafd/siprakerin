@@ -2,83 +2,73 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Berkas;
 use Illuminate\Http\Request;
 
 class BerkasController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        return view('dashboard.berkas.index');
+        $berkas = Berkas::paginate(10);
+        return view('dashboard.berkas.index',compact('berkas'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('dashboard.berkas.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama'=>'required',
+            'berkas'=>'required'
+        ]);
+        if ($request->hasFile('berkas')) {
+            $path = $request->file('berkas')->store('berkas');
+        }else{
+            $path = null;
+        }
+        Berkas::create([
+            'nama'=>$request->nama,
+            'link'=>$path
+        ]);
+        return redirect('/berkas');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $berkas = Berkas::where('id',$id)->get();
+        return view('dashboard.berkas.edit',compact('berkas'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $oldPath =$request->oldPath;
+        $validatedData = $request->validate([
+            'nama'=>'required',
+        ]);
+        if ($request->hasFile('berkas')) {
+            $path = $request->file('berkas')->store('berkas');
+        }else{
+            $path = $oldPath;
+        }
+        Berkas::where('id',$id)->update([
+            'nama'=>$request->nama
+        ]);
+        return redirect('/berkas');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        Berkas::where('id',$id)->delete();
+        return redirect('/berkas')->with('success', 'Data berhasil dihapus');
     }
 }
