@@ -12,6 +12,8 @@ use App\Http\Controllers\PembimbingLapanganController;
 use App\Http\Controllers\PrakerinController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\siprakerin\AbsensiSiswaController;
+use App\Http\Controllers\siprakerin\BeritaController as SiprakerinBeritaController;
+use App\Http\Controllers\siprakerin\HistoryController;
 use App\Http\Controllers\siprakerin\HomeController;
 use App\Http\Controllers\siprakerin\LogbookController as SiprakerinLogbookController;
 use App\Http\Controllers\siprakerin\MitraController as SiprakerinMitraController;
@@ -62,4 +64,6 @@ Route::group(['middleware' => ['auth']], function(){
     Route::resource('/logbooks',SiprakerinLogbookController::class);
     Route::resource('/absensi-siswa',AbsensiSiswaController::class);
     Route::resource('/mitra',SiprakerinMitraController::class);
+    Route::resource('/history',HistoryController::class);
+    Route::resource('/berita',SiprakerinBeritaController::class);
 });

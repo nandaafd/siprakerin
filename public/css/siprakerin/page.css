@@ -171,3 +171,23 @@
     max-height: 100px;
     border-radius: 50%;
 }
+#card-berita #gambar-berita{
+    max-height: 150px;
+    min-height: 150px;
+}
+#judul-berita{
+    font-weight: 600;
+}
+#btn-baca{
+    background-color: #0064D3;
+    border: none;
+}
+#btn-baca:hover{
+    background-color: yellow;
+    color: black;
+}
+#gambar-isi{
+    max-width: 600px;
+    max-height: 300px;
+    overflow: hidden;
+}

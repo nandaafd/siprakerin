@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('pembimbing_lapangan_id');
             $table->foreign('pembimbing_lapangan_id')->references('id')->on('pembimbing_lapangan');
             $table->integer('nilai_rata_rata')->default(0);
+            $table->string('nilai_huruf')->nullable();
             $table->timestamps();
         });
     }
