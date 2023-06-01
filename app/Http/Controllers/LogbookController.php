@@ -25,6 +25,9 @@ class LogbookController extends Controller
         elseif (Gate::allows('guru')) {
             $logbooks = Logbook::paginate(10);
         }
+        elseif (Gate::allows('admin')) {
+            $logbooks = Logbook::orderBy('tanggal','desc')->paginate(10);
+        }
         else {
             return view('dashboard.logbook.index')->with('messageWarning', 'Maaf, anda tidak memiliki akses untuk melihat logbook');
         }
@@ -64,14 +67,29 @@ class LogbookController extends Controller
         //
     }
 
-    public function edit(Logbook $logbook)
+    public function edit($id)
     {
-        //
+        $logbooks = Logbook::where('id',$id)->get();
+        return view('dashboard.logbook.edit', [
+            'logbooks' => $logbooks,
+        ]);
     }
 
-    public function update(Request $request, Logbook $logbook)
+    public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'siswa_id' => 'required',
+            'impresi' => 'required',
+            'catatan_kegiatan' => 'required',
+            'tanggal' => 'required'
+        ]);
+        Logbook::where('id',$id)->update([
+            'siswa_id'=>$request->siswa_id,
+            'impresi'=>$request->impresi,
+            'catatan_kegiatan'=>$request->catatan_kegiatan,
+            'tanggal'=>$request->tanggal,
+        ]);
+        return redirect('/logbook');
     }
 
     public function destroy(Logbook $logbook)

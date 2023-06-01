@@ -27,7 +27,7 @@ class AbsensiController extends Controller
             $absensis = Absensi::where('pembimbing_lapangan_id', $pembimbing_lapangan->id)->paginate(7);
             return view('dashboard.absensi.index', ['absensis' => $absensis]);
         } else {
-            $absensis = Absensi::paginate(10);
+            $absensis = Absensi::orderBy('tanggal','desc')->paginate(10);
             return view('dashboard.absensi.index', ['absensis' => $absensis]);
         }
     }
@@ -75,15 +75,27 @@ class AbsensiController extends Controller
         //
     }
 
-    public function edit(Absensi $absensi)
+    public function edit($id)
     {
-        //
+        $absensis = Absensi::where('id',$id)->get();
+        return view('dashboard.absensi.edit', ['absensis' => $absensis]);
     }
 
 
-    public function update(Request $request, Absensi $absensi)
+    public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'siswa' => 'required',
+            'ket_kehadiran' => 'required',
+            'tanggal' => 'required'
+        ]);
+        Absensi::where('id',$id)->update([
+            'siswa_id'=>$request->siswa_id,
+            'pembimbing_lapangan_id'=>$request->pembimbing_lapangan,
+            'ket_kehadiran'=>$request->ket_kehadiran,
+            'tanggal'=>$request->tanggal,
+        ]);
+        return redirect('/absensi');
     }
 
     public function destroy(Absensi $absensi)
