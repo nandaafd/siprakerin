@@ -31,7 +31,7 @@
       <select class="form-control @error('pembimbing') is-invalid @enderror" name="pembimbing">
           <option value="">Pilih Mitra..</option>
           @foreach ($pembimbing_lapangan as $pembimbing)
-              <option class="text-secondary" value="{{ $pembimbing->id }}" {{ old('pembimbing') == $pembimbing->id ? 'selected' : '' }}>{{ $pembimbing->user->fullname." / ".$pembimbing->asal_perusahaan }}</option>
+              <option class="text-secondary" value="{{ $pembimbing->user_id }}" {{ old('pembimbing') == $pembimbing->id ? 'selected' : '' }}>{{ $pembimbing->user->fullname." / ".$pembimbing->asal_perusahaan }}</option>
           @endforeach
       </select>
       @error('pembimbing')

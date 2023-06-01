@@ -6,11 +6,14 @@
     <p>{{Auth::user()->role->name}}</p>
 </div>
 @endif
-<div class="menu-sidebar">
+<div class="menu-sidebar mt-5">
 <ul class="my-3">
+    @if (Auth::user())
     <li><a href="{{route('profil.show',Auth::user()->id)}}"><img src="{{asset('images/ikon/husband.gif')}}" alt="" class="">Pengaturan Akun</a></li>
+    @endif
     <li><a href="{{url('/absensi-siswa')}}"><img src="{{asset('images/ikon/fingerprint-scan.gif')}}" alt="" class="">Lihat Absensi</a></li>
     <li><a href="{{url('/logbooks')}}"><img src="{{asset('images/ikon/book.gif')}}" alt="" class="">Lihat Logbook</a></li>
+    <li><a href="{{url('/nilai-siswa')}}"><img src="{{asset('images/ikon/calendar.gif')}}" alt="" class="">Lihat Nilai</a></li>
     <li><a href="{{url('/berita')}}"><img src="{{asset('images/ikon/news.gif')}}" alt="" class="">Baca Berita & Informasi</a></li>
     <li><a href="{{url('/history')}}"><img src="{{asset('images/ikon/history.gif')}}" alt="" class="">Cek Riwayat Prakerin</a></li>
     <li><a href="{{url('/daftar-prakerin')}}"><img src="{{asset('images/ikon/notebook.gif')}}" alt="" class="">Pendaftaran Prakerin</a></li>

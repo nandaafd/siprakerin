@@ -191,3 +191,27 @@
     max-height: 300px;
     overflow: hidden;
 }
+#btn-download{
+    background-color: #0064D3;
+    border: none;
+}
+#btn-download:hover{
+    background-color: yellow;
+    color: black;
+}
+#btn-addnilai{
+    background-color: #0064D3;
+    border: none;
+}
+#btn-addnilai:hover{
+    background-color: yellow;
+    color: black;
+}
+#btn-editnilai{
+    background-color: #0064D3;
+    border: none;
+}
+#btn-editnilai:hover{
+    background-color: yellow;
+    color: black;
+}

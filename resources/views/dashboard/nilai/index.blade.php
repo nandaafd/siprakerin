@@ -27,7 +27,6 @@
         <th>No.</th>
         <th>Siswa</th>
         <th>NISN</th>
-        <th>Pembimbing Lapangan</th>
         <th>Nilai Rata-Rata</th>
         <th>Nilai Dalam Huruf</th>
         @can('admin')
@@ -39,7 +38,6 @@
             <td>{{ $loop->iteration }}</td>
             <td>{{ $nilai->siswa->user->fullname }}</td>
             <td>{{ $nilai->siswa->nisn }}</td>
-            <td>{{ $nilai->pembimbing_lapangan->user->fullname }}</td>
             <td>{{ $nilai->nilai_rata_rata }}</td>
             <td>{{ $nilai->nilai_huruf }}</td>
             @can('admin')    

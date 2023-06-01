@@ -15,7 +15,7 @@ return new class extends Migration
             $table->unsignedBigInteger('siswa_id');
             $table->foreign('siswa_id')->references('id')->on('siswa');
             $table->unsignedBigInteger('pembimbing_lapangan_id');
-            $table->foreign('pembimbing_lapangan_id')->references('id')->on('pembimbing_lapangan');
+            $table->foreign('pembimbing_lapangan_id')->references('user_id')->on('pembimbing_lapangan');
             $table->integer('nilai_rata_rata')->default(0);
             $table->string('nilai_huruf')->nullable();
             $table->timestamps();

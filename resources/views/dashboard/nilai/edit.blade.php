@@ -15,7 +15,7 @@
     @csrf
     <div class="mb-3">
         <label for="siswa" class="form-label">Siswa: NISN/Nama</label>
-        <select class="form-control @error('siswa') is-invalid @enderror" name="siswa">
+        <select disabled class="form-control @error('siswa') is-invalid @enderror" name="siswa">
             <option value="">Pilih Siswa..</option>
             @foreach ($siswas as $siswa)
                 <option class="text-secondary" value="{{ $siswa->id }}" {{$siswa->id == $nilai->siswa_id ? 'selected' : ''}}>{{ $siswa->user->fullname." / ".$siswa->nisn }}</option>
@@ -29,7 +29,7 @@
     </div>
     <div class="mb-3">
       <label for="pembimbing" class="form-label">Pembimbing Lapangan/Mitra</label>
-      <select class="form-control @error('pembimbing') is-invalid @enderror" name="pembimbing">
+      <select disabled class="form-control @error('pembimbing') is-invalid @enderror" name="pembimbing">
           @foreach ($pembimbing_lapangan as $pembimbing)
               <option class="text-secondary" value="{{ $pembimbing->id }}" {{$pembimbing->id == $nilai->pembimbing_lapangan_id ? 'selected' : ''}}>{{ $pembimbing->user->fullname." / ".$pembimbing->asal_perusahaan }}</option>
           @endforeach
