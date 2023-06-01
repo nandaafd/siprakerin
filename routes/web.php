@@ -3,6 +3,7 @@
 use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\BerkasController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\LogbookController;
 use App\Http\Controllers\MitraController;
@@ -53,6 +54,7 @@ Route::group(['middleware' => ['admin']], function(){
     Route::resource('/data-prakerin', PrakerinController::class);
     Route::resource('/data-berita', BeritaController::class);
     Route::resource('/data-mitra', MitraController::class);
+    Route::resource('/berkas', BerkasController::class);
 });
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/ubah-password', 'App\Http\Controllers\ChangePasswordController@showChangePasswordForm')->name('password.change');
