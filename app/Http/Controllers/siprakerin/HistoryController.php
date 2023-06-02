@@ -21,7 +21,7 @@ class HistoryController extends Controller
             $query->where('prodi',$prodi);
         }
         $prakerin = $query->orderBy('created_at','desc')->get();
-        return view('siprakerin-page.history.index',compact('prakerin'));
+        return view('siprakerin-page.history.index',compact('prakerin','angkatan','prodi'));
     }
 
     public function create()

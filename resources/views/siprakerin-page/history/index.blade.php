@@ -51,6 +51,9 @@
         </div>
       @isset($prakerin)
         <table class="table table-hover">
+            @if ($prodi or $angkatan)
+                <p>Hasil filter : <span style="color: #FF6B00">{{$prodi}}, {{$angkatan}}</span></p>
+            @endif
             <tr>
                 <th>No</th>
                     <th>Nama</th>

@@ -88,14 +88,10 @@ class NilaiController extends Controller
     public function update(Request $request,$id)
     {
         $validatedData = $request->validate([
-            'siswa' => 'required',
-            'pembimbing'=> 'required',
             'nilai_rata_rata' => 'required|numeric|min:0|max:100',
             'nilai_huruf'=> 'required',
         ]);
         Nilai::where('id',$id)->update([
-            'siswa_id'=>$request->siswa,
-            'pembimbing_lapangan_id'=>$request->pembimbing,
             'nilai_rata_rata'=>$request->nilai_rata_rata,
             'nilai_huruf'=>$request->nilai_huruf,
         ]);

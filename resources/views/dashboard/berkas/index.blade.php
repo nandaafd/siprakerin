@@ -46,7 +46,6 @@
             </td>
             @endcan
         </tr>
-        <a href="{{asset('storage/'.$data->link)}}" download="{{$data->nama}}">Download</a>
         @empty
     @endforelse
   </table>

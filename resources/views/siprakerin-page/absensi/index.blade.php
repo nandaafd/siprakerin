@@ -82,6 +82,9 @@
         @can('siswa')
             @isset($absen_siswa)
             <table class="table table-hover">
+                    @if ($ket or $tanggal)
+                    <p>Hasil filter : <span style="color: #FF6B00">{{$tanggal}}, {{$ket}}</span></p>
+                    @endif
                 <tr>
                     <th>No.</th>
                     <th>Siswa</th>
@@ -105,6 +108,9 @@
         @can('guru')
             @isset($absensis)
             <table class="table table-hover">
+                @if ($ket or $tanggal)
+                    <p>Hasil filter : <span style="color: #FF6B00">{{$tanggal}}, {{$ket}}</span></p>
+                    @endif
                 <tr>
                     <th>No.</th>
                     <th>Siswa</th>
@@ -128,6 +134,9 @@
         @can('pembimbing-lapangan')
             @isset($absensis)
             <table class="table table-hover">
+                @if ($ket or $tanggal)
+                    <p>Hasil filter : <span style="color: #FF6B00">{{$tanggal}}, {{$ket}}</span></p>
+                    @endif
                 <tr>
                     <th>No.</th>
                     <th>Siswa</th>

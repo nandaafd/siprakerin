@@ -8,7 +8,7 @@
 <div id="content" class="px-4 py-1 p-md-5">
   @include('dashboard.layouts.navbar')
         @if($status->isEmpty())
-            <a href="/status/create" class="btn btn-primary mb-2"><i class="bi bi-plus-square"></i> Tambah Berkas</a>
+            <a href="/status/create" class="btn btn-primary mb-2"><i class="bi bi-plus-square"></i> Tambah Data</a>
         @endif
   @if(session('success'))
       <div class="alert alert-success">

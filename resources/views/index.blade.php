@@ -88,19 +88,25 @@
   </div>
 </section>
 <section id="berita-area">
-  <div class="table-responsive" id="berita">
-    <h3 class="mt-3 mx-5" id="tittle-berita">Berita & Informasi Terbaru</h3>
-    <p class="mx-5">Jangan Lewatkan Berita Dan Informasi Terbaru!</p>
+  <h3 class="mt-3 ms-5" id="tittle-berita">Berita & Informasi Terbaru</h3>
+    <p class="ms-5">Jangan Lewatkan Berita Dan Informasi Terbaru!</p>
+  <div class="row" id="berita">
       @isset($berita) 
       @foreach ($berita as $data)
+      <div class="col">
         <div class="card mx-5 text-center" id="card-berita" style="">
+          @if ($data->gambar == null)
+          <img src="{{asset('images/berita.jpg')}}" id="gambar-berita" alt="" class="mx-auto img-fluid">
+          @else
           <img src="{{asset('storage/'.$data->gambar)}}" id="gambar-berita" class="card-img-top" alt="">
+          @endif
           <div class="card-body">
             <h5 class="card-title">{{$data->judul}}</h5>
             <p class="card-text">{{$data->tanggal_terbit}}</p>
             <a href="{{route('berita.show',$data->id)}}" id="btn-baca" class="btn btn-primary">Baca Sekarang <i class="bi bi-caret-right"></i></a>
           </div>
         </div>
+      </div>
       @endforeach
       @endisset
 </div>
@@ -114,7 +120,7 @@
     @foreach ($mitra as $data)
     <div class="col-3 my-3 mx-auto" id="mitra-card">
       <div id="content-mitra" class="row text-center mx-auto">
-          <img src="{{asset('storage/'. $data->foto_mitra)}}" alt="" id="foto-mitra" class="mx-auto img-fluid">
+        <img src="{{asset('storage/'. $data->foto_mitra)}}" alt="" id="foto-mitra" class="mx-auto img-fluid">
           <h5 class="my-3" id="nama-mitra">{{$data->nama_mitra}}</h5>
         </div>
     </div>

@@ -15,7 +15,7 @@
           <a class="nav-link" href="#footer">Kontak</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="smkihyaululumdukun.sch.id">Tentang</a>
+          <a class="nav-link" href="https://smkihyaululumdukun.sch.id" target="blank">Tentang</a>
         </li>
       </ul>
       <div class="btn-group mx-2">

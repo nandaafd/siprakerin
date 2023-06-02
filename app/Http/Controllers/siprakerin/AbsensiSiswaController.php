@@ -40,7 +40,7 @@ class AbsensiSiswaController extends Controller
                 $query->where('ket_kehadiran',$ket);
             }
             $absensis = $query->where('pembimbing_lapangan_id', $pembimbing_lapangan->id)->orderBy('tanggal','desc')->paginate(7);
-            return view('siprakerin-page.absensi.index', compact('absensis','pl'));
+            return view('siprakerin-page.absensi.index', compact('absensis','pl','status','ket','tanggal'));
         } elseif (Gate::allows('siswa')) {
             $query = Absensi::query();
             $siswa_id = Auth::user()->siswa[0]['id'];
@@ -51,7 +51,7 @@ class AbsensiSiswaController extends Controller
                 $query->where('ket_kehadiran',$ket);
             }
             $absen_siswa = $query->where('siswa_id',$siswa_id)->orderBy('tanggal','desc')->paginate(10);
-            return view('siprakerin-page.absensi.index',  compact('absen_siswa','pl','status'));
+            return view('siprakerin-page.absensi.index',  compact('absen_siswa','pl','status','ket','tanggal'));
         }else {
             $query = Absensi::query();
             if ($tanggal) {
@@ -64,7 +64,7 @@ class AbsensiSiswaController extends Controller
                 $query->where('ket_kehadiran',$ket);
             }
             $absensis = $query->orderBy('tanggal','desc')->paginate(10);
-            return view('siprakerin-page.absensi.index', compact('absensis','pl','status'));
+            return view('siprakerin-page.absensi.index', compact('absensis','pl','status','ket','tanggal'));
         }
     }
 

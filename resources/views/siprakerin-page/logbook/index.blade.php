@@ -62,6 +62,11 @@
                 </div>
                 @isset($logbooks)
                 <table class="table table-hover">
+                    @foreach ($logbooks as $logbook)
+                    @if ($tanggal)
+                        <p>Hasil filter : <span style="color: #FF6B00">{{$tanggal}}</span></p>
+                    @endif 
+                    @endforeach
                     <tr>
                         <th>No.</th>
                         <th>Siswa</th>

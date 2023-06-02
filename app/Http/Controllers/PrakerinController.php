@@ -102,6 +102,6 @@ class PrakerinController extends Controller
     public function destroy($id)
     {
         Prakerin::where('id',$id)->delete();
-        return redirect('/daftar-prakerin')->with('success', 'Data absensi berhasil dihapus');
+        return redirect('/data-prakerin')->with('success', 'Data absensi berhasil dihapus');
     }
 }

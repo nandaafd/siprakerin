@@ -35,7 +35,7 @@
             </div>
             <div class="mb-3">
               <label for="pembimbing_lapangan" class="form-label">Pembimbing Lapangan</label>
-              <input type="text" readonly class="form-control" id="pembimbing_lapangan" name="pembimbing_lapangan" value="{{ $data->pembimbingLapangan->user->fullname}}">
+              <input type="text" readonly class="form-control" id="pembimbing_lapangan" name="pembimbing_lapangan" value="{{$data->pembimbingLapangan ? $data->pembimbingLapangan->user->fullname : 'N/A'}}">
             </div>
             <div class="mb-3">
                 <label for="foto_profil" class="form-label">Foto Profil</label>

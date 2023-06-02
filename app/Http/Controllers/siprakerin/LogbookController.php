@@ -45,7 +45,7 @@ class LogbookController extends Controller
         else {
             return view('siprakerin-page.logbook.index')->with('messageWarning', 'Maaf, anda tidak memiliki akses untuk melihat logbook');
         }
-        return view('siprakerin-page.logbook.index',compact('logbooks','status'));
+        return view('siprakerin-page.logbook.index',compact('logbooks','status','tanggal'));
     }
 
     public function create()

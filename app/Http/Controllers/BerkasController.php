@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Berkas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BerkasController extends Controller
 {
@@ -56,12 +57,16 @@ class BerkasController extends Controller
             'nama'=>'required',
         ]);
         if ($request->hasFile('berkas')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldPath);
+            }
             $path = $request->file('berkas')->store('berkas');
         }else{
             $path = $oldPath;
         }
         Berkas::where('id',$id)->update([
-            'nama'=>$request->nama
+            'nama'=>$request->nama,
+            'link'=>$oldPath
         ]);
         return redirect('/berkas');
     }

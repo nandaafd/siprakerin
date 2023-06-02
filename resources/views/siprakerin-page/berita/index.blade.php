@@ -21,9 +21,13 @@
         <div class="container text-center">
             <div class="row">
                 @forelse ($berita as $data)
-                <div class="col">
+                <div class="col mt-3">
                     <div class="card" style="width: 18rem;" id="card-berita">
+                        @if ($data->gambar == null)
+                        <img src="{{asset('images/berita.jpg')}}" class="card-img-top img-fluid" id="gambar-berita" alt="...">
+                        @else
                         <img src="{{asset('storage/'. $data->gambar)}}" class="card-img-top img-fluid" id="gambar-berita" alt="...">
+                        @endif
                         <div class="card-body">
                           <h5 class="card-title" id="judul-berita">{{$data->judul}}</h5>
                           <p class="card-text">Terbit : {{$data->tanggal_terbit}}</p>

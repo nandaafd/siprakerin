@@ -113,8 +113,10 @@
             <h2>Maaf Anda Tidak Dapat Mengisi Formulir Karena Bukan Siswa Kelas 11</h2>
         @endif
     @else
+    <div class="text-center">
         <img src="{{asset('images/closed.png')}}" class="img-fluid" style="max-width: 550px" alt="">
-        <h1>Maaf Anda Tidak Dapat Mengakses Halaman Ini</h1>
+        <h5>Maaf Anda Tidak Dapat Mengakses Halaman Ini Karena Anda Bukan Siswa</h5>
+    </div>
     @endif
     
     </div>
