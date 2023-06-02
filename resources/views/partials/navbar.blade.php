@@ -2,7 +2,7 @@
 
 <nav class="navbar navbar-expand-lg position-fixed top-0">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"><img src="{{asset('images/logo1.png')}}" alt="" srcset=""></a>
+    <a class="navbar-brand" href="{{url('/home')}}"><img src="{{asset('images/logo1.png')}}" alt="" srcset=""></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -12,13 +12,10 @@
           <a class="nav-link" aria-current="page" href="{{url('/')}}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Berita</a>
+          <a class="nav-link" href="#footer">Kontak</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-bs-target="#modal-menu" data-bs-toggle="modal" href="javascript:void(0)" id="btn-lainnya">Menu</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Tentang</a>
+          <a class="nav-link" href="smkihyaululumdukun.sch.id">Tentang</a>
         </li>
       </ul>
       <div class="btn-group mx-2">

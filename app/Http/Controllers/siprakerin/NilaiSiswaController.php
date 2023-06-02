@@ -16,6 +16,7 @@ class NilaiSiswaController extends Controller
 
     public function index()
     {
+        $status = Status::get()->value('penilaian');
         if (Gate::allows('siswa')) {
             $siswa = Auth::user()->siswa->first();
             $nilais = Nilai::where('siswa_id', $siswa->id)->paginate(10);
@@ -30,7 +31,7 @@ class NilaiSiswaController extends Controller
         else {
             return view('siprakerin-page.nilai.index')->with('messageWarning', 'Maaf, anda tidak memiliki akses untuk melihat nilai');
         }
-        return view('siprakerin-page.nilai.index', ['nilais' => $nilais]);
+        return view('siprakerin-page.nilai.index', compact('nilais','status'));
     }
 
     public function create()

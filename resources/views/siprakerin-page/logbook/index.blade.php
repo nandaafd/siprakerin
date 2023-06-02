@@ -93,7 +93,7 @@
     <div class="row">
       <div class="col text-center mt-5">
         <img src="{{asset('images/closed.png')}}" class="img-fluid" style="max-width: 550px" alt="">
-        <h2 style="color:gray;">Oops.. Pendaftaran Sedang Ditutup Nih</h2>
+        <h2 style="color:gray;">Oops.. Pengisian Logbook Sedang Ditutup Nih</h2>
       </div>
     </div>
 @endif

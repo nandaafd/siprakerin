@@ -25,6 +25,11 @@
             <div id="content-mitra" class="row text-center mx-auto">
                 <img src="{{asset('storage/'. $data->foto_mitra)}}" alt="" id="foto-mitra" class="mx-auto img-fluid">
                 <h5 class="my-3" id="nama-mitra">{{$data->nama_mitra}}</h5>
+                <ul>
+                  <li>Alamat : {{$data->alamat}}</li>
+                  <li>Bidang : {{$data->bidang}}</li>
+                  <li>Kuota Siswa : {{$data->kuota}}</li>
+                </ul>
               </div>
           </div>
           @endforeach

@@ -150,9 +150,61 @@
     text-decoration: none;
 }
 #berita{
-  
+  background-color: rgb(241, 244, 251);
+  padding-bottom: 40px;
 }
-
+#mitra-card{
+    width: 180px;
+}
+#tittle-berita{
+    font-family: 'Poppins','sans-serif';
+    font-size: 26px;
+    font-weight: 600;
+}
+#content-mitra{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    min-height: 170px;
+    max-height: 170px;
+}
+#content-mitra #nama-mitra{
+    font-weight: 600;
+    font-size: 16px;
+}
+#tittle-mitra{
+    font-size: 26px;
+    font-weight: 600;
+    font-family: 'Poppins','sans-serif';
+}
+#subtittle-mitra{
+    width: 60%;
+}
+#content-mitra ul li{
+    list-style-type: none;
+}
+#content-mitra #foto-mitra{
+    max-width: 100px;
+    max-height: 80px;
+    border-radius: 50%;
+}
+#card-berita{
+    max-width: 200px;
+}
+#btn-baca{
+    background-color: #0064D3;
+    border: none;
+}
+#btn-baca:hover{
+    background-color: yellow;
+    color: black;
+}
+#card-berita #gambar-berita{
+    max-height: 150px;
+    min-height: 150px;
+}
+#judul-berita{
+    font-weight: 600;
+}
 @media screen and (max-width : 500px) {
     #hero{
         margin-top: 70px;

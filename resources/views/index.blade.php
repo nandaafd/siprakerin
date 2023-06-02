@@ -47,7 +47,7 @@
     </div>
     <div class="col">
       <div class="menu-box mx-auto py-1">
-        <a href="" class="text-center mx-auto">
+        <a href="{{url('/logbooks')}}" class="text-center mx-auto">
           <img src="{{asset('images/ikon/book.gif')}}" alt="" class="ikon-daftar">
           <p>Logbook</p>
         </a>
@@ -55,7 +55,7 @@
     </div>
     <div class="col">
       <div class="menu-box mx-auto py-1">
-        <a href="" class="text-center mx-auto">
+        <a href="{{url('/absensi-siswa')}}" class="text-center mx-auto">
           <img src="{{asset('images/ikon/fingerprint-scan.gif')}}" alt="" class="ikon-daftar">
           <p>Absensi</p>
         </a>
@@ -63,7 +63,7 @@
     </div>
     <div class="col">
       <div class="menu-box mx-auto py-1">
-        <a href="" class="text-center mx-auto">
+        <a href="{{url('/berita')}}" class="text-center mx-auto">
           <img src="{{asset('images/ikon/news.gif')}}" alt="" class="ikon-daftar">
           <p>Berita & Informasi</p>
         </a>
@@ -71,7 +71,7 @@
     </div>
     <div class="col">
       <div class="menu-box mx-auto py-1">
-        <a href="" class="text-center mx-auto">
+        <a href="{{url('/mitra')}}" class="text-center mx-auto">
           <img src="{{asset('images/ikon/factory.gif')}}" alt="" class="ikon-daftar">
           <p>Mitra</p>
         </a>
@@ -89,38 +89,33 @@
 </section>
 <section id="berita-area">
   <div class="table-responsive" id="berita">
-  <table class="table mb-0 text-center">
-    <tr>
+    <h3 class="mt-3 mx-5" id="tittle-berita">Berita & Informasi Terbaru</h3>
+    <p class="mx-5">Jangan Lewatkan Berita Dan Informasi Terbaru!</p>
       @isset($berita) 
       @foreach ($berita as $data)
-      <td class="">
-        <div class="card" style="">
-          <img src="{{asset('storage/'.$data->gambar)}}" class="card-img-top" alt="">
+        <div class="card mx-5 text-center" id="card-berita" style="">
+          <img src="{{asset('storage/'.$data->gambar)}}" id="gambar-berita" class="card-img-top" alt="">
           <div class="card-body">
             <h5 class="card-title">{{$data->judul}}</h5>
             <p class="card-text">{{$data->tanggal_terbit}}</p>
-            <a href="{{route('berita.show',$data->id)}}" class="btn btn-primary">Baca Sekarang</a>
+            <a href="{{route('berita.show',$data->id)}}" id="btn-baca" class="btn btn-primary">Baca Sekarang <i class="bi bi-caret-right"></i></a>
           </div>
         </div>
-      </td>
       @endforeach
       @endisset
-    </tr>
-  </table>
 </div>
 </section>
 <section>
-  <div class="row">
+  <h2 class="mt-5 mx-5" id="tittle-mitra">Mitra-Mitra SMKS Ihyaul Ulum</h2>
+    <p id="subtittle-mitra" class="mx-5">SMKS Ihyaul Ulum Dukun Gresik Mencetak SDM Yang Unggul, Dan Berkualitas,
+      Salah Satunya Dengan Cara Bekerja Sama Dengan Mitra Dunia Usaha Dunia Industri!
+    </p>
+  <div class="row mx-4">
     @foreach ($mitra as $data)
-    <div class="col-3 my-3" id="mitra-card">
+    <div class="col-3 my-3 mx-auto" id="mitra-card">
       <div id="content-mitra" class="row text-center mx-auto">
           <img src="{{asset('storage/'. $data->foto_mitra)}}" alt="" id="foto-mitra" class="mx-auto img-fluid">
           <h5 class="my-3" id="nama-mitra">{{$data->nama_mitra}}</h5>
-          <ul class="">
-            <li>Alamat : {{$data->alamat}}</li>
-            <li>Bidang : {{$data->bidang}}</li>
-            <li>Kuota Siswa : {{$data->kuota}}</li>
-          </ul>
         </div>
     </div>
     @endforeach

@@ -51,7 +51,7 @@ class AbsensiSiswaController extends Controller
                 $query->where('ket_kehadiran',$ket);
             }
             $absen_siswa = $query->where('siswa_id',$siswa_id)->orderBy('tanggal','desc')->paginate(10);
-            return view('siprakerin-page.absensi.index',  compact('absen_siswa','pl'));
+            return view('siprakerin-page.absensi.index',  compact('absen_siswa','pl','status'));
         }else {
             $query = Absensi::query();
             if ($tanggal) {
