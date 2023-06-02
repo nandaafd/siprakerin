@@ -19,7 +19,7 @@
       <img src="{{asset('images/eclipse.png')}}" alt="" srcset="" id="eclipse" class="position-absolute">
   </div>
 </section>  
-<section id="search-area" class="my-4 mx-auto py-4">
+{{-- <section id="search-area" class="my-4 mx-auto py-4">
   <h3>Halo<span> kamu</span>, mau cari apa?</h3>
   <p>Gunakan fitur pencarian ini untuk mempermudahkan kamu dalam menemukan sesuatu</p>
     <div class="row" id="search-row">
@@ -34,7 +34,7 @@
         </div>
       </form>
     </div>
-</section>
+</section> --}}
 <section id="menu-area" class="my-4">
   <div class="row text-center mx-auto py-4 menu">
     <div class="col">
@@ -91,59 +91,40 @@
   <div class="table-responsive" id="berita">
   <table class="table mb-0 text-center">
     <tr>
+      @isset($berita) 
+      @foreach ($berita as $data)
       <td class="">
         <div class="card" style="">
-          <img src="{{asset('images/hero-person.png')}}" class="card-img-top" alt="">
+          <img src="{{asset('storage/'.$data->gambar)}}" class="card-img-top" alt="">
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <h5 class="card-title">{{$data->judul}}</h5>
+            <p class="card-text">{{$data->tanggal_terbit}}</p>
+            <a href="{{route('berita.show',$data->id)}}" class="btn btn-primary">Baca Sekarang</a>
           </div>
         </div>
       </td>
-      <td>
-        <div class="card" style="">
-          <img src="{{asset('images/hero-person.png')}}" class="card-img-top" alt="">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </td>
-      <td>
-        <div class="card" style="">
-          <img src="{{asset('images/hero-person.png')}}" class="card-img-top" alt="">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </td>
-      <td>
-        <div class="card" style="">
-          <img src="{{asset('images/hero-person.png')}}" class="card-img-top" alt="">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </td>
-      <td>
-        <div class="card" style="">
-          <img src="{{asset('images/hero-person.png')}}" class="card-img-top" alt="">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </td>
+      @endforeach
+      @endisset
     </tr>
   </table>
 </div>
+</section>
+<section>
+  <div class="row">
+    @foreach ($mitra as $data)
+    <div class="col-3 my-3" id="mitra-card">
+      <div id="content-mitra" class="row text-center mx-auto">
+          <img src="{{asset('storage/'. $data->foto_mitra)}}" alt="" id="foto-mitra" class="mx-auto img-fluid">
+          <h5 class="my-3" id="nama-mitra">{{$data->nama_mitra}}</h5>
+          <ul class="">
+            <li>Alamat : {{$data->alamat}}</li>
+            <li>Bidang : {{$data->bidang}}</li>
+            <li>Kuota Siswa : {{$data->kuota}}</li>
+          </ul>
+        </div>
+    </div>
+    @endforeach
+  </div>
 </section>
 
 @include('modals.menu')
