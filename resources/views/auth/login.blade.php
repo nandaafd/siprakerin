@@ -18,7 +18,7 @@
                 <div class="form-floating mt-2">
                     <input type="password" class="form-control mx-4" id="password-login" name="password" placeholder="Password" required>
                     <label for="password-login" class="mx-4">Password</label>
-                    <input class="my-3 mb-4" type="checkbox" onclick="showPassword()" id="show-password"> Show Password
+                    {{-- <input class="my-3 mb-4" type="checkbox" onclick="showPassword()" id="show-password"> Show Password --}}
                 </div>
                 @if (session()->has('loginError'))
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
