@@ -1,6 +1,14 @@
 @extends('layouts.page')
 @section('content')
 @if ($status == 'buka')
+    @if ($pl_siswa == null)
+    <div class="row">
+        <div class="col text-center mt-5">
+          <img src="{{asset('images/closed.png')}}" class="img-fluid" style="max-width: 550px" alt="">
+          <h2 style="color:gray;">Oops.. Maaf anda tidak dapat mengakses logbook karena sedang tidak prakerin</h2>
+        </div>
+      </div>
+    @else
     <div class="row">
         <div class="col" id="prakerin-header">
             <div class="row">
@@ -26,6 +34,7 @@
             </div>
         </div>
         <div class="row">
+            {{-- {{Auth::user()->siswa[0]['pembimbing_lapangan_id']}} --}}
             <div class="col" id="logbook-page" class="">
                 <h4 class="mb-3">Data Logbook Siswa</h4>
                 
@@ -39,7 +48,7 @@
                         {{ session('messageWarning') }}
                     </div>
                 @endif
-                <div class="row">
+                <div class="row  {{$pl_siswa == null ? 'd-none' : ''}}">
                     <div class="col-9">
                         <form action="" method="get" class="row row-cols-sm-auto g-1 mb-4">
                                 <div class="col-sm">
@@ -60,6 +69,7 @@
                         @endcan
                     </div>
                 </div>
+                
                 @isset($logbooks)
                 <table class="table table-hover">
                     @foreach ($logbooks as $logbook)
@@ -94,6 +104,7 @@
             </div>
         </div>
     </div>
+    @endif
     @else
     <div class="row">
       <div class="col text-center mt-5">

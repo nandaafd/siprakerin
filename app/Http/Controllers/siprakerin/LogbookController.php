@@ -16,8 +16,10 @@ class LogbookController extends Controller
 
     public function index(Request $request)
     {
+        $id = Auth::user()->id;
         $status = Status::get()->value('logbook');
         $tanggal = $request->tanggal;
+        $pl_siswa = Siswa::where('user_id',$id)->value('pembimbing_lapangan_id');
         if (Gate::allows('siswa')) {
             $siswa = Auth::user()->siswa->first();
             $query = Logbook::query();
@@ -45,7 +47,7 @@ class LogbookController extends Controller
         else {
             return view('siprakerin-page.logbook.index')->with('messageWarning', 'Maaf, anda tidak memiliki akses untuk melihat logbook');
         }
-        return view('siprakerin-page.logbook.index',compact('logbooks','status','tanggal'));
+        return view('siprakerin-page.logbook.index',compact('logbooks','status','tanggal','pl_siswa'));
     }
 
     public function create()

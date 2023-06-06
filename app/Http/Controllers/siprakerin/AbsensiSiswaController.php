@@ -19,8 +19,10 @@ class AbsensiSiswaController extends Controller
     public function index(Request $request)
     {
         $tanggal = $request->tanggal;
+        $id = Auth::user()->id;
         $ket = $request->ket;
         $status = Status::get()->value('absensi');
+        $pl_siswa = Siswa::where('user_id',$id)->value('pembimbing_lapangan_id');
         $pl = PembimbingLapangan::all();
         $pemb = $request->pl;
         if (Gate::allows('pembimbing-lapangan')) {
@@ -40,7 +42,7 @@ class AbsensiSiswaController extends Controller
                 $query->where('ket_kehadiran',$ket);
             }
             $absensis = $query->where('pembimbing_lapangan_id', $pembimbing_lapangan->id)->orderBy('tanggal','desc')->paginate(7);
-            return view('siprakerin-page.absensi.index', compact('absensis','pl','status','ket','tanggal'));
+            return view('siprakerin-page.absensi.index', compact('absensis','pl','status','ket','tanggal','pl_siswa'));
         } elseif (Gate::allows('siswa')) {
             $query = Absensi::query();
             $siswa_id = Auth::user()->siswa[0]['id'];
@@ -51,7 +53,7 @@ class AbsensiSiswaController extends Controller
                 $query->where('ket_kehadiran',$ket);
             }
             $absen_siswa = $query->where('siswa_id',$siswa_id)->orderBy('tanggal','desc')->paginate(10);
-            return view('siprakerin-page.absensi.index',  compact('absen_siswa','pl','status','ket','tanggal'));
+            return view('siprakerin-page.absensi.index',  compact('absen_siswa','pl','status','ket','tanggal','pl_siswa'));
         }else {
             $query = Absensi::query();
             if ($tanggal) {
@@ -64,7 +66,7 @@ class AbsensiSiswaController extends Controller
                 $query->where('ket_kehadiran',$ket);
             }
             $absensis = $query->orderBy('tanggal','desc')->paginate(10);
-            return view('siprakerin-page.absensi.index', compact('absensis','pl','status','ket','tanggal'));
+            return view('siprakerin-page.absensi.index', compact('absensis','pl','status','ket','tanggal','pl_siswa'));
         }
     }
 

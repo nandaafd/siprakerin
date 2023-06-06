@@ -7,79 +7,55 @@ use Illuminate\Http\Request;
 
 class KelasController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        $kelas = Kelas::all();
+        return view('dashboard.kelas.index',compact('kelas'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('dashboard.kelas.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama'=>'required',
+        ]);
+        Kelas::create([
+            'nama_kelas'=>$request->nama
+        ]);
+        return redirect('/kelas');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Kelas  $kelas
-     * @return \Illuminate\Http\Response
-     */
     public function show(Kelas $kelas)
     {
-        //
+        
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Kelas  $kelas
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Kelas $kelas)
+    public function edit($id)
     {
-        //
+        $kelas = Kelas::where('id',$id)->get();
+        return view('dashboard.kelas.edit',compact('kelas'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Kelas  $kelas
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Kelas $kelas)
+
+    public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'nama'=>'required',
+        ]);
+        Kelas::where('id',$id)->update([
+            'nama_kelas'=>$request->nama
+        ]);
+        return redirect('/kelas');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Kelas  $kelas
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Kelas $kelas)
+    public function destroy($id)
     {
-        //
+        Kelas::where('id',$id)->delete();
+        return redirect('/kelas');
     }
 }

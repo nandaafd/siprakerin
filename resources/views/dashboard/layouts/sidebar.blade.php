@@ -58,6 +58,9 @@
         <li class="{{ Request::is('status*') ? 'active' : '' }}">
           <a href="/status" class="">Status</a>
         </li>
+        <li class="{{ Request::is('kelas*') ? 'active' : '' }}">
+          <a href="/kelas" class="">Kelas</a>
+        </li>
       </ul>
   
       {{-- <div class="footer">
