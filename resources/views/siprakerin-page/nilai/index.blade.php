@@ -25,7 +25,8 @@
         @can('pembimbing-lapangan')
             <a href="{{url('/nilai-siswa/create')}}" class="btn btn-primary mb-2" id="btn-addnilai"><i class="bi bi-plus-square"></i> Tambah Nilai Siswa</a>
         @endcan
-        @isset($nilais)
+        <iframe width="600" height="400" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTh2Ck3Icg9dR8O1e4lDzShBllbKnweLwQxwCnIHmi-MZ6A0B9q1gT4TAnbOL2YBVhFpmM2GwcouaHC/pubhtml"></iframe>
+        {{-- @isset($nilais)
         <table class="table table-hover">
             <tr>
                 <th>No.</th>
@@ -53,7 +54,7 @@
             @endforeach
         </table>
         {{ $nilais->links() }}
-        @endisset
+        @endisset --}}
     </div>
 </div>
 @else

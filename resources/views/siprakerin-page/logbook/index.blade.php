@@ -80,20 +80,18 @@
                     <tr>
                         <th>No.</th>
                         <th>Siswa</th>
-                        <th>NISN</th>
-                        {{-- <th>Pembimbing Lapangan</th> --}}
                         <th>Impresi</th>
-                        <th>Catatan Kegiatan</th>
+                        <th>Kegiatan</th>
+                        <th>Detail</th>
                         <th>Tanggal</th>
                     </tr>
                     @foreach ($logbooks as $logbook)    
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $logbook->siswa->user->fullname }}</td>
-                        <td>{{ $logbook->siswa->nisn }}</td>
-                        {{-- <td>{{ $logbook->siswa->pembimbing_lapangan->user->fullname }}</td> --}}
                         <td>{{ $logbook->impresi }}</td>
-                        <td>{{ $logbook->catatan_kegiatan }}</td>
+                        <td>{{ $logbook->kegiatan }}</td>
+                        <td><a href="{{route('logbooks.show',$logbook->id)}}">Lihat Detail</a></td>
                         <td>{{ $logbook->tanggal }}</td>
                     </tr>
                 @endforeach

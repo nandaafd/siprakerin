@@ -26,26 +26,24 @@
   @isset($logbooks)
   <table class="table table-hover">
     <tr>
-        <th>No.</th>
-        <th>Siswa</th>
-        <th>NISN</th>
-        {{-- <th>Pembimbing Lapangan</th> --}}
-        <th>Impresi</th>
-        <th>Catatan Kegiatan</th>
-        <th>Tanggal</th>
+      <th>No.</th>
+      <th>Siswa</th>
+      <th>Impresi</th>
+      <th>Kegiatan</th>
+      <th>Detail</th>
+      <th>Tanggal</th>
         @can('admin')
           <th colspan="2">Action</th>
         @endcan
     </tr>
     @foreach ($logbooks as $logbook)    
         <tr>
-            <td>{{ $loop->iteration }}</td>
-            <td>{{ $logbook->siswa->user->fullname }}</td>
-            <td>{{ $logbook->siswa->nisn }}</td>
-            {{-- <td>{{ $logbook->siswa->pembimbing_lapangan->user->fullname }}</td> --}}
-            <td>{{ $logbook->impresi }}</td>
-            <td>{{ $logbook->catatan_kegiatan }}</td>
-            <td>{{ $logbook->tanggal }}</td>
+          <td>{{ $loop->iteration }}</td>
+          <td>{{ $logbook->siswa->user->fullname }}</td>
+          <td>{{ $logbook->impresi }}</td>
+          <td>{{ $logbook->kegiatan }}</td> 
+          <td><a href="{{route('logbook.show',$logbook->id)}}">Lihat Detail</a></td>
+          <td>{{ $logbook->tanggal }}</td>
             @can('admin')    
               <td>
                 <form action="{{ route('logbook.destroy', $logbook->id) }}" method="POST">

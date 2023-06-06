@@ -6,11 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('logbook', function (Blueprint $table) {
@@ -18,17 +14,13 @@ return new class extends Migration
             $table->unsignedBigInteger('siswa_id');
             $table->foreign('siswa_id')->references('id')->on('siswa');
             $table->string('impresi');
-            $table->string('catatan_kegiatan',512);
+            $table->string('kegiatan');
+            $table->string('deskripsi_kegiatan',512);
             $table->date('tanggal');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('logbook');

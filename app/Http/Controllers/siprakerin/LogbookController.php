@@ -61,17 +61,22 @@ class LogbookController extends Controller
 
     public function store(Request $request)
     {
+        $tanggal = Logbook::get()->value('tanggal');
         $validatedData = $request->validate([
             'siswa_id' => 'required',
             'impresi' => 'required',
-            'catatan_kegiatan' => 'required',
+            'kegiatan'=>'required',
+            'deskripsi_kegiatan' => 'required',
             'tanggal' => 'required'
         ]);
-
+        if ($request->tanggal == $tanggal) {
+            return redirect('/logbooks/create')->with('messageWarning','data pada tanggal tersebut sudah ada');
+        }
         $logbook = new Logbook();
         $logbook->siswa_id = $request->siswa_id;
         $logbook->impresi = $request->impresi;
-        $logbook->catatan_kegiatan = $request->catatan_kegiatan;
+        $logbook->kegiatan = $request->kegiatan;
+        $logbook->deskripsi_kegiatan = $request->deskripsi_kegiatan;
         $logbook->tanggal = $request->tanggal;
         $logbook->save();
 
@@ -80,7 +85,8 @@ class LogbookController extends Controller
 
     public function show($id)
     {
-        //
+        $logbook = Logbook::where('id',$id)->get();
+        return view('siprakerin-page.logbook.show',compact('logbook'));
     }
 
     public function edit($id)

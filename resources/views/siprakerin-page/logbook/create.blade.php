@@ -18,6 +18,11 @@
         </div>
         <div class="row">
             <div class="col" id="logbook-page" class="">
+              @if(session('messageWarning'))
+                  <div class="alert alert-warning">
+                      {{ session('messageWarning') }}
+                  </div>
+              @endif
                 @can('siswa')
                 <form action="{{url('/logbooks')}}" method="POST">
                     @method('post')
@@ -42,9 +47,18 @@
                       @enderror
                     </div>
                     <div class="mb-3">
-                      <label for="catatan_kegiatan" class="form-label">Catatan Kegiatan</label>
-                      <textarea name="catatan_kegiatan" id="catatan_kegiatan" cols="30" rows="10" value="{{ old('catatan_kegiatan') }}" class="form-control @error('catatan_kegiatan') is-invalid @enderror"></textarea>
-                      @error('catatan_kegiatan')
+                      <label for="kegiatan" class="form-label">Kegiatan</label>
+                      <input type="text" value="{{ old('kegiatan') }}" class="form-control @error('kegiatan') is-invalid @enderror" name="kegiatan">
+                      @error('kegiatan')
+                          <div class="invalid-feedback">
+                              {{ $message }}
+                          </div>
+                      @enderror
+                    </div>
+                    <div class="mb-3">
+                      <label for="deskripsi_kegiatan" class="form-label">Deskripsi Kegiatan</label>
+                      <textarea name="deskripsi_kegiatan" id="deskripsi_kegiatan" cols="30" rows="10" value="{{ old('deskripsi_kegiatan') }}" class="form-control @error('deskripsi_kegiatan') is-invalid @enderror"></textarea>
+                      @error('deskripsi_kegiatan')
                           <div class="invalid-feedback">
                               {{ $message }}
                           </div>

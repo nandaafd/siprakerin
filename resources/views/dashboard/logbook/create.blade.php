@@ -32,9 +32,18 @@
       @enderror
     </div>
     <div class="mb-3">
-      <label for="catatan_kegiatan" class="form-label">Catatan Kegiatan</label>
-      <input type="text" value="{{ old('catatan_kegiatan') }}" class="form-control @error('catatan_kegiatan') is-invalid @enderror" name="catatan_kegiatan">
-      @error('catatan_kegiatan')
+      <label for="kegiatan" class="form-label">Kegiatan</label>
+      <input type="text" value="{{ old('kegiatan') }}" class="form-control @error('kegiatan') is-invalid @enderror" name="kegiatan">
+      @error('kegiatan')
+          <div class="invalid-feedback">
+              {{ $message }}
+          </div>
+      @enderror
+    </div>
+    <div class="mb-3">
+      <label for="deskripsi_kegiatan" class="form-label">Catatan Kegiatan</label>
+      <input type="text" value="{{ old('deskripsi_kegiatan') }}" class="form-control @error('deskripsi_kegiatan') is-invalid @enderror" name="deskripsi_kegiatan">
+      @error('deskripsi_kegiatan')
           <div class="invalid-feedback">
               {{ $message }}
           </div>
