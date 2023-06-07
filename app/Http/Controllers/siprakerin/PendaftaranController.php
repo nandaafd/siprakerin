@@ -18,7 +18,9 @@ class PendaftaranController extends Controller
         $status = Status::get()->value('pendaftaran');
         $user_id = Auth::user()->id;
         $prakerin = Prakerin::where('user_id',$user_id)->get();
-        return view('siprakerin-page.prakerin.index',compact('prakerin','status'));
+        $surat = Prakerin::where('user_id',$user_id)->value('surat_permohonan');
+        $bukti = Prakerin::where('user_id',$user_id)->value('bukti_diterima');
+        return view('siprakerin-page.prakerin.index',compact('prakerin','status','bukti','surat'));
     }
 
     public function create()
@@ -33,14 +35,16 @@ class PendaftaranController extends Controller
             'nama'=>'required',
             'prodi'=>'required',
             'angkatan'=>'required',
+            'tahun_ajaran'=>'required',
+            'tanggal_mulai'=>'required',
+            'tanggal_selesai'=>'required',
             'perusahaan'=>'required',
             'bidang'=>'required',
             'alamat'=>'required',
             'kontak'=>'required',
-            'bukti'=>'image|file|max:2048'
         ]);
         if ($request->hasFile('bukti')) {
-            $path = $request->file('bukti')->store('bukti');
+            $path = $request->file('bukti')->store('bukti_surat_balasan');
         }else{
             $path = '';
         }
@@ -48,11 +52,13 @@ class PendaftaranController extends Controller
             'nama'=>$request->nama,
             'prodi'=>$request->prodi,
             'angkatan'=>$request->angkatan,
+            'tahun_ajaran'=>$request->tahun_ajaran,
+            'tanggal_mulai'=>$request->tanggal_mulai,
+            'tanggal_selesai'=>$request->tanggal_selesai,
             'mitra_perusahaan'=>$request->perusahaan,
             'bidang_mitra'=>$request->bidang,
             'alamat_mitra'=>$request->alamat,
             'kontak_perusahaan'=>$request->kontak,
-            'bukti_diterima'=>$path,
             'user_id'=>$user_id
         ]);
         return redirect('/daftar-prakerin');
@@ -60,8 +66,11 @@ class PendaftaranController extends Controller
 
     public function show($id)
     {
-        $prakerin = Prakerin::where('id',$id)->value('bukti_diterima');
-        return view('siprakerin-page.prakerin.show', compact('prakerin'));
+        $prakerin = Prakerin::where('id',$id)->get();
+        $user_id = Auth::user()->id;
+        $surat = Prakerin::where('user_id',$user_id)->value('surat_permohonan');
+        $bukti = Prakerin::where('user_id',$user_id)->value('bukti_diterima');
+        return view('siprakerin-page.prakerin.show', compact('prakerin','surat','bukti'));
     }
 
     public function edit($id)
@@ -73,21 +82,25 @@ class PendaftaranController extends Controller
     public function update(Request $request, $id)
     {
         $old_image = $request->oldImage;
+        $user_id = Auth::user()->id;
         $validatedData = $request->validate([
             'nama'=>'required',
             'prodi'=>'required',
             'angkatan'=>'required',
+            'tahun_ajaran'=>'required',
+            'tanggal_mulai'=>'required',
+            'tanggal_selesai'=>'required',
             'perusahaan'=>'required',
             'bidang'=>'required',
             'alamat'=>'required',
             'kontak'=>'required',
-            'bukti'=>'image|file|max:2048'
+            'bukti'=>'max:2048'
         ]);
         if ($request->hasFile('bukti')) {
             if ($request->oldImage) {
                 Storage::delete($request->oldImage);
             }
-            $path = $request->file('bukti')->store('bukti');
+            $path = $request->file('bukti')->store('bukti_surat_balasan');
         }else{
             $path = $old_image;
         }
@@ -95,11 +108,15 @@ class PendaftaranController extends Controller
             'nama'=>$request->nama,
             'prodi'=>$request->prodi,
             'angkatan'=>$request->angkatan,
+            'tahun_ajaran'=>$request->tahun_ajaran,
+            'tanggal_mulai'=>$request->tanggal_mulai,
+            'tanggal_selesai'=>$request->tanggal_selesai,
             'mitra_perusahaan'=>$request->perusahaan,
             'bidang_mitra'=>$request->bidang,
             'alamat_mitra'=>$request->alamat,
             'kontak_perusahaan'=>$request->kontak,
-            'bukti_diterima'=>$path
+            'bukti_diterima'=>$path,
+            'user_id'=>$user_id
         ]);
         return redirect('/daftar-prakerin');
     }

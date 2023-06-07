@@ -56,13 +56,11 @@
             @endif
             <tr>
                 <th>No</th>
-                    <th>Nama</th>
-                    <th>Prodi</th>
-                    <th>Angkatan</th>
-                    <th>Mitra</th>
-                    <th>Bidang Mitra</th>
-                    <th>Alamat Mitra</th>
-                    <th>Kontak</th>
+                <th>Nama</th>
+                <th>Prodi</th>
+                <th>Angkatan</th>
+                <th>Mitra</th>
+                <th>Detail</th>
             </tr>
         @forelse ($prakerin as $data)
             <tr>
@@ -71,9 +69,7 @@
                 <td>{{$data->prodi}}</td>
                 <td>{{$data->angkatan}}</td>
                 <td>{{$data->mitra_perusahaan}}</td>
-                <td>{{$data->bidang_mitra}}</td>
-                <td>{{$data->alamat_mitra}}</td>
-                <td>{{$data->kontak_perusahaan}}</td>
+                <td> <a id="bukti" href="{{route('history.show',$data->id)}}">Lihat detail</a></td>
             </tr>
         @empty
         @endforelse>

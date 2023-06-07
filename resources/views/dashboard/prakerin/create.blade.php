@@ -27,6 +27,18 @@
                 <input type="text" class="form-control" id="angkatan" name="angkatan" value="">
               </div>
               <div class="mb-3">
+                <label for="perusahaan" class="form-label">Tahun Ajaran</label>
+                <input type="text" class="form-control" id="tahun_ajaran" name="tahun_ajaran" value="">
+              </div>
+              <div class="mb-3">
+                <label for="perusahaan" class="form-label">Tanggal Mulai</label>
+                <input type="date" class="form-control" id="" name="tanggal_mulai" value="">
+              </div>
+              <div class="mb-3">
+                <label for="perusahaan" class="form-label">Tanggal Selesai</label>
+                <input type="date" class="form-control" id="" name="tanggal_selesai" value="">
+              </div>
+              <div class="mb-3">
                 <label for="perusahaan" class="form-label">Diterima di Perusahaan/Mitra</label>
                 <input type="text" class="form-control" id="perusahaan" name="perusahaan" value="">
               </div>
@@ -46,6 +58,10 @@
                 <label for="bukti" class="form-label">Bukti Diterima <span style="font-size:12px;">*jika ada/tidak wajib</span></label>
                 <input type="file" class="form-control" id="bukti" name="bukti">
               </div> 
+              <div class="mb-3">
+                <label for="bukti" class="form-label">Surat Permohonan <span style="font-size:12px;">*kepada mitra</span></label>
+                <input type="file" class="form-control" id="surat" name="surat">
+              </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
     </section>

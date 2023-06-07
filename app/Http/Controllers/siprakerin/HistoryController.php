@@ -36,7 +36,8 @@ class HistoryController extends Controller
 
     public function show($id)
     {
-        //
+        $history = Prakerin::where('id',$id)->get();
+        return view('siprakerin-page.history.show',compact('history'));
     }
 
     public function edit($id)

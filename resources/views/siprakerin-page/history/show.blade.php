@@ -1,23 +1,31 @@
 @extends('layouts.page')
 @section('content')
+@if (Auth::user()->role->name == 'pembimbing_lapangan')
+<div class="row">
+    <div class="col text-center mt-5">
+      <img src="{{asset('images/closed.png')}}" class="img-fluid" style="max-width: 550px" alt="">
+      <h2 style="color:gray;">Oops.. Anda Tidak Diizinkan Mengakses Halaman ini</h2>
+    </div>
+  </div>
+@else
+
 <div class="row">
     <div class="col" id="prakerin-header">
-      <div class="row">
-        <div class="col-9">
-          <h2 style="font-weight: 600;">Mulai <span style="color:#FF6B00;"> Mimpi Dan Petualanganmu </span> 
-            Dengan Mendaftar Prakerin Sekarang Juga!</h2>
-          <h4>Jangan sampai terlambat ya..</h4>
+        <div class="row">
+          <div class="col-9">
+            <h2 style="font-weight: 600;">Disini Anda Dapat Melihat <span style="color:#FF6B00;">Riwayat Prakerin</span> Seluruh Siswa SMK Ihyaul Ulum Dukun Gresik Lho!!</h2>
+            <h4>Yuk, Cek Sekarang..</h4>
+          </div>
+          <div class="col-3">
+            <img id="vector1" class="img-fluid" src="{{asset('images/vector6.jpg')}}" alt="" srcset="">
+          </div>
         </div>
-        <div class="col-3">
-          <img id="vector1" class="img-fluid" src="{{asset('images/vector1.png')}}" alt="" srcset="">
-        </div>
-      </div>
     </div>
 </div>
-<div class="row">
-<div class="col" id="prakerin-page">
 
-        @foreach ($prakerin as $data)
+<div class="row">
+    <div class="col" id="prakerin-page">
+        @foreach ($history as $data)
         <form action="{{route('daftar-prakerin.update',$data->id)}}" method="post" enctype="multipart/form-data">
             @csrf
             @method('put')
@@ -67,25 +75,9 @@
                 <label for="kontak" class="form-label">Kontak Perusahaan <span style="font-size: 12px">*Email/Nomor Telepon</span></label>
                 <input readonly type="text" class="form-control" id="kontak" name="kontak" value="{{$data->kontak_perusahaan}}">
               </div>
-              <div class="mb-3">
-                <label for="kontak" class="form-label">Surat Permohonan</label>
-                @if ($surat == null)
-                <input readonly placeholder="Belum Memiliki Surat - Menunggu surat dari admin" type="text" class="form-control" id="kontak" name="surat" value="">
-                @else
-                    <a href="{{asset('storage/'.$data->surat_permohonan)}}" download="surat_permohonan_{{$data->nama}}" class="btn btn-primary">Download surat permohonan</a>
-                @endif  
-              </div>
-              <div class="mb-3">
-                <label for="bukti" class="form-label">Bukti Diterima <span style="color:red; font-size:12px;">*jika ada/tidak wajib</span></label>
-                @if ($data->bukti_diterima == null)
-                <input readonly placeholder="Belum Memiliki Bukti/Surat Balasan - mohon upload bukti di halaman edit bila sudah mendapatkannya" type="text" class="form-control" id="kontak" name="bukti" value="">
-                @else
-                <a href="{{asset('storage/'.$data->bukti_diterima)}}" download="surat_balasan_{{$data->nama}}" class="btn btn-primary">Download bukti/surat balasan</a>
-                @endif
-              </div> 
               @endforeach
           </form>
-    
     </div>
 </div>
+@endif
 @endsection

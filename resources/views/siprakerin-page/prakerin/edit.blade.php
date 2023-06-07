@@ -45,6 +45,18 @@
                 <input type="text" class="form-control" id="angkatan" name="angkatan" value="{{$data->angkatan}}">
               </div>
               <div class="mb-3">
+                <label for="perusahaan" class="form-label">Tahun Ajaran</label>
+                <input type="text" class="form-control" id="tahun_ajaran" name="tahun_ajaran" value="{{$data->tahun_ajaran}}">
+              </div>
+              <div class="mb-3">
+                <label for="perusahaan" class="form-label">Tanggal Mulai</label>
+                <input type="date" class="form-control" id="" name="tanggal_mulai" value="{{$data->tanggal_mulai}}">
+              </div>
+              <div class="mb-3">
+                <label for="perusahaan" class="form-label">Tanggal Selesai</label>
+                <input type="date" class="form-control" id="" name="tanggal_selesai" value="{{$data->tanggal_selesai}}">
+              </div>
+              <div class="mb-3">
                 <label for="perusahaan" class="form-label">Diterima di Perusahaan/Mitra</label>
                 <input type="text" class="form-control" id="perusahaan" name="perusahaan" value="{{$data->mitra_perusahaan}}">
               </div>
@@ -60,15 +72,14 @@
                 <label for="kontak" class="form-label">Kontak Perusahaan <span style="font-size: 12px">*Email/Nomor Telepon</span></label>
                 <input type="text" class="form-control" id="kontak" name="kontak" value="{{$data->kontak_perusahaan}}">
               </div>
+              @if ($data->surat_permohonan)
               <div class="mb-3">
-                <label for="bukti" class="form-label">Bukti Diterima <span style="color:red; font-size:12px;">*jika ada/tidak wajib</span></label>
-                @if ($data->bukti_diterima == null)
-                  <p>belum memiliki file bukti</p>
-                @else
-                  <img src="{{asset('storage/'. $data->bukti_diterima)}}" alt="" class="d-block mb-3" style="max-width:170px;">
-                @endif
-                <input type="file" class="form-control" id="bukti" value="{{$data->bukti_diterima}}" name="bukti">
-              </div> 
+                <label for="bukti" class="form-label">Bukti Diterima <span style="font-size:12px;">*jika ada/tidak wajib</span></label> 
+                <input type="file" class="form-control" id="bukti" name="bukti">
+              </div>
+              @else
+              <p>Hanya dapat upload bukti/surat balasan apabila sudah mendapat surat permohonan dari admin</p>
+              @endif
               @endforeach
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>

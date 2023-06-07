@@ -23,26 +23,30 @@
         <p style="font-size:14px;">Apakah terdapat kesalahan pada data anda? kalau ada, langsung diedit ya!</p>
         <table class="table mb-0 text-center table-striped table-sm">
             <tr>
-                <th>Nama</th>
-                <th>Prodi</th>
-                <th>Angkatan</th>
-                <th>Mitra</th>
-                <th>Bidang Mitra</th>
-                <th>Alamat Mitra</th>
-                <th>Kontak</th>
-                <th>Bukti</th>
-                <th colspan="2">Aksi</th>
+              <th>No</th>
+              <th>Nama</th>
+              <th>Prodi</th>
+              <th>Angkatan</th>
+              <th>Mitra</th>
+              <th>Surat Permohonan</th>
+              <th>Detail</th>
+              <th colspan="2">Aksi</th>
             </tr>
             @forelse ($prakerin as $data)
             <tr>
-                <td>{{$data->nama}}</td>
-                <td>{{$data->prodi}}</td>
-                <td>{{$data->angkatan}}</td>
-                <td>{{$data->mitra_perusahaan}}</td>
-                <td>{{$data->bidang_mitra}}</td>
-                <td>{{$data->alamat_mitra}}</td>
-                <td>{{$data->kontak_perusahaan}}</td>
-                <td> <a id="bukti" href="{{route('daftar-prakerin.show',$data->id)}}">Lihat bukti</a></td>
+              <td>{{ $loop->iteration }}</td>
+              <td>{{$data->nama}}</td>
+              <td>{{$data->prodi}}</td>
+              <td>{{$data->angkatan}}</td>
+              <td>{{$data->mitra_perusahaan}}</td>
+              <td>
+                @if ($surat == null)
+                    Belum Mendapatkan Surat
+                @else
+                    <a href="{{asset('storage/'.$data->surat_permohonan)}}" download="surat_permohonan_{{$data->nama}}" class="btn btn-primary">Download</a>
+                @endif
+              </td>
+                <td> <a id="bukti" href="{{route('daftar-prakerin.show',$data->id)}}">Lihat detail</a></td>
                 <td>
                     <form action="{{ route('daftar-prakerin.destroy',$data->id) }}" method="POST">
                     @csrf
@@ -88,6 +92,18 @@
                 <input type="text" class="form-control" id="angkatan" name="angkatan" value="">
               </div>
               <div class="mb-3">
+                <label for="perusahaan" class="form-label">Tahun Ajaran</label>
+                <input type="text" class="form-control" id="tahun_ajaran" name="tahun_ajaran" value="">
+              </div>
+              <div class="mb-3">
+                <label for="perusahaan" class="form-label">Tanggal Mulai</label>
+                <input type="date" class="form-control" id="" name="tanggal_mulai" value="">
+              </div>
+              <div class="mb-3">
+                <label for="perusahaan" class="form-label">Tanggal Selesai</label>
+                <input type="date" class="form-control" id="" name="tanggal_selesai" value="">
+              </div>
+              <div class="mb-3">
                 <label for="perusahaan" class="form-label">Diterima di Perusahaan/Mitra</label>
                 <input type="text" class="form-control" id="perusahaan" name="perusahaan" value="">
               </div>
@@ -103,10 +119,6 @@
                 <label for="kontak" class="form-label">Kontak Perusahaan <span style="font-size: 12px">*Email/Nomor Telepon</span></label>
                 <input type="text" class="form-control" id="kontak" name="kontak" value="">
               </div>
-              <div class="mb-3">
-                <label for="bukti" class="form-label">Bukti Diterima <span style="font-size:12px;">*jika ada/tidak wajib</span></label>
-                <input type="file" class="form-control" id="bukti" name="bukti">
-              </div> 
             <button type="submit" class="btn btn-primary" id="btn-submitdaftar">Daftar</button>
           </form>
         @else

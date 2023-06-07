@@ -11,7 +11,8 @@
             @csrf
             @method('put')
             <input type="text" hidden name="id" id="" value="{{$data->id}}">
-            <input type="text" hidden name="oldImage" value="{{$data->bukti_diterima}}">
+            <input type="text" hidden name="oldSurat" value="{{$data->surat_permohonan}}">
+            <input type="text" hidden name="oldBukti" value="{{$data->bukti_diterima}}">
             <div class="mb-3">
               <label for="nama" class="form-label">Nama</label> 
               <input type="text" class="form-control" id="nama" name="nama" value="{{$data->nama}}">
@@ -27,6 +28,18 @@
             <div class="mb-3">
                 <label for="angkatan" class="form-label">Angkatan</label>
                 <input type="text" class="form-control" id="angkatan" name="angkatan" value="{{$data->angkatan}}">
+              </div>
+              <div class="mb-3">
+                <label for="perusahaan" class="form-label">Tahun Ajaran</label>
+                <input type="text" class="form-control" id="tahun_ajaran" name="tahun_ajaran" value="{{$data->tahun_ajaran}}">
+              </div>
+              <div class="mb-3">
+                <label for="perusahaan" class="form-label">Tanggal Mulai</label>
+                <input type="date" class="form-control" id="" name="tanggal_mulai" value="{{$data->tanggal_mulai}}">
+              </div>
+              <div class="mb-3">
+                <label for="perusahaan" class="form-label">Tanggal Selesai</label>
+                <input type="date" class="form-control" id="" name="tanggal_selesai" value="{{$data->tanggal_selesai}}">
               </div>
               <div class="mb-3">
                 <label for="perusahaan" class="form-label">Diterima di Perusahaan/Mitra</label>
@@ -49,10 +62,17 @@
                 @if ($data->bukti_diterima == null)
                   <p>belum memiliki file bukti</p>
                 @else
-                  <img src="{{asset('storage/'. $data->bukti_diterima)}}" alt="" class="d-block mb-3" style="max-width:170px;">
+                  <p style="color:red; font-size:12px;">surat balasan/bukti diterima sudah ada, upload ulang untuk mengganti yang sudah terupload</p>
                 @endif
                 <input type="file" class="form-control" id="bukti" value="{{$data->bukti_diterima}}" name="bukti">
               </div> 
+              <div class="mb-3">
+                <label for="kontak" class="form-label">Upload Surat Permohonan</label>
+                @if ($data->bukti_diterima)
+                    <p style="color:red; font-size:12px;">surat permohonan sudah terupload, upload ulang untuk mengganti yang sudah terupload</p>
+                @endif
+                <input type="file" class="form-control" id="bukti" value="" name="surat">
+              </div>
               @endforeach
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
