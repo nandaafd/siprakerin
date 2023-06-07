@@ -27,19 +27,26 @@ class BeritaController extends Controller
             'terbit'=>'required',
             'penulis'=>'required',
             // 'isi_berita'=>'required',
-            'gambar'=>'image|file|max:2048'
+            'gambar'=>'image|file|max:2048',
+            'file'=>'max:2048'
         ]);
         if ($request->hasFile('gambar')) {
             $path = $request->file('gambar')->store('gambar-berita');
         }else{
             $path = null;
         }
+        if ($request->hasFile('file')) {
+            $path_file = $request->file('file')->store('file-berita');
+        }else{
+            $path_file = null;
+        }
         Berita::create([
             'judul'=>$request->judul,
             'tanggal_terbit'=>$request->terbit,
             'penulis'=>$request->penulis,
             'isi_berita'=>$request->isi_berita,
-            'gambar'=>$path
+            'gambar'=>$path,
+            'file'=>$path_file
         ]);
         return redirect('/data-berita');
     }
@@ -61,12 +68,14 @@ class BeritaController extends Controller
     public function update(Request $request, $id)
     {
         $old_image = $request->oldImage;
+        $old_file = $request->oldFile;
         $validatedData = $request->validate([
             'judul'=>'required',
             'terbit'=>'required',
             'penulis'=>'required',
             // 'isi_berita'=>'required',
-            'gambar'=>'image|file|max:2048'
+            'gambar'=>'image|file|max:2048',
+            'file'=>'max:2048'
         ]);
         if ($request->hasFile('gambar')) {
             if ($request->oldImage) {
@@ -76,12 +85,21 @@ class BeritaController extends Controller
         }else{
             $path = $old_image;
         }
+        if ($request->hasFile('file')) {
+            if ($request->oldFile) {
+                Storage::delete($request->oldFile);
+            }
+            $path_file = $request->file('file')->store('file-berita');
+        }else{
+            $path_file = $old_file;
+        }
         Berita::where('id',$id)->update([
             'judul'=>$request->judul,
             'tanggal_terbit'=>$request->terbit,
             'penulis'=>$request->penulis,
             'isi_berita'=>$request->isi_berita,
-            'gambar'=>$path
+            'gambar'=>$path,
+            'file'=>$path_file
         ]);
         return redirect('/data-berita');
     }

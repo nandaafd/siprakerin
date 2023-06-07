@@ -12,9 +12,10 @@ return new class extends Migration
             $table->id();
             $table->string('judul');
             $table->string('tanggal_terbit');
-            $table->string('isi_berita',10000);
+            $table->string('isi_berita',15000);
             $table->string('penulis');
             $table->string('gambar')->nullable();
+            $table->string('file')->nullable();
             $table->timestamps();
         });
     }

@@ -29,6 +29,10 @@
                 <label for="gambar" class="form-label">Gambar <span style="color:orange; font-size:12px;">*jika ada/tidak wajib</span></label>
                 <input type="file" class="form-control form-control-lg" id="gambar" name="gambar">
               </div>    
+              <div class="mb-3">
+                <label for="file" class="form-label">File tambahan <span style="color:orange; font-size:12px;">*jika ada/tidak wajib</span></label>
+                <input type="file" class="form-control form-control-lg" id="file" name="file">
+              </div>
             <button type="submit" class="btn btn-primary btn-lg">Submit</button>
           </form>
           <script>

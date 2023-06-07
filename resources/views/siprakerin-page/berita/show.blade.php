@@ -13,6 +13,7 @@
                 <img class="img img-fluid d-block text-center mx-auto mt-5 mb-3" src="{{asset('storage/'. $gambar)}}" alt="" id="gambar-isi">
             @endif
             <div id="isi_berita" class="mx-5"></div>
+            <div class="mx-5"><a href="{{asset('storage/'.$data->file)}}" download="surat_{{$data->judul}}">Download PDF</a></div>
         @endforeach
     </section>
 </div>
