@@ -26,12 +26,14 @@ class StatusController extends Controller
             'penilaian'=>'required',
             'logbook'=>'required',
             'absensi'=>'required',
+            'laporan'=>'required',
         ]);
         Status::create([
             'pendaftaran'=>$request->pendaftaran,
             'penilaian'=>$request->penilaian,
             'logbook'=>$request->logbook,
             'absensi'=>$request->absensi,
+            'laporan'=>$request->laporan,
         ]);
         return redirect('/status');
     }
@@ -54,12 +56,14 @@ class StatusController extends Controller
             'penilaian'=>'required',
             'logbook'=>'required',
             'absensi'=>'required',
+            'laporan'=>'required',
         ]);
         Status::where('id',$id)->update([
             'pendaftaran'=>$request->pendaftaran,
             'penilaian'=>$request->penilaian,
             'logbook'=>$request->logbook,
             'absensi'=>$request->absensi,
+            'laporan'=>$request->laporan,
         ]);
         return redirect('/status');
     }

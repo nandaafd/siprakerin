@@ -28,6 +28,7 @@
         <th>Penilaian</th>
         <th>Logbook</th>
         <th>Absensi</th>
+        <th>Laporan</th>
         @can('admin')
           <th colspan="2">Action</th>
         @endcan
@@ -39,6 +40,7 @@
             <td>{{ $data->penilaian}}</td>
             <td>{{ $data->logbook}}</td>
             <td>{{ $data->absensi}}</td>
+            <td>{{ $data->laporan}}</td>
             @can('admin')    
               <td>
                 <form action="{{ route('status.destroy', $data->id) }}" method="POST">

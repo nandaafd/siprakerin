@@ -15,6 +15,7 @@ return new class extends Migration
             $table->string('penilaian')->nullable();
             $table->string('logbook')->nullable();
             $table->string('absensi')->nullable();
+            $table->string('laporan')->nullable();
             $table->timestamps();
         });
     }

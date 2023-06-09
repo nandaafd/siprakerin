@@ -12,6 +12,7 @@ return new class extends Migration
         Schema::create('laporan', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
+            $table->string('kelas');
             $table->string('file')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('user');

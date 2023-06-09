@@ -34,9 +34,15 @@
               <div class="mb-3">
                 <label for="nama" class="form-label">Pengisian Absensi</label> 
                 <select class="form-control @error('absensi') is-invalid @enderror" name="absensi">
-
-                  <option {{$data->logbook == 'buka' ? 'selected' : ''}} value="buka">Buka</option>
+                  <option {{$data->absensi == 'buka' ? 'selected' : ''}} value="buka">Buka</option>
                   <option {{$data->absensi == 'tutup' ? 'selected' : ''}} value="tutup">tutup</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="nama" class="form-label">Laporan Akhir</label> 
+                <select class="form-control @error('laporan') is-invalid @enderror" name="laporan">
+                  <option {{$data->laporan == 'buka' ? 'selected' : ''}} value="buka">Buka</option>
+                  <option {{$data->laporan == 'tutup' ? 'selected' : ''}} value="tutup">tutup</option>
                 </select>
               </div>
               @endforeach

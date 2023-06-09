@@ -41,6 +41,14 @@
                   <option value="tutup">tutup</option>
                 </select>
               </div>
+              <div class="mb-3">
+                <label for="nama" class="form-label">Laporan Akhir</label> 
+                <select class="form-control @error('laporan') is-invalid @enderror" name="laporan">
+                  <option value="">Pilih status laporan..</option>
+                  <option value="buka">Buka</option>
+                  <option value="tutup">tutup</option>
+                </select>
+              </div>
                 
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>

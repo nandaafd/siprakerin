@@ -23,6 +23,7 @@
     <tr>
         <th>No.</th>
         <th>Nama Siswa</th>
+        <th>Kelas</th>
         <th>File</th>
         @can('admin')
           <th colspan="2">Action</th>
@@ -32,6 +33,7 @@
         <tr>
             <td>{{ $loop->iteration }}</td>
             <td>{{ $data->nama }}</td>
+            <td>{{ $data->kelas }}</td>
             <td><a href="{{asset('storage/'.$data->file)}}" download="laporan_akhir_{{$data->nama}}" class="btn btn-primary">Download</a></td>
             @can('admin')    
               <td>
