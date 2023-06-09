@@ -19,5 +19,6 @@
     <li><a href="{{url('/daftar-prakerin')}}"><img src="{{asset('images/ikon/notebook.gif')}}" alt="" class="">Pendaftaran Prakerin</a></li>
     <li><a href="{{url('/mitra')}}"><img src="{{asset('images/ikon/factory.gif')}}" alt="" class="">Mitra Sekolah Kita</a></li>
     <li><a href="{{url('/download')}}"><img src="{{asset('images/ikon/download.gif')}}" alt="" class="">Download Berkas</a></li>
+    <li><a href="{{url('/laporan-akhir')}}"><img src="{{asset('images/ikon/upload.gif')}}" alt="" class="">Upload Laporan Akhir</a></li>
 </ul>
 </div>

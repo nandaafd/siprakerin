@@ -6,6 +6,7 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\BerkasController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\KelasController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\LogbookController;
 use App\Http\Controllers\MitraController;
 use App\Http\Controllers\NilaiController;
@@ -18,6 +19,7 @@ use App\Http\Controllers\siprakerin\BeritaController as SiprakerinBeritaControll
 use App\Http\Controllers\siprakerin\DownloadController;
 use App\Http\Controllers\siprakerin\HistoryController;
 use App\Http\Controllers\siprakerin\HomeController;
+use App\Http\Controllers\siprakerin\LaporanController as SiprakerinLaporanController;
 use App\Http\Controllers\siprakerin\LogbookController as SiprakerinLogbookController;
 use App\Http\Controllers\siprakerin\MitraController as SiprakerinMitraController;
 use App\Http\Controllers\siprakerin\NilaiSiswaController;
@@ -65,6 +67,7 @@ Route::group(['middleware' => ['admin']], function(){
     Route::resource('/berkas', BerkasController::class);
     Route::resource('/status',StatusController::class);
     Route::resource('/kelas',KelasController::class);
+    Route::resource('/data-laporan',LaporanController::class);
 });
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/ubah-password', 'App\Http\Controllers\ChangePasswordController@showChangePasswordForm')->name('password.change');
@@ -76,4 +79,5 @@ Route::group(['middleware' => ['auth']], function(){
     Route::resource('/history',HistoryController::class);
     Route::resource('/download',DownloadController::class);
     Route::resource('/nilai-siswa',NilaiSiswaController::class);
+    Route::resource('/laporan-akhir',SiprakerinLaporanController::class);
 });
