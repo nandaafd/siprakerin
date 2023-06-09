@@ -21,5 +21,6 @@
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <script src="{{asset('js/dashboard.js')}}"></script>
+    @stack('js')
   </body>
 </html>

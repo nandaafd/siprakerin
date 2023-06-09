@@ -6,26 +6,34 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
-        Schema::create('nilai_tkros', function (Blueprint $table) {
+        Schema::create('nilai_tkro', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('siswa_id');
+            $table->foreign('siswa_id')->references('id')->on('siswa');
+            $table->string('prodi');
+            $table->string('mitra');
+            $table->string('disiplin');
+            $table->string('kerjasama');
+            $table->string('tanggungjawab');
+            $table->string('inisiatif');
+            $table->string('kebersihan');
+            $table->string('keberhasilan');
+            $table->string('perawatan_engine')->nullable();
+            $table->string('perawatan_chasis')->nullable();
+            $table->string('perawatan_kelistrikan')->nullable();
+            $table->string('kkk')->nullable();
+            $table->string('teknis_1')->nullable();
+            $table->string('teknis_2')->nullable();
+            $table->string('rata_rata');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
-        Schema::dropIfExists('nilai_tkros');
+        Schema::dropIfExists('nilai_tkro');
     }
 };

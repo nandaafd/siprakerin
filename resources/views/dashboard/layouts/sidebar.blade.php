@@ -28,8 +28,14 @@
           <a href="#pageNilai" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Nilai</a>
           <ul class="collapse list-unstyled" id="pageNilai">
             @can('admin')
-            <li class="{{ Request::is('nilai') ? 'active' : '' }}">
-              <a href="/nilai">Lihat Nilai</a>
+            <li class="{{ Request::is('nilai-tkj') ? 'active' : '' }}">
+              <a href="/nilai-tkj">Nilai TKJ</a>
+            </li>
+            <li class="{{ Request::is('nilai-tkro') ? 'active' : '' }}">
+              <a href="/nilai-tkro">Nilai TKRO</a>
+            </li>
+            <li class="{{ Request::is('nilai-pbs') ? 'active' : '' }}">
+              <a href="/nilai-pbs">Nilai PBS</a>
             </li>
             @endcan
           </ul>
