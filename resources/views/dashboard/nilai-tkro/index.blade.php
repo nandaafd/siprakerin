@@ -11,7 +11,7 @@
                
             </div>
             <div class="col-3">
-                <a href="{{route('data-mitra.create')}}" class="btn btn-primary mb-2"><i class="bi bi-plus-square"></i> Tambah Data</a>
+                <a href="{{route('nilai-tkro.create')}}" class="btn btn-primary mb-2"><i class="bi bi-plus-square"></i> Tambah Data</a>
             </div>
         </div>
         <div>
@@ -32,15 +32,15 @@
                         <td>{{$data->siswa->user->fullname}}</td>
                         <td>{{$data->prodi}}</td>
                         <td>{{$data->mitra}}</td>
-                        <td><a href="{{route('nilai-pbs.show',$data->id)}}">Lihat nilai</a></td>
+                        <td><a href="{{route('nilai-tkro.show',$data->id)}}">Lihat nilai</a></td>
                         <td>
-                            <form action="{{ route('nilai-pbs.destroy',$data->id) }}" method="POST">
+                            <form action="{{ route('nilai-tkro.destroy',$data->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger" title="Hapus data" onclick="return confirm('Apakah anda yakin ingin menghapus?')"><i class="bi bi-trash3-fill"></i></button>
                             </form>
                         <td>
-                            <a href="{{route('nilai-pbs.edit',$data->id)}}" class="btn btn-primary" title="edit"><i class="bi bi-pencil"></i></a>            
+                            <a href="{{route('nilai-tkro.edit',$data->id)}}" class="btn btn-primary" title="edit"><i class="bi bi-pencil"></i></a>            
                         </td>
                     </tr>
                 @empty

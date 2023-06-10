@@ -39,6 +39,10 @@ class Siswa extends Model
     {
         return $this->hasMany(NilaiPbs::class);
     }
+    public function nilaitkr()
+    {
+        return $this->hasMany(NilaiTkro::class);
+    }
 
     public function logbook()
     {

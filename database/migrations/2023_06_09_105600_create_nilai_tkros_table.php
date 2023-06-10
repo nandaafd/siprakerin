@@ -25,8 +25,7 @@ return new class extends Migration
             $table->string('perawatan_chasis')->nullable();
             $table->string('perawatan_kelistrikan')->nullable();
             $table->string('kkk')->nullable();
-            $table->string('teknis_1')->nullable();
-            $table->string('teknis_2')->nullable();
+            $table->string('teknis')->nullable();
             $table->string('rata_rata');
             $table->timestamps();
         });
