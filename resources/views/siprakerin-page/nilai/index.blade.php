@@ -22,29 +22,53 @@
 
 <div class="row">
     <div class="col" id="prakerin-page">
-        @can('pembimbing-lapangan')
-            <a href="{{url('/nilai-siswa/create')}}" class="btn btn-primary mb-2" id="btn-addnilai"><i class="bi bi-plus-square"></i> Tambah Nilai Siswa</a>
-        @endcan
-        <iframe width="600" height="400" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTh2Ck3Icg9dR8O1e4lDzShBllbKnweLwQxwCnIHmi-MZ6A0B9q1gT4TAnbOL2YBVhFpmM2GwcouaHC/pubhtml"></iframe>
-        {{-- @isset($nilais)
+        <div class="col-9">
+            <form action="" method="get" class="row row-cols-sm-auto g-1 mb-4">
+                    <p class="mx-2 my-auto">Filter</p>
+                  <div class="col-sm">
+                      <select name="filter" id="" class="form-select form-select-sm">
+                        <option value="">Pilih Prodi..</option>
+                        <option value="TKJ">TKJ</option>
+                        <option value="PBS">PBS</option>
+                        <option value="TKRO">TKRO</option>
+                      </select>
+                  </div>
+                  <div class="col-sm">
+                      <button type="submit" class="btn btn-primary btn-sm">Search</button>
+                      <button type="submit" class="btn btn-secondary btn-sm" id="btn-reset">Reset</button>
+                  </div>
+              </form>
+            </div>
+        <div class="col-3">
+            @can('pembimbing-lapangan')
+                <a href="{{url('/nilai-siswa/create')}}" class="btn btn-primary mb-2" id="btn-addnilai"><i class="bi bi-plus-square"></i> Tambah Nilai Siswa</a>
+            @endcan
+        </div>
+        
+        @isset($nilai)
         <table class="table table-hover">
+            @if ($filter)
+            <p>Hasil filter : <span style="color: #FF6B00">{{$filter}}</span></p>
+            @endif
             <tr>
                 <th>No.</th>
                 <th>Siswa</th>
-                <th>NISN</th>
-                <th>Nilai Rata-Rata</th>
-                <th>Nilai Dalam Huruf</th>
+                <th>Prodi</th>
+                <th>Rata-Rata</th>
+                <th>Grade</th>
+                <th>Detail</th>
                 @can('pembimbing-lapangan')
                 <th colspan="2">Aksi</th>
                 @endcan
             </tr>
-            @foreach ($nilais as $nilai)    
+            @foreach ($nilai as $data)    
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $nilai->siswa->user->fullname }}</td>
-                    <td>{{ $nilai->siswa->nisn }}</td>
-                    <td>{{ $nilai->nilai_rata_rata }}</td>
-                    <td>{{ $nilai->nilai_huruf }}</td>
+                    <td>{{ $data->siswa->user->fullname }}</td>
+                    <td>{{ $data->prodi }}</td>
+                    <td>{{ $data->rata_rata }}</td>
+                    <td>{{ $data->nilai_huruf }}</td>
+                    <td><a href="{{route('nilai-siswa.show',$data->siswa_id)}}">Lihat detail</a></td>
                     @can('pembimbing-lapangan')    
                     <td>
                         <a href="{{route('nilai-siswa.edit',$nilai->id)}}" id="btn-editnilai" class="btn btn-primary" title="edit"><i class="bi bi-pencil"></i></a>            
@@ -53,8 +77,7 @@
                 </tr>
             @endforeach
         </table>
-        {{ $nilais->links() }}
-        @endisset --}}
+        @endisset
     </div>
 </div>
 @else

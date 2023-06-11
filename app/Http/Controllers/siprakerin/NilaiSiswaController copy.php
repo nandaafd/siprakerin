@@ -4,9 +4,6 @@ namespace App\Http\Controllers\siprakerin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Nilai;
-use App\Models\NilaiPbs;
-use App\Models\NilaiTkj;
-use App\Models\NilaiTkro;
 use App\Models\PembimbingLapangan;
 use App\Models\Siswa;
 use App\Models\Status;
@@ -17,36 +14,24 @@ use Illuminate\Support\Facades\Gate;
 class NilaiSiswaController extends Controller
 {
 
-    public function index(Request $request)
+    public function index()
     {
         $status = Status::get()->value('penilaian');
-        $filter = $request->filter;
         if (Gate::allows('siswa')) {
             $siswa = Auth::user()->siswa->first();
-            $nilai = Nilai::where('siswa_id', $siswa->id)->paginate(10);
+            $nilais = Nilai::where('siswa_id', $siswa->id)->paginate(10);
         }
         elseif (Gate::allows('pembimbing-lapangan')) {
             $id = Auth::user()->id;
-            $nilai = Nilai::where('pembimbing_lapangan_id',$id)->paginate(10);
+            $nilais = Nilai::where('pembimbing_lapangan_id',$id)->paginate(10);
         }
         elseif (Gate::allows('guru')) {
-            if ($filter) {
-                $nilai_tkj = NilaiTkj::where('prodi',$filter)->get();
-                $nilai_tkr = NilaiTkro::where('prodi',$filter)->get();
-                $nilai_pbs = NilaiPbs::where('prodi',$filter)->get();
-                $nilai = $nilai_tkj->concat($nilai_tkr)->concat($nilai_pbs);
-            } else {
-                $nilai_tkj = NilaiTkj::all();
-                $nilai_tkr = NilaiTkro::all();
-                $nilai_pbs = NilaiPbs::all();
-                $nilai = $nilai_tkj->concat($nilai_tkr)->concat($nilai_pbs);
-            }
-            
+            $nilais = Nilai::paginate(10);
         }
         else {
             return view('siprakerin-page.nilai.index')->with('messageWarning', 'Maaf, anda tidak memiliki akses untuk melihat nilai');
         }
-        return view('siprakerin-page.nilai.index', compact('nilai','status','filter'));
+        return view('siprakerin-page.nilai.index', compact('nilais','status'));
     }
 
     public function create()
@@ -87,15 +72,7 @@ class NilaiSiswaController extends Controller
 
     public function show($id)
     {
-        $status = Status::get()->value('penilaian');
-        if (Gate::allows('guru')) {
-            $nilai_tkj = NilaiTkj::where('siswa_id',$id)->get();
-            $nilai_tkr = NilaiTkro::where('siswa_id',$id)->get();
-            $nilai_pbs = NilaiPbs::where('siswa_id',$id)->get();
-            $nilai = $nilai_tkj->concat($nilai_tkr)->concat($nilai_pbs);
-            $prodi = $nilai_tkj->concat($nilai_tkr)->concat($nilai_pbs)->value('prodi');
-        }
-        return view('siprakerin-page.nilai.show',compact('nilai','prodi','nilai_tkj','nilai_tkr','nilai_pbs','status'));
+        //
     }
 
     public function edit($id)
@@ -103,7 +80,7 @@ class NilaiSiswaController extends Controller
         $status = Status::get()->value('penilaian');
         $pembimbing_lapangan = PembimbingLapangan::all();
         $siswas = Siswa::all();
-        $nilais = Nilai::where('siswa_id',$id)->get();
+        $nilais = Nilai::where('id',$id)->get();
         // return $nilais;
         return view('siprakerin-page.nilai.edit', [
             'siswas' => $siswas,
