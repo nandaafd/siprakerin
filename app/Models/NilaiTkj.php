@@ -10,4 +10,8 @@ class NilaiTkj extends Model
     use HasFactory;
     protected $table = 'nilai_tkj';
     protected $guarded = ['id'];
+    public function siswa()
+    {
+        return $this->belongsTo(Siswa::class);
+    }
 }
