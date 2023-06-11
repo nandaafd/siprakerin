@@ -72,13 +72,14 @@
                 <label for="kontak" class="form-label">Administrasi dan Pembukuan</label>
                 <input type="number" class="form-control" id="" name="administrasi" value="">
               </div>
-              <div class="mb-3" id="">
+              <div class="row mb-3" id="">
                 <label for="kontak" class="form-label">Aspek Teknis Tambahan (Tidak Wajib)</label>
-                <input type="text" class="form-control" id="" name="teknis" value="" placeholder="contoh - pencatatan keuangan : 90">
-              </div>
-              <div class="mb-3">
-                <label for="kontak" class="form-label">Nilai Rata-Rata (Wajib diisi)</label>
-                <input type="number" class="form-control" id="rata" name="rata" value="">
+                <div class="col">
+                    <input type="text" class="form-control" id="" name="teknis" value="" placeholder="contoh : pencatatan keuangan">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" id="" name="angka_teknis" value="" placeholder="Angka nilai | contoh : 90">
+                </div>
               </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>

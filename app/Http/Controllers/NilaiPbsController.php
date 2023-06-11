@@ -38,8 +38,45 @@ class NilaiPbsController extends Controller
             'cs'=>'required',
             'teller'=>'required',
             'administrasi'=>'required',
-            'rata'=>'required',
         ]);
+        if ($request->teknis == null) {
+            $disiplin = intval($request->disiplin);
+            $kerjasama = intval($request->kerjasama);
+            $tanggungjawab = intval($request->tanggungjawab);
+            $inisiatif = intval($request->inisiatif);
+            $kebersihan = intval($request->kebersihan);
+            $keberhasilan = intval($request->keberhasilan);
+            $marketing = intval($request->marketing);
+            $cs = intval($request->cs);
+            $teller = intval($request->teller);
+            $administrasi = intval($request->administrasi);
+            $average = ($disiplin + $kerjasama + $tanggungjawab + $inisiatif + $kebersihan + $keberhasilan + $marketing + $cs + $teller + $administrasi) / 10; 
+        }else {
+            $disiplin = intval($request->disiplin);
+            $kerjasama = intval($request->kerjasama);
+            $tanggungjawab = intval($request->tanggungjawab);
+            $inisiatif = intval($request->inisiatif);
+            $kebersihan = intval($request->kebersihan);
+            $keberhasilan = intval($request->keberhasilan);
+            $marketing = intval($request->marketing);
+            $cs = intval($request->cs);
+            $teller = intval($request->teller);
+            $administrasi = intval($request->administrasi);
+            $angka = intval($request->angka_teknis);
+            $average = ($disiplin + $kerjasama + $tanggungjawab + $inisiatif + $kebersihan + $keberhasilan + $marketing + $cs + $teller + $administrasi + $angka) / 11;   
+        }
+        $average = number_format($average, 1);
+        $grade = '';
+        if ($average >= 90) {
+            $grade = 'A';
+        } elseif ($average >= 80) {
+            $grade = 'B';
+        } elseif ($average >= 70) {
+            $grade = 'C';
+        } else {
+            $grade = 'D';
+        }
+        $nilai_teknis = $request->teknis . ' : ' .$request->angka_teknis;
         NilaiPbs::create([
             'siswa_id'=>$request->siswa,
             'prodi'=>$request->prodi,
@@ -54,8 +91,9 @@ class NilaiPbsController extends Controller
             'cs'=>$request->cs,
             'teller'=>$request->teller,
             'administrasi'=>$request->administrasi,
-            'rata_rata'=>$request->rata,
-            'teknis'=>$request->teknis,
+            'rata_rata'=>$average,
+            'teknis'=>$nilai_teknis,
+            'nilai_huruf'=>$grade
         ]);
         return redirect('/nilai-pbs');
     }
@@ -87,8 +125,45 @@ class NilaiPbsController extends Controller
             'cs'=>'required',
             'teller'=>'required',
             'administrasi'=>'required',
-            'rata'=>'required',
         ]);
+        if ($request->teknis == null) {
+            $disiplin = intval($request->disiplin);
+            $kerjasama = intval($request->kerjasama);
+            $tanggungjawab = intval($request->tanggungjawab);
+            $inisiatif = intval($request->inisiatif);
+            $kebersihan = intval($request->kebersihan);
+            $keberhasilan = intval($request->keberhasilan);
+            $marketing = intval($request->marketing);
+            $cs = intval($request->cs);
+            $teller = intval($request->teller);
+            $administrasi = intval($request->administrasi);
+            $average = ($disiplin + $kerjasama + $tanggungjawab + $inisiatif + $kebersihan + $keberhasilan + $marketing + $cs + $teller + $administrasi) / 10; 
+        }else {
+            $disiplin = intval($request->disiplin);
+            $kerjasama = intval($request->kerjasama);
+            $tanggungjawab = intval($request->tanggungjawab);
+            $inisiatif = intval($request->inisiatif);
+            $kebersihan = intval($request->kebersihan);
+            $keberhasilan = intval($request->keberhasilan);
+            $marketing = intval($request->marketing);
+            $cs = intval($request->cs);
+            $teller = intval($request->teller);
+            $administrasi = intval($request->administrasi);
+            $angka = intval($request->angka_teknis);
+            $average = ($disiplin + $kerjasama + $tanggungjawab + $inisiatif + $kebersihan + $keberhasilan + $marketing + $cs + $teller + $administrasi + $angka) / 11;   
+        }
+        $average = number_format($average, 1);
+        $grade = '';
+        if ($average >= 90) {
+            $grade = 'A';
+        } elseif ($average >= 80) {
+            $grade = 'B';
+        } elseif ($average >= 70) {
+            $grade = 'C';
+        } else {
+            $grade = 'D';
+        }
+        $nilai_teknis = $request->teknis . ' : ' .$request->angka_teknis;
         NilaiPbs::where('id',$id)->update([
             'prodi'=>$request->prodi,
             'mitra'=>$request->mitra,
@@ -102,8 +177,9 @@ class NilaiPbsController extends Controller
             'cs'=>$request->cs,
             'teller'=>$request->teller,
             'administrasi'=>$request->administrasi,
-            'rata_rata'=>$request->rata,
-            'teknis'=>$request->teknis,
+            'rata_rata'=>$average,
+            'teknis'=>$nilai_teknis,
+            'nilai_huruf'=>$grade
         ]);
         return redirect('/nilai-pbs');
     }

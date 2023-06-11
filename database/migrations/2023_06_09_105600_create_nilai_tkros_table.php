@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('kkk')->nullable();
             $table->string('teknis')->nullable();
             $table->string('rata_rata');
+            $table->string('nilai_huruf');
             $table->timestamps();
         });
     }

@@ -31,11 +31,12 @@
                     <li>Teller : {{$data->teller}}</li>
                     <li>Administrasi : {{$data->administrasi}}</li>
                     @if ($data->teknis)
-                    <li>{{$data->teknis}}</li>
+                        <li>{{$data->teknis}}</li>
                     @endif
                     
                 </ul>
                 <p>Nilai Rata-Rata : {{$data->rata_rata}}</p>
+                <p>Grade : {{$data->nilai_huruf}}</p>
                 @endforeach
             </div>
         </div>
