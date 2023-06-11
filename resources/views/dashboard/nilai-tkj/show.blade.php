@@ -32,10 +32,10 @@
                     <li>{{$data->teknis_4}}</li>
                     @if ($data->teknis_5)
                     <li>{{$data->teknis_5}}</li>
-                    @endif
-                    
+                    @endif   
                 </ul>
                 <p>Nilai Rata-Rata : {{$data->rata_rata}}</p>
+                <p>Grade : {{$data->nilai_huruf}}</p>
                 @endforeach
             </div>
         </div>

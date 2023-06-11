@@ -56,29 +56,50 @@
               <div class="mb-3">
                 <h3>ASPEK TEKNIS</h3>
               </div>
-              <div class="mb-3">
+              <div class="row mb-3" id="">
                 <label for="kontak" class="form-label">Aspek Teknis 1 (Wajib Diisi)</label>
-                <input type="text" class="form-control" id="" name="teknis_1" value="" placeholder="contoh penulisan - Perawatan dan Perbaikan Komputer : 95">
+                <div class="col">
+                    <input type="text" class="form-control" id="" name="teknis_1" value="" placeholder="contoh : instalasi jaringan internet">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" id="" name="angka_teknis_1" value="" placeholder="Angka nilai | contoh : 90">
+                </div>
               </div>
-              <div class="mb-3">
+              <div class="row mb-3" id="">
                 <label for="kontak" class="form-label">Aspek Teknis 2 (Wajib Diisi)</label>
-                <input type="text" class="form-control" id="" name="teknis_2" value="" placeholder="contoh penulisan - Perawatan dan Perbaikan Komputer : 95">
+                <div class="col">
+                    <input type="text" class="form-control" id="" name="teknis_2" value="" placeholder="contoh : instalasi jaringan internet">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" id="" name="angka_teknis_2" value="" placeholder="Angka nilai | contoh : 90">
+                </div>
               </div>
-              <div class="mb-3">
+              <div class="row mb-3" id="">
                 <label for="kontak" class="form-label">Aspek Teknis 3 (Wajib Diisi)</label>
-                <input type="text" class="form-control" id="" name="teknis_3" value="" placeholder="contoh penulisan - Perawatan dan Perbaikan Komputer : 95">
+                <div class="col">
+                    <input type="text" class="form-control" id="" name="teknis_3" value="" placeholder="contoh : instalasi jaringan internet">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" id="" name="angka_teknis_3" value="" placeholder="Angka nilai | contoh : 90">
+                </div>
               </div>
-              <div class="mb-3">
+              <div class="row mb-3" id="">
                 <label for="kontak" class="form-label">Aspek Teknis 4 (Wajib Diisi)</label>
-                <input type="text" class="form-control" id="" name="teknis_4" value="" placeholder="contoh penulisan - Perawatan dan Perbaikan Komputer : 95">
+                <div class="col">
+                    <input type="text" class="form-control" id="" name="teknis_4" value="" placeholder="contoh : instalasi jaringan internet">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" id="" name="angka_teknis_4" value="" placeholder="Angka nilai | contoh : 90">
+                </div>
               </div>
-              <div class="mb-3" id="">
+              <div class="row mb-3" id="">
                 <label for="kontak" class="form-label">Aspek Teknis Tambahan (Tidak Wajib)</label>
-                <input type="text" class="form-control" id="" name="teknis_5" value="" placeholder="contoh penulisan - Perawatan dan Perbaikan Komputer : 95">
-              </div>
-              <div class="mb-3">
-                <label for="kontak" class="form-label">Nilai Rata-Rata (Wajib diisi)</label>
-                <input type="number" class="form-control" id="rata" name="rata" value="">
+                <div class="col">
+                    <input type="text" class="form-control" id="" name="teknis" value="" placeholder="contoh : perawatan komputer">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" id="" name="angka_teknis" value="" placeholder="Angka nilai | contoh : 90">
+                </div>
               </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
