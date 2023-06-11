@@ -37,8 +37,50 @@ class NilaiTkroController extends Controller
             'chasis'=>'required',
             'kelistrikan'=>'required',
             'kkk'=>'required',
-            'rata'=>'required',
         ]);
+        if ($request->teknis == null) {
+            $disiplin = intval($request->disiplin);
+            $kerjasama = intval($request->kerjasama);
+            $tanggungjawab = intval($request->tanggungjawab);
+            $inisiatif = intval($request->inisiatif);
+            $kebersihan = intval($request->kebersihan);
+            $keberhasilan = intval($request->keberhasilan);
+            $engine = intval($request->engine);
+            $chasis = intval($request->chasis);
+            $kelistrikan = intval($request->kelistrikan);
+            $kkk = intval($request->kkk);
+            $average = ($disiplin + $kerjasama + $tanggungjawab + $inisiatif + $kebersihan + $keberhasilan + $engine + $chasis + $kelistrikan + $kkk) / 10; 
+        }else {
+            $disiplin = intval($request->disiplin);
+            $kerjasama = intval($request->kerjasama);
+            $tanggungjawab = intval($request->tanggungjawab);
+            $inisiatif = intval($request->inisiatif);
+            $kebersihan = intval($request->kebersihan);
+            $keberhasilan = intval($request->keberhasilan);
+            $engine = intval($request->engine);
+            $chasis = intval($request->chasis);
+            $kelistrikan = intval($request->kelistrikan);
+            $kkk = intval($request->kkk);
+            $angka = intval($request->angka_teknis);
+            $average = ($disiplin + $kerjasama + $tanggungjawab + $inisiatif + $kebersihan + $keberhasilan + $engine + $chasis + $kelistrikan + $kkk + $angka) / 11;   
+        }
+        $average = number_format($average, 1);
+        $grade = '';
+        if ($average >= 90) {
+            $grade = 'A';
+        } elseif ($average >= 80) {
+            $grade = 'B';
+        } elseif ($average >= 70) {
+            $grade = 'C';
+        } else {
+            $grade = 'D';
+        }
+
+        if ($request->teknis == null) {
+            $nilai_teknis = null;
+        }else {
+            $nilai_teknis = $request->teknis . ' : ' .$request->angka_teknis;
+        }
         NilaiTkro::create([
             'siswa_id'=>$request->siswa,
             'prodi'=>$request->prodi,
@@ -53,8 +95,9 @@ class NilaiTkroController extends Controller
             'perawatan_chasis'=>$request->chasis,
             'perawatan_kelistrikan'=>$request->kelistrikan,
             'kkk'=>$request->kkk,
-            'rata_rata'=>$request->rata,
-            'teknis'=>$request->teknis,
+            'rata_rata'=>$average,
+            'teknis'=>$nilai_teknis,
+            'nilai_huruf'=>$grade
         ]);
         return redirect('/nilai-tkro');
     }
@@ -86,8 +129,50 @@ class NilaiTkroController extends Controller
             'chasis'=>'required',
             'kelistrikan'=>'required',
             'kkk'=>'required',
-            'rata'=>'required',
         ]);
+        if ($request->teknis == null) {
+            $disiplin = intval($request->disiplin);
+            $kerjasama = intval($request->kerjasama);
+            $tanggungjawab = intval($request->tanggungjawab);
+            $inisiatif = intval($request->inisiatif);
+            $kebersihan = intval($request->kebersihan);
+            $keberhasilan = intval($request->keberhasilan);
+            $engine = intval($request->engine);
+            $chasis = intval($request->chasis);
+            $kelistrikan = intval($request->kelistrikan);
+            $kkk = intval($request->kkk);
+            $average = ($disiplin + $kerjasama + $tanggungjawab + $inisiatif + $kebersihan + $keberhasilan + $engine + $chasis + $kelistrikan + $kkk) / 10; 
+        }else {
+            $disiplin = intval($request->disiplin);
+            $kerjasama = intval($request->kerjasama);
+            $tanggungjawab = intval($request->tanggungjawab);
+            $inisiatif = intval($request->inisiatif);
+            $kebersihan = intval($request->kebersihan);
+            $keberhasilan = intval($request->keberhasilan);
+            $engine = intval($request->engine);
+            $chasis = intval($request->chasis);
+            $kelistrikan = intval($request->kelistrikan);
+            $kkk = intval($request->kkk);
+            $angka = intval($request->angka_teknis);
+            $average = ($disiplin + $kerjasama + $tanggungjawab + $inisiatif + $kebersihan + $keberhasilan + $engine + $chasis + $kelistrikan + $kkk + $angka) / 11;   
+        }
+        $average = number_format($average, 1);
+        $grade = '';
+        if ($average >= 90) {
+            $grade = 'A';
+        } elseif ($average >= 80) {
+            $grade = 'B';
+        } elseif ($average >= 70) {
+            $grade = 'C';
+        } else {
+            $grade = 'D';
+        }
+        
+        if ($request->teknis == null) {
+            $nilai_teknis = null;
+        }else {
+            $nilai_teknis = $request->teknis . ' : ' .$request->angka_teknis;
+        }
         NilaiTkro::where('id',$id)->update([
             'prodi'=>$request->prodi,
             'mitra'=>$request->mitra,
@@ -101,8 +186,9 @@ class NilaiTkroController extends Controller
             'perawatan_chasis'=>$request->chasis,
             'perawatan_kelistrikan'=>$request->kelistrikan,
             'kkk'=>$request->kkk,
-            'rata_rata'=>$request->rata,
-            'teknis'=>$request->teknis,
+            'rata_rata'=>$average,
+            'teknis'=>$nilai_teknis,
+            'nilai_huruf'=>$grade
         ]);
         return redirect('/nilai-tkro');
     }

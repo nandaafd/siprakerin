@@ -69,15 +69,17 @@
                 <input type="number" class="form-control" id="" name="kkk" value="{{$data->kkk}}">
               </div>
               @if ($data->teknis)
-              <div class="mb-3" id="">
+              <div class="row mb-3" id="">
                 <label for="kontak" class="form-label">Aspek Teknis Tambahan (Tidak Wajib)</label>
-                <input type="text" class="form-control" id="" name="teknis" value="{{$data->teknis}}" placeholder="contoh - perawatan pendingin cairan mesin : 95">
+                <p style="font-size:12px; color:red;">Mohon tuliskan kembali nilai aspek teknis tambahan sesuai dengan data yang anda inputkan sebelumnya</p>
+                <div class="col">
+                    <input type="text" class="form-control" id="" name="teknis" value="" placeholder="contoh : perbaikan pendingin mesin">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" id="" name="angka_teknis" value="" placeholder="Angka nilai | contoh : 90">
+                </div>
               </div>
               @endif
-              <div class="mb-3">
-                <label for="kontak" class="form-label">Nilai Rata-Rata (Wajib diisi)</label>
-                <input type="number" class="form-control" id="rata" name="rata" value="{{$data->rata_rata}}">
-              </div>
               @endforeach
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>

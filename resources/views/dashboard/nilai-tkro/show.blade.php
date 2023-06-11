@@ -36,6 +36,7 @@
                     
                 </ul>
                 <p>Nilai Rata-Rata : {{$data->rata_rata}}</p>
+                <p>Grade : {{$data->nilai_huruf}}</p>
                 @endforeach
             </div>
         </div>

@@ -76,7 +76,12 @@ class NilaiPbsController extends Controller
         } else {
             $grade = 'D';
         }
-        $nilai_teknis = $request->teknis . ' : ' .$request->angka_teknis;
+
+        if ($request->teknis == null) {
+            $nilai_teknis = null;
+        }else {
+            $nilai_teknis = $request->teknis . ' : ' .$request->angka_teknis;
+        }
         NilaiPbs::create([
             'siswa_id'=>$request->siswa,
             'prodi'=>$request->prodi,
@@ -163,7 +168,12 @@ class NilaiPbsController extends Controller
         } else {
             $grade = 'D';
         }
-        $nilai_teknis = $request->teknis . ' : ' .$request->angka_teknis;
+        
+        if ($request->teknis == null) {
+            $nilai_teknis = null;
+        }else {
+            $nilai_teknis = $request->teknis . ' : ' .$request->angka_teknis;
+        }
         NilaiPbs::where('id',$id)->update([
             'prodi'=>$request->prodi,
             'mitra'=>$request->mitra,
