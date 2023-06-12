@@ -22,6 +22,7 @@
 
 <div class="row">
     <div class="col" id="prakerin-page">
+        <div class="row">
         <div class="col-9">
             <form action="" method="get" class="row row-cols-sm-auto g-1 mb-4">
                     <p class="mx-2 my-auto">Filter</p>
@@ -44,7 +45,7 @@
                 <a href="{{url('/nilai-siswa/create')}}" class="btn btn-primary mb-2" id="btn-addnilai"><i class="bi bi-plus-square"></i> Tambah Nilai Siswa</a>
             @endcan
         </div>
-        
+    </div>
         @isset($nilai)
         <table class="table table-hover">
             @if ($filter)
@@ -71,7 +72,7 @@
                     <td><a href="{{route('nilai-siswa.show',$data->siswa_id)}}">Lihat detail</a></td>
                     @can('pembimbing-lapangan')    
                     <td>
-                        <a href="{{route('nilai-siswa.edit',$nilai->id)}}" id="btn-editnilai" class="btn btn-primary" title="edit"><i class="bi bi-pencil"></i></a>            
+                        <a href="{{route('nilai-siswa.edit',$data->siswa_id)}}" id="btn-editnilai" class="btn btn-primary" title="edit"><i class="bi bi-pencil"></i></a>            
                     </td>
                     @endcan
                 </tr>

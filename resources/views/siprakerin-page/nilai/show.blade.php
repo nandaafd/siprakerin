@@ -23,12 +23,6 @@
 <div class="row">
     <div class="col" id="prakerin-page">
         
-@if ($prodi == 'PBS')
-    <p>pbs</p>
-@endif
-
-
-
         @if ($prodi == 'PBS')
         {{-- pbs --}}
            @foreach ($nilai as $data)
@@ -62,7 +56,7 @@
                 <p>Grade : {{$data->nilai_huruf}}</p>
                 @endforeach
 
-        @elseif ($prodi == 'tkj')
+        @elseif ($prodi == 'TKJ')
         {{-- tkr --}}
             @foreach ($nilai as $data)
             <h2>Nilai Siswa</h2>

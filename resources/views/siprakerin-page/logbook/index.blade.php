@@ -1,14 +1,14 @@
 @extends('layouts.page')
 @section('content')
+
 @if ($status == 'buka')
-    @if ($pl_siswa == null)
-    <div class="row">
+
+    {{-- <div class="row">
         <div class="col text-center mt-5">
           <img src="{{asset('images/closed.png')}}" class="img-fluid" style="max-width: 550px" alt="">
           <h2 style="color:gray;">Oops.. Maaf anda tidak dapat mengakses logbook karena sedang tidak prakerin</h2>
         </div>
-      </div>
-    @else
+      </div> --}}
     <div class="row">
         <div class="col" id="prakerin-header">
             <div class="row">
@@ -44,9 +44,10 @@
                     </div>
                 @endif
                 @if(session('messageWarning'))
-                    <div class="alert alert-warning">
-                        {{ session('messageWarning') }}
-                    </div>
+                    <div class="col text-center mt-5">
+                        <img src="{{asset('images/closed.png')}}" class="img-fluid" style="max-width: 550px" alt="">
+                        <h2 style="color:gray;">{{ session('messageWarning') }}</h2>
+                    </div>  
                 @endif
                 <div class="row  {{$pl_siswa == null ? 'd-none' : ''}}">
                     <div class="col-9">
@@ -102,7 +103,6 @@
             </div>
         </div>
     </div>
-    @endif
     @else
     <div class="row">
       <div class="col text-center mt-5">

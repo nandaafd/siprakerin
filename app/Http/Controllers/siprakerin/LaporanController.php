@@ -9,6 +9,7 @@ use App\Models\Siswa;
 use App\Models\Status;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class LaporanController extends Controller
 {
@@ -18,15 +19,31 @@ class LaporanController extends Controller
         $user_id = Auth::user()->id;
         $kls_filter = $request->kls_filter;
         $kelas = Kelas::all();
-        $status = Status::get()->value('laporan');
-        $query = Laporan::query(); 
-        $laporan = Laporan::where('user_id',$user_id)->value('user_id');
         $pl_siswa = Siswa::where('user_id',$user_id)->value('pembimbing_lapangan_id');
-        if ($kls_filter) {
-            $query->where('kelas',$kls_filter);
+        $status = Status::get()->value('laporan');
+        if (Gate::allows('siswa')) {
+           if ($pl_siswa == null) {
+            return view('siprakerin-page.laporan.error');
+           }else {
+            $query = Laporan::query(); 
+            $laporan = Laporan::where('user_id',$user_id)->value('user_id');
+           
+            if ($kls_filter) {
+                $query->where('kelas',$kls_filter);
+            }
+            $laporan_akhir = $query->orderBy('created_at','desc')->paginate(10);
+            return view('siprakerin-page.laporan.index',compact('kelas','laporan','laporan_akhir','status','pl_siswa'));
+           } 
+        }else {
+            $query = Laporan::query(); 
+            $laporan = Laporan::where('user_id',$user_id)->value('user_id');
+           
+            if ($kls_filter) {
+                $query->where('kelas',$kls_filter);
+            }
+            $laporan_akhir = $query->orderBy('created_at','desc')->paginate(10);
+            return view('siprakerin-page.laporan.index',compact('kelas','laporan','laporan_akhir','status','pl_siswa'));
         }
-        $laporan_akhir = $query->orderBy('created_at','desc')->paginate(10);
-        return view('siprakerin-page.laporan.index',compact('kelas','laporan','laporan_akhir','status','pl_siswa'));
     }
 
     public function create()

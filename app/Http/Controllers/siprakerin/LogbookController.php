@@ -21,12 +21,16 @@ class LogbookController extends Controller
         $tanggal = $request->tanggal;
         $pl_siswa = Siswa::where('user_id',$id)->value('pembimbing_lapangan_id');
         if (Gate::allows('siswa')) {
-            $siswa = Auth::user()->siswa->first();
-            $query = Logbook::query();
-            if ($tanggal) {
-                $query->where('tanggal',$tanggal);
+            if ($pl_siswa == null) {
+                return view('siprakerin-page.logbook.error')->with('messageWarning', 'Maaf, anda tidak memiliki akses untuk melihat logbook');
+            }else{
+                $siswa = Auth::user()->siswa->first();
+                $query = Logbook::query();
+                if ($tanggal) {
+                    $query->where('tanggal',$tanggal);
+                }
+                $logbooks = $query->where('siswa_id', $siswa->id)->orderBy('tanggal','desc')->paginate(10);
             }
-            $logbooks = $query->where('siswa_id', $siswa->id)->orderBy('tanggal','desc')->paginate(10);
         }
         elseif (Gate::allows('pembimbing-lapangan')) {
             $pembimbing_lapangan = Auth::user()->pembimbingLapangan->first();
