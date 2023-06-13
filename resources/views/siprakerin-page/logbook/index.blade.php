@@ -45,16 +45,13 @@
                 @endif
                 @if(session('messageWarning'))
                     <div class="col text-center mt-5">
-                        <img src="{{asset('images/closed.png')}}" class="img-fluid" style="max-width: 550px" alt="">
-                        <h2 style="color:gray;">{{ session('messageWarning') }}</h2>
+                        {{ session('messageWarning') }}
                     </div>  
                 @endif
-                <div class="row  {{$pl_siswa == null ? 'd-none' : ''}}">
+                <div class="row">
                     <div class="col-9">
                         <form action="" method="get" class="row row-cols-sm-auto g-1 mb-4">
-                                <div class="col-sm">
                                    <p class="mx-2 my-auto">Filter</p>
-                                </div>
                                 <div class="col-sm">
                                     <input type="date" name="tanggal" id="" class="form-control form-control-sm">
                                 </div>
@@ -73,11 +70,9 @@
                 
                 @isset($logbooks)
                 <table class="table table-hover">
-                    @foreach ($logbooks as $logbook)
                     @if ($tanggal)
                         <p>Hasil filter : <span style="color: #FF6B00">{{$tanggal}}</span></p>
                     @endif 
-                    @endforeach
                     <tr>
                         <th>No.</th>
                         <th>Siswa</th>

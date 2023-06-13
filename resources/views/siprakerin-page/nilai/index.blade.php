@@ -24,7 +24,7 @@
     <div class="col" id="prakerin-page">
         <div class="row">
         <div class="col-9">
-            <form action="" method="get" class="row row-cols-sm-auto g-1 mb-4">
+            <form action="" method="get" class="row row-cols-sm-auto g-1 mb-4 {{Auth::user()->role->name == 'pembimbing_lapangan'? 'd-none' : ''}}">
                     <p class="mx-2 my-auto">Filter</p>
                   <div class="col-sm">
                       <select name="filter" id="" class="form-select form-select-sm">

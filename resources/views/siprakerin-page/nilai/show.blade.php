@@ -25,14 +25,18 @@
         
         @if ($prodi == 'PBS')
         {{-- pbs --}}
+        <div class="">
            @foreach ($nilai as $data)
-           <h2>Nilai Siswa</h2>
-                <ul>
-                    <li>Nama : {{$data->siswa->user->fullname}}</li>
-                    <li>{{$data->prodi}}</li>
-                    <li>{{$data->mitra}}</li>
-                </ul>
-                <h5>Aspek Non Teknis</h5>
+           <h2 class="mx-auto fw-bold">Nilai Siswa</h2>
+           <div class="">
+                <p>Nama : {{$data->siswa->user->fullname}} <br>
+                    Program Studi : {{$data->prodi}} <br>
+                    Mitra Du/Di : {{$data->mitra}}
+                </p>
+                
+            </div>
+            <div>
+                <h5 class="badge-warning mx-auto" style="width: fit-content">Aspek Non Teknis</h5>
                 <ul>
                     <li>Kedisiplinan : {{$data->disiplin}}</li>
                     <li>Kerjasama : {{$data->kerjasama}}</li>
@@ -41,7 +45,9 @@
                     <li>Kebersihan : {{$data->kebersihan}}</li>
                     <li>Keberhasilan : {{$data->keberhasilan}}</li>
                 </ul>
-                <h5>Aspek Teknis</h5>
+            </div>
+            <div>
+                <h5 class="badge-warning mx-auto" style="width: fit-content">Aspek Teknis</h5>
                 <ul>
                     <li>Marketing : {{$data->marketing}}</li>
                     <li>Customer Service : {{$data->cs}}</li>
@@ -52,20 +58,23 @@
                     @endif
                     
                 </ul>
-                <p>Nilai Rata-Rata : {{$data->rata_rata}}</p>
-                <p>Grade : {{$data->nilai_huruf}}</p>
+            </div>
+            <p class="fw-semibold">Nilai Rata-Rata : {{$data->rata_rata}}</p>
+            <p class="fw-semibold">Grade : <span style="background-color: greenyellow;">{{$data->nilai_huruf}}</span></p>
                 @endforeach
+        </div>
 
         @elseif ($prodi == 'TKJ')
-        {{-- tkr --}}
+        {{-- tkj --}}
+        <div class="text-center">
             @foreach ($nilai as $data)
-            <h2>Nilai Siswa</h2>
-                <ul>
-                    <li>Nama : {{$data->siswa->user->fullname}}</li>
-                    <li>{{$data->prodi}}</li>
-                    <li>{{$data->mitra}}</li>
-                </ul>
-                <h5>Aspek Non Teknis</h5>
+
+            <h2 class="text-center fw-bold">Nilai Siswa</h2>
+                <p>Nama : {{$data->siswa->user->fullname}} <br>
+                    Program Studi : {{$data->prodi}} <br>
+                    Mitra Du/Di : {{$data->mitra}}
+                </p>
+                <h5 class="badge-warning mx-auto" style="width: fit-content">Aspek Non Teknis</h5>
                 <ul>
                     <li>Kedisiplinan : {{$data->disiplin}}</li>
                     <li>Kerjasama : {{$data->kerjasama}}</li>
@@ -74,7 +83,7 @@
                     <li>Kebersihan : {{$data->kebersihan}}</li>
                     <li>Keberhasilan : {{$data->keberhasilan}}</li>
                 </ul>
-                <h5>Aspek Teknis</h5>
+                <h5 class="badge-warning mx-auto" style="width: fit-content">Aspek Teknis</h5>
                 <ul>
                     <li> {{$data->teknis_1}}</li>
                     <li>{{$data->teknis_2}}</li>
@@ -84,20 +93,21 @@
                     <li>{{$data->teknis_5}}</li>
                     @endif   
                 </ul>
-                <p>Nilai Rata-Rata : {{$data->rata_rata}}</p>
-                <p>Grade : {{$data->nilai_huruf}}</p>
+                <p class="fw-semibold">Nilai Rata-Rata : {{$data->rata_rata}}</p>
+                <p class="fw-semibold">Grade : <span style="background-color: greenyellow;">{{$data->nilai_huruf}}</span></p>
                 @endforeach
+            </div>
 
         @elseif ($prodi == 'TKRO')
         {{-- tkr --}}
+        <div class="">
             @foreach ($nilai as $data)
             <h2>Nilai Siswa</h2>
-                <ul>
-                    <li>Nama : {{$data->siswa->user->fullname}}</li>
-                    <li>{{$data->prodi}}</li>
-                    <li>{{$data->mitra}}</li>
-                </ul>
-                <h5>Aspek Non Teknis</h5>
+                <p>Nama : {{$data->siswa->user->fullname}} <br>
+                    Program Studi : {{$data->prodi}} <br>
+                    Mitra Du/Di : {{$data->mitra}}
+                </p>
+                <h5 class="badge-warning mx-auto" style="width: fit-content">Aspek Non Teknis</h5>
                 <ul>
                     <li>Kedisiplinan : {{$data->disiplin}}</li>
                     <li>Kerjasama : {{$data->kerjasama}}</li>
@@ -106,7 +116,7 @@
                     <li>Kebersihan : {{$data->kebersihan}}</li>
                     <li>Keberhasilan : {{$data->keberhasilan}}</li>
                 </ul>
-                <h5>Aspek Teknis</h5>
+                <h5 class="badge-warning mx-auto" style="width: fit-content">Aspek Teknis</h5>
                 <ul>
                     <li>Perawatan dan Perbaikan Engine : {{$data->perawatan_engine}}</li>
                     <li>Perawatan dan Perbaikan Chasis dan Pemindah Tenaga : {{$data->perawatan_chasis}}</li>
@@ -117,9 +127,10 @@
                     @endif
                     
                 </ul>
-                <p>Nilai Rata-Rata : {{$data->rata_rata}}</p>
-                <p>Grade : {{$data->nilai_huruf}}</p>
+                <p class="fw-semibold">Nilai Rata-Rata : {{$data->rata_rata}}</p>
+                <p class="fw-semibold">Grade : <span style="background-color: greenyellow;">{{$data->nilai_huruf}}</span></p>
                 @endforeach
+            </div>
         @endif
 
 @else

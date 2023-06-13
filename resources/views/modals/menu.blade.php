@@ -59,9 +59,17 @@
             </div>
             <div class="col-md">
               <div class="mx-auto py-1">
-                <a href="{{url('/download')}}" id="menu-ikon" class="text-center mx-auto">
-                  <img src="{{asset('images/ikon/download.gif')}}" alt="" class="ikon-daftar">
-                  <p>Download Berkas</p>
+                <a href="{{url('/laporan-akhir')}}" id="menu-ikon" class="text-center mx-auto">
+                  <img src="{{asset('images/ikon/notebook2.gif')}}" alt="" class="ikon-daftar">
+                  <p>Laporan Akhir</p>
+                </a>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="mx-auto py-1">
+                <a href="{{url('/nilai-siswa')}}" id="menu-ikon" class="text-center mx-auto">
+                  <img src="{{asset('images/ikon/book2.gif')}}" alt="" class="ikon-daftar">
+                  <p>Nilai</p>
                 </a>
               </div>
             </div>

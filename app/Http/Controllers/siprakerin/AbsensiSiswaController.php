@@ -99,7 +99,7 @@ class AbsensiSiswaController extends Controller
         $validatedData = $request->validate([
             'siswa' => 'required',
             'ket_kehadiran' => 'required',
-            'tanggal' => 'required'
+            'tanggal' => 'required|unique:absensi'
         ]);
 
         $absensi = new Absensi;

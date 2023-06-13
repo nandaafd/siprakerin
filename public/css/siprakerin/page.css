@@ -215,6 +215,9 @@
     background-color: yellow;
     color: black;
 }
+ul li{
+    list-style-type: none;
+}
 /* file */
 .files input {
     outline: 2px dashed #92b0b3;

@@ -28,9 +28,7 @@
         <div class="row">
             <div class="col-12">
                 <form action="" method="get" class="row row-cols-sm-auto g-1 mb-4">
-                        <div class="col-sm">
                            <p class="mx-2 my-auto">Filter</p>
-                        </div>
                         <div class="col-sm">
                             <select name="prodi" id="" class="form-control form-control-sm">
                                 <option value="">Pilih prodi..</option>

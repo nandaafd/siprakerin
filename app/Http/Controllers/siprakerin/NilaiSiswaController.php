@@ -21,9 +21,18 @@ class NilaiSiswaController extends Controller
     {
         $status = Status::get()->value('penilaian');
         $filter = $request->filter;
+        $id = Auth::user()->id;
+        $pl_siswa = Siswa::where('user_id',$id)->value('pembimbing_lapangan_id');
         if (Gate::allows('siswa')) {
-            $siswa = Auth::user()->siswa->first();
-            $nilai = Nilai::where('siswa_id', $siswa->id)->paginate(10);
+            if ($pl_siswa == null) {
+                return view('siprakerin-page.nilai.error');
+            }else{
+                $siswa = Auth::user()->siswa->first();
+                $nilai_tkj = NilaiTkj::where('siswa_id',$siswa->id)->get();
+                $nilai_tkr = NilaiTkro::where('siswa_id',$siswa->id)->get();
+                $nilai_pbs = NilaiPbs::where('siswa_id',$siswa->id)->get();
+                $nilai = $nilai_tkj->concat($nilai_tkr)->concat($nilai_pbs);
+            }
         }
         elseif (Gate::allows('pembimbing-lapangan')) {
             $id = Auth::user()->id;

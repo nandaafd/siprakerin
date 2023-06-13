@@ -26,11 +26,6 @@
     <div class="col" id="prakerin-page">
       @isset($berkas)
         <table class="table table-hover">
-            <tr>
-                <th>No</th>
-                    <th>Nama</th>
-                    <th></th>
-            </tr>
         @forelse ($berkas as $data)
             <tr>
                 <td>{{ $loop->iteration }}</td>

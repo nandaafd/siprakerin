@@ -71,18 +71,17 @@ class LogbookController extends Controller
             'impresi' => 'required',
             'kegiatan'=>'required',
             'deskripsi_kegiatan' => 'required',
-            'tanggal' => 'required'
+            'tanggal' => 'required|unique:logbook'
         ]);
-        if ($request->tanggal == $tanggal) {
-            return redirect('/logbooks/create')->with('messageWarning','data pada tanggal tersebut sudah ada');
-        }
-        $logbook = new Logbook();
-        $logbook->siswa_id = $request->siswa_id;
-        $logbook->impresi = $request->impresi;
-        $logbook->kegiatan = $request->kegiatan;
-        $logbook->deskripsi_kegiatan = $request->deskripsi_kegiatan;
-        $logbook->tanggal = $request->tanggal;
-        $logbook->save();
+
+            $logbook = new Logbook();
+            $logbook->siswa_id = $request->siswa_id;
+            $logbook->impresi = $request->impresi;
+            $logbook->kegiatan = $request->kegiatan;
+            $logbook->deskripsi_kegiatan = $request->deskripsi_kegiatan;
+            $logbook->tanggal = $request->tanggal;
+            $logbook->save();
+        
 
         return redirect('/logbooks')->with('success', 'Data logbook berhasil disimpan');
     }

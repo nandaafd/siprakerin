@@ -10,6 +10,14 @@
                         Di Logbook Sekarang Juga!</h4>
                     <h4>Logbook adalah catatan sejarahmu selama mengikuti prakerin, yuk isi sekarang.</h4>
                 @endcan
+                @can('pembimbing-lapangan')
+                <h2 style="font-weight: 600;">Dengan <span style="color:#FF6B00;">Logbook</span>, Anda Dapat Memantau Kegiatan Siswa <span style="color:#FF6B00;">Setiap Hari</span> Dengan Mudah!</h4>
+                    <h4>Logbook adalah wahana ekspresi siswa selama mengikuti prakerin.</h4>
+                @endcan
+                @can('guru')
+                <h2 style="font-weight: 600;">Dengan <span style="color:#FF6B00;">Logbook</span>, Anda Dapat Memantau Kegiatan Siswa <span style="color:#FF6B00;">Setiap Hari</span> Dengan Mudah!</h4>
+                    <h4>Logbook adalah wahana ekspresi siswa selama mengikuti prakerin.</h4>
+                @endcan
               </div>
               <div class="col-3">
                 <img id="vector1" class="img-fluid" src="{{asset('images/vector2.png')}}" alt="" srcset="">

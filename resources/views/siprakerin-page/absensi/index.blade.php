@@ -46,11 +46,11 @@
             <div class="col-sm-9">
                 <form action="" method="get" class="row row-cols-sm-auto g-1 mb-4">
                            <p class="mx-2 my-auto">Filter</p>
-                        <div class="col-sm">
+                        <div class="col-sm-2">
                             <input type="date" name="tanggal" id="" class="form-control form-control-sm">
                         </div>
                         @can('guru')
-                        <div class="col-sm">
+                        <div class="col-sm-2">
                             <select  class="form-select form-select-sm" aria-label="Default select example" name="pl" id="">
                                 <option value="">Pilih pembimbing..</option>
                                 @foreach ($pl as $data)
@@ -59,7 +59,7 @@
                             </select>
                         </div>
                         @endcan
-                        <div class="col-sm">
+                        <div class="col-sm-2">
                             <select  class="form-select form-select-sm" aria-label="Default select example" name="ket" id="">
                                 <option value="">Pilih Keterangan..</option>
                                 <option value="Hadir">Hadir</option>
@@ -68,7 +68,7 @@
                                 <option value="Sakit">Sakit</option>
                             </select>
                         </div>
-                        <div class="col-sm">
+                        <div class="col-sm-3">
                             <button type="submit" class="btn btn-primary btn-sm">Search</button>
                             <button type="submit" class="btn btn-secondary btn-sm" id="btn-reset">Reset</button>
                         </div>
