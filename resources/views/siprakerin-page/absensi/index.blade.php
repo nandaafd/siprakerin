@@ -45,7 +45,7 @@
         <div class="row">
             <div class="col-sm-9">
                 <form action="" method="get" class="row row-cols-sm-auto g-1 mb-4">
-                           <p class="mx-2 my-auto">Filter</p>
+                           <p class="mx-3 my-auto">Filter</p>
                         <div class="col-sm-2">
                             <input type="date" name="tanggal" id="" class="form-control form-control-sm">
                         </div>
@@ -82,7 +82,7 @@
         </div>
         @can('siswa')
             @isset($absen_siswa)
-            <table class="table table-hover">
+            <table class="table table-hover table-responsive">
                     @if ($ket or $tanggal)
                     <p>Hasil filter : <span style="color: #FF6B00">{{$tanggal}}, {{$ket}}</span></p>
                     @endif
@@ -96,8 +96,8 @@
                 @foreach ($absen_siswa as $absensi)    
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $absensi->siswa->user->fullname }}</td>
-                        <td>{{ $absensi->pembimbingLapangan->user->fullname }}</td>
+                        <td>{{$absensi->siswa ? $absensi->siswa->user->fullname : 'Data Siswa Ini Telah Dihapus'}}</td>
+                        <td>{{$absensi->pembimbingLapangan ? $absensi->pembimbingLapangan->user->fullname : 'Data Pembimbing Telah Dihapus'}}</td>
                         <td>{{ $absensi->ket_kehadiran }}</td>
                         <td>{{ $absensi->tanggal }}</td>
                     </tr>
@@ -164,7 +164,7 @@
 @else
     <div class="row">
       <div class="col text-center mt-5">
-        <img src="{{asset('images/closed.png')}}" class="img-fluid" style="max-width: 550px" alt="">
+        <img src="{{asset('images/closed.png')}}" class="img-fluid" alt="">
         <h2 style="color:gray;">Oops.. Pengisian Absensi Sedang Ditutup Nih</h2>
       </div>
     </div>

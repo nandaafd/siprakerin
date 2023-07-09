@@ -12,7 +12,7 @@
         memberikan layanan berupa sistem informasi prakerin yang lengkap
         dan akurat.
       </p>
-      <a href="" class="btn btn-primary" id="btn-daftar-hero">Daftar Sekarang</a>
+      <a href="{{url('/daftar-prakerin')}}" class="btn btn-primary" id="btn-daftar-hero">Daftar Sekarang</a>
     </div>
       <img src="{{asset('images/hero-person.png')}}" alt="" srcset="" id="person-hero" class="position-absolute end-0">
       <img src="{{asset('images/half-hero.png')}}" alt="" srcset="" id="half-hero" class="position-absolute end-0">
@@ -40,7 +40,7 @@
     <div class="col">
       <div class="menu-box mx-auto py-1">
         <a href="{{url('/daftar-prakerin')}}" class="text-center mx-auto">
-          <img src="{{asset('images/ikon/notebook.gif')}}" alt="" class="ikon-daftar">
+          <img src="{{asset('images/ikon/notebook.gif')}}" alt="" class="ikon-daftar img-fluid">
           <p>Daftar</p>
         </a>
     </div>
@@ -48,7 +48,7 @@
     <div class="col">
       <div class="menu-box mx-auto py-1">
         <a href="{{url('/logbooks')}}" class="text-center mx-auto">
-          <img src="{{asset('images/ikon/book.gif')}}" alt="" class="ikon-daftar">
+          <img src="{{asset('images/ikon/book.gif')}}" alt="" class="ikon-daftar img-fluid">
           <p>Logbook</p>
         </a>
       </div>
@@ -56,7 +56,7 @@
     <div class="col">
       <div class="menu-box mx-auto py-1">
         <a href="{{url('/absensi-siswa')}}" class="text-center mx-auto">
-          <img src="{{asset('images/ikon/fingerprint-scan.gif')}}" alt="" class="ikon-daftar">
+          <img src="{{asset('images/ikon/fingerprint-scan.gif')}}" alt="" class="ikon-daftar img-fluid">
           <p>Absensi</p>
         </a>
       </div>
@@ -64,7 +64,7 @@
     <div class="col">
       <div class="menu-box mx-auto py-1">
         <a href="{{url('/berita')}}" class="text-center mx-auto">
-          <img src="{{asset('images/ikon/news.gif')}}" alt="" class="ikon-daftar">
+          <img src="{{asset('images/ikon/news.gif')}}" alt="" class="ikon-daftar img img-fluid">
           <p>Berita & Informasi</p>
         </a>
       </div>
@@ -72,7 +72,7 @@
     <div class="col">
       <div class="menu-box mx-auto py-1">
         <a href="{{url('/mitra')}}" class="text-center mx-auto">
-          <img src="{{asset('images/ikon/factory.gif')}}" alt="" class="ikon-daftar">
+          <img src="{{asset('images/ikon/factory.gif')}}" alt="" class="ikon-daftar img-fluid">
           <p>Mitra</p>
         </a>
       </div>
@@ -80,7 +80,7 @@
     <div class="col">
       <div class="menu-box mx-auto py-1">
         <a href="javascript:void(0)" class="text-center mx-auto" data-bs-target="#modal-menu" data-bs-toggle="modal" id="btn-lainnya">
-          <img src="{{asset('images/ikon/menu.gif')}}" alt="" class="ikon-daftar">
+          <img src="{{asset('images/ikon/menu.gif')}}" alt="" class="ikon-daftar img-fluid">
           <p>Lainnya</p>
         </a>
       </div>
@@ -88,21 +88,21 @@
   </div>
 </section>
 <section id="berita-area">
-  <h3 class="mt-3 ms-5" id="tittle-berita">Berita & Informasi Terbaru</h3>
-    <p class="ms-5">Jangan Lewatkan Berita Dan Informasi Terbaru!</p>
-  <div class="row" id="berita">
+  <h3 class=" pt-3 ms-5" id="tittle-berita">Berita & Informasi Terbaru</h3>
+    <p class="ms-5" id="subtittle-berita">Jangan Lewatkan Berita Dan Informasi Terbaru!</p>
+  <div class="row mx-auto" id="berita">
       @isset($berita) 
       @foreach ($berita as $data)
-      <div class="col">
-        <div class="card mx-5 text-center" id="card-berita" style="">
+      <div class="col" id="col-berita">
+        <div class="card text-center" id="card-berita" style="">
           @if ($data->gambar == null)
           <img src="{{asset('images/berita.jpg')}}" id="gambar-berita" alt="" class="mx-auto img-fluid">
           @else
           <img src="{{asset('storage/'.$data->gambar)}}" id="gambar-berita" class="card-img-top" alt="">
           @endif
-          <div class="card-body">
-            <h5 class="card-title">{{$data->judul}}</h5>
-            <p class="card-text">{{$data->tanggal_terbit}}</p>
+          <div class="card-body" id="card-body">
+            <h5 class="card-title" id="card-tittle" >{{$data->judul}}</h5>
+            <p class="card-text" style="font-size: 11px;">{{$data->tanggal_terbit}}</p>
             <a href="{{route('berita.show',$data->id)}}" id="btn-baca" class="btn btn-primary">Baca Sekarang <i class="bi bi-caret-right"></i></a>
           </div>
         </div>
@@ -111,6 +111,7 @@
       @endisset
 </div>
 </section>
+
 <section>
   <h2 class="mt-5 mx-5" id="tittle-mitra">Mitra-Mitra SMKS Ihyaul Ulum</h2>
     <p id="subtittle-mitra" class="mx-5">SMKS Ihyaul Ulum Dukun Gresik Mencetak SDM Yang Unggul, Dan Berkualitas,
@@ -118,7 +119,7 @@
     </p>
   <div class="row mx-4">
     @foreach ($mitra as $data)
-    <div class="col-3 my-3 mx-auto" id="mitra-card">
+    <div class="col my-3 mx-auto" id="mitra-card">
       <div id="content-mitra" class="row text-center mx-auto">
         <img src="{{asset('storage/'. $data->foto_mitra)}}" alt="" id="foto-mitra" class="mx-auto img-fluid">
           <h5 class="my-3" id="nama-mitra">{{$data->nama_mitra}}</h5>

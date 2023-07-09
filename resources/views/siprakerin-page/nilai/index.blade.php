@@ -47,7 +47,7 @@
         </div>
     </div>
         @isset($nilai)
-        <table class="table table-hover">
+        <table class="table table-hover table-responsive">
             @if ($filter)
             <p>Hasil filter : <span style="color: #FF6B00">{{$filter}}</span></p>
             @endif
@@ -65,7 +65,7 @@
             @foreach ($nilai as $data)    
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $data->siswa->user->fullname }}</td>
+                    <td>{{$data->siswa ? $data->siswa->user->fullname : 'Data Siswa Ini Telah Dihapus'}}</td>
                     <td>{{ $data->prodi }}</td>
                     <td>{{ $data->rata_rata }}</td>
                     <td>{{ $data->nilai_huruf }}</td>
@@ -84,7 +84,7 @@
 @else
     <div class="row">
       <div class="col text-center mt-5">
-        <img src="{{asset('images/closed.png')}}" class="img-fluid" style="max-width: 550px" alt="">
+        <img src="{{asset('images/closed.png')}}" class="img-fluid" alt="">
         <h2 style="color:gray;">Oops.. Penilaian Sedang Ditutup Nih</h2>
       </div>
     </div>

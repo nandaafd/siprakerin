@@ -6,6 +6,7 @@ use App\Models\PembimbingLapangan;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class PembimbingLapanganController extends Controller
@@ -105,6 +106,7 @@ class PembimbingLapanganController extends Controller
 
     public function destroy($id)
     {   
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         PembimbingLapangan::where('user_id',$id)->delete();
         User::where('id',$id)->delete();                     
         return redirect('/pembimbing-lapangan')->with('success', 'Data berhasil dihapus');

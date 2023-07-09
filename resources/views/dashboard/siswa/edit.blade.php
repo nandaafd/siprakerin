@@ -57,9 +57,11 @@
                   <option value="{{$pl->id}}">{{$pl->user->fullname}}</option>
                   @endforeach
                 @else 
+                  
                   @foreach ($pembimbing as $pl)
                   <option value="{{$pl->id}}" {{$pl->id == $data->pembimbingLapangan->user->id ? 'selected' : ''}}>{{$pl->user->fullname}}</option>
                   @endforeach
+                  <option value="{{''}}" style="color: red;">Hapus Pembimbing</option>
                 @endif
               </select>
             </div>

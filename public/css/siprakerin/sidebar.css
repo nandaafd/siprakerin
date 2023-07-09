@@ -27,3 +27,8 @@
 .sidebar-header span{
     color: #FF6B00;
 }
+@media screen and (max-width : 500px) {
+    #name-sidebar{
+        font-size: 12px;
+    }
+}

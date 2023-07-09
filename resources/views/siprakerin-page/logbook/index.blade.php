@@ -43,6 +43,11 @@
                         {{ session('success') }}
                     </div>
                 @endif
+                @if(session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('success') }}
+                    </div>
+                @endif
                 @if(session('messageWarning'))
                     <div class="col text-center mt-5">
                         {{ session('messageWarning') }}
@@ -51,7 +56,7 @@
                 <div class="row">
                     <div class="col-9">
                         <form action="" method="get" class="row row-cols-sm-auto g-1 mb-4">
-                                   <p class="mx-2 my-auto">Filter</p>
+                                   <p class="mx-3 my-auto">Filter</p>
                                 <div class="col-sm">
                                     <input type="date" name="tanggal" id="" class="form-control form-control-sm">
                                 </div>
@@ -69,7 +74,7 @@
                 </div>
                 
                 @isset($logbooks)
-                <table class="table table-hover">
+                <table class="table table-hover table-responsive">
                     @if ($tanggal)
                         <p>Hasil filter : <span style="color: #FF6B00">{{$tanggal}}</span></p>
                     @endif 
@@ -84,7 +89,7 @@
                     @foreach ($logbooks as $logbook)    
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $logbook->siswa->user->fullname }}</td>
+                        <td> {{$logbook->siswa ? $logbook->siswa->user->fullname : 'Data Siswa Ini Telah Dihapus'}}</td>
                         <td>{{ $logbook->impresi }}</td>
                         <td>{{ $logbook->kegiatan }}</td>
                         <td><a href="{{route('logbooks.show',$logbook->id)}}">Lihat Detail</a></td>
@@ -101,7 +106,7 @@
     @else
     <div class="row">
       <div class="col text-center mt-5">
-        <img src="{{asset('images/closed.png')}}" class="img-fluid" style="max-width: 550px" alt="">
+        <img src="{{asset('images/closed.png')}}" class="img-fluid"  alt="">
         <h2 style="color:gray;">Oops.. Pengisian Logbook Sedang Ditutup Nih</h2>
       </div>
     </div>

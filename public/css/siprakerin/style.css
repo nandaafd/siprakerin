@@ -2,7 +2,13 @@
 *{
     margin: 0;
 }
-
+body{
+    animation: body ease 3s;
+}
+@keyframes body{
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+}
 .btn-primary:hover{
     background-color: yellow;
     color: black;
@@ -210,6 +216,14 @@
 #judul-berita{
     font-weight: 600;
 }
+#card-tittle{
+    font-size: 16px;
+}
+#berita{
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
 @media screen and (max-width : 500px) {
     #hero{
         margin-top: 70px;
@@ -221,6 +235,48 @@
         height: 200px;
         margin-left: 10%;
     }
+    #tittle-berita{
+        font-size: 16px;
+    }
+    #tittle-mitra{
+        font-size: 16px;
+    }
+    #subtittle-berita{
+        font-size: 12px;
+    }
+    #subtittle-mitra{
+        font-size: 12px;
+    }
+    #content-mitra #nama-mitra{
+        font-size: 12px;
+    }
+    #content-mitra #foto-mitra{
+        max-width: 80px;
+        max-height: 60px;
+        min-height: 60px;
+        min-width: 80px;
+        border-radius: 50%;
+    }
+    #card-berita #gambar-berita{
+        max-height: 100px;
+        min-height: 100px;
+    }
+    #card-berita{
+        max-width: 150px;
+        max-height: 250px;
+        overflow: scroll;
+    }
+    #berita{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    #card-tittle{
+        font-size: 12px;
+    }
+    #btn-baca{
+        font-size: 10px;
+    }
+    
     #eclipse{
         top: 85px;
     }
@@ -242,6 +298,10 @@
         font-size: 8px;
         padding: 5px 5px;
     }
+    /* .ikon-daftar{
+        height: 40px;
+        width: 40px;
+    } */
     #search-row{
         width: 97%;
     }

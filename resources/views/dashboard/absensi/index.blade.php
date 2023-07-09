@@ -38,8 +38,8 @@
     @foreach ($absensis as $absensi)    
         <tr>
             <td>{{ $loop->iteration }}</td>
-            <td>{{ $absensi->siswa->user->fullname }}</td>
-            <td>{{ $absensi->pembimbingLapangan->user->fullname }}</td>
+            <td>{{$absensi->siswa ? $absensi->siswa->user->fullname : 'Data Siswa Ini Telah Dihapus'}}</td>
+            <td>{{$absensi->pembimbingLapangan ? $absensi->pembimbingLapangan->user->fullname : 'Data Pembimbing Telah Dihapus'}}</td>
             <td>{{ $absensi->ket_kehadiran }}</td>
             <td>{{ $absensi->tanggal }}</td>
             @can('admin')    

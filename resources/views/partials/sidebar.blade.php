@@ -1,6 +1,6 @@
 @if (Auth::user())
 <div class="sidebar-header">
-    <h4 class="mt-4"><span>Halo,</span> {{Auth::user()->fullname}}
+    <h4 class="mt-4" id="name-sidebar"><span>Halo,</span> {{Auth::user()->fullname}}
         <i class="bi bi-patch-check-fill"></i>
     </h4>
     <p>{{Auth::user()->role->name}}</p>

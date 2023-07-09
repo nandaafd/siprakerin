@@ -85,7 +85,7 @@ class AbsensiSiswaController extends Controller
         
         $siswas = Siswa::where('pembimbing_lapangan_id', $pembimbing_lapangan->id)->get();
         if ($siswas->isEmpty()) {
-            return redirect('/absensi-siswa')->with('messageWarning', 'Maaf, anda tidak memiliki mahasiswa bimbingan');
+            return redirect('/absensi-siswa')->with('messageWarning', 'Maaf, anda tidak memiliki siswa bimbingan');
         }
 
         return view('siprakerin-page.absensi.create', [
@@ -96,12 +96,17 @@ class AbsensiSiswaController extends Controller
 
     public function store(Request $request)
     {
+        $tanggal = $request->tanggal;
+        $siswa_id = $request->siswa;
         $validatedData = $request->validate([
             'siswa' => 'required',
             'ket_kehadiran' => 'required',
-            'tanggal' => 'required|unique:absensi'
+            'tanggal' => 'required'
         ]);
-
+        $exists = Absensi::where('siswa_id',$siswa_id)->where('tanggal',$tanggal)->exists();
+        if ($exists) {
+            return redirect()->back()->with('error','absensi siswa ini pada tanggal tersebut sudah ada');
+        }
         $absensi = new Absensi;
         $absensi->siswa_id = $request->siswa;
         $absensi->pembimbing_lapangan_id = $request->pembimbing_lapangan;

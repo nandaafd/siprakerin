@@ -3,7 +3,7 @@
 @if (Auth::user()->role->name == 'pembimbing_lapangan')
 <div class="row">
     <div class="col text-center mt-5">
-      <img src="{{asset('images/closed.png')}}" class="img-fluid" style="max-width: 550px" alt="">
+      <img src="{{asset('images/closed.png')}}" class="img-fluid" alt="">
       <h2 style="color:gray;">Oops.. Anda Tidak Diizinkan Mengakses Halaman ini</h2>
     </div>
   </div>

@@ -11,7 +11,7 @@
                
             </div>
             <div class="col-3">
-                <a href="{{route('nilai-tkro.create')}}" class="btn btn-primary mb-2"><i class="bi bi-plus-square"></i> Tambah Data</a>
+                {{-- <a href="{{route('nilai-tkro.create')}}" class="btn btn-primary mb-2"><i class="bi bi-plus-square"></i> Tambah Data</a> --}}
             </div>
         </div>
         <div>
@@ -29,7 +29,7 @@
                 @forelse ($nilai as $data)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{$data->siswa->user->fullname}}</td>
+                        <td>{{$data->siswa ? $data->siswa->user->fullname : 'Data Siswa Ini Telah Dihapus'}}</td>
                         <td>{{$data->prodi}}</td>
                         <td>{{$data->mitra}}</td>
                         <td><a href="{{route('nilai-tkro.show',$data->id)}}">Lihat nilai</a></td>

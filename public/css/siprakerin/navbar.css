@@ -80,5 +80,13 @@
         margin-left: 10%;
         width: 80%;
     }
+    #btn-profil-nav{
+        margin-left: 10%;
+        width: 80%;
+    }
+
+    #bahasa{
+        display: none;
+    }
     
 }

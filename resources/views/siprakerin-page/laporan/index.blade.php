@@ -108,8 +108,8 @@
     @else
     <div class="row">
       <div class="col text-center mt-5">
-        <img src="{{asset('images/closed.png')}}" class="img-fluid" style="max-width: 550px" alt="">
-        <h2 style="color:gray;">Oops.. Pengisian Logbook Sedang Ditutup Nih</h2>
+        <img src="{{asset('images/closed.png')}}" class="img-fluid" alt="">
+        <h2 style="color:gray;">Oops.. Halaman Laporan Belum Dibuka Nih</h2>
       </div>
     </div>
 @endif

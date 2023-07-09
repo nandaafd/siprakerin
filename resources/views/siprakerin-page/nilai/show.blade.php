@@ -29,7 +29,7 @@
            @foreach ($nilai as $data)
            <h2 class="mx-auto fw-bold">Nilai Siswa</h2>
            <div class="">
-                <p>Nama : {{$data->siswa->user->fullname}} <br>
+                <p>Nama : {{$data->siswa ? $data->siswa->user->fullname : 'Data Siswa Ini Telah Dihapus'}}<br>
                     Program Studi : {{$data->prodi}} <br>
                     Mitra Du/Di : {{$data->mitra}}
                 </p>
@@ -70,7 +70,7 @@
             @foreach ($nilai as $data)
 
             <h2 class="text-center fw-bold">Nilai Siswa</h2>
-                <p>Nama : {{$data->siswa->user->fullname}} <br>
+                <p>Nama : {{$data->siswa ? $data->siswa->user->fullname : 'Data Siswa Ini Telah Dihapus'}} <br>
                     Program Studi : {{$data->prodi}} <br>
                     Mitra Du/Di : {{$data->mitra}}
                 </p>
@@ -103,7 +103,7 @@
         <div class="">
             @foreach ($nilai as $data)
             <h2>Nilai Siswa</h2>
-                <p>Nama : {{$data->siswa->user->fullname}} <br>
+                <p>Nama : {{$data->siswa ? $data->siswa->user->fullname : 'Data Siswa Ini Telah Dihapus'}} <br>
                     Program Studi : {{$data->prodi}} <br>
                     Mitra Du/Di : {{$data->mitra}}
                 </p>

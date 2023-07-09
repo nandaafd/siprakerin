@@ -9,7 +9,7 @@
         </div>
         <div class="modal-body">
           <div class="row text-center">
-            <div class="col-md">
+            <div class="col">
               <div class="mx-auto py-1">
                 <a href="{{url('/daftar-prakerin')}}" id="menu-ikon" class="text-center mx-auto">
                   <img src="{{asset('images/ikon/notebook.gif')}}" alt="" class="ikon-daftar">
@@ -17,7 +17,7 @@
                 </a>
             </div>
             </div>
-            <div class="col-md">
+            <div class="col">
               <div class="mx-auto py-1">
                 <a href="{{url('/logbooks')}}" id="menu-ikon" class="text-center mx-auto">
                   <img src="{{asset('images/ikon/book.gif')}}" alt="" class="ikon-daftar">
@@ -25,7 +25,7 @@
                 </a>
               </div>
             </div>
-            <div class="col-md">
+            <div class="col">
               <div class="mx-auto py-1">
                 <a href="{{url('/absensi-siswa')}}" id="menu-ikon" class="text-center mx-auto">
                   <img src="{{asset('images/ikon/fingerprint-scan.gif')}}" alt="" class="ikon-daftar">
@@ -33,7 +33,7 @@
                 </a>
               </div>
             </div>
-            <div class="col-md">
+            <div class="col">
               <div class="mx-auto py-1">
                 <a href="{{url('/berita')}}" id="menu-ikon" class="text-center mx-auto">
                   <img src="{{asset('images/ikon/news.gif')}}" alt="" class="ikon-daftar">
@@ -41,23 +41,23 @@
                 </a>
               </div>
             </div>
-            <div class="col-md">
+            <div class="col">
               <div class="mx-auto py-1">
-                <a href="" id="menu-ikon" class="text-center mx-auto">
+                <a href="{{url('/mitra')}}" id="menu-ikon" class="text-center mx-auto">
                   <img src="{{asset('images/ikon/factory.gif')}}" alt="" class="ikon-daftar">
                   <p>Mitra</p>
                 </a>
               </div>
             </div>
-            <div class="col-md">
+            <div class="col">
               <div class="mx-auto py-1">
-                <a href="{{url('/mitra')}}" id="menu-ikon" class="text-center mx-auto">
+                <a href="{{url('/history')}}" id="menu-ikon" class="text-center mx-auto">
                   <img src="{{asset('images/ikon/history.gif')}}" alt="" class="ikon-daftar">
                   <p>History prakerin</p>
                 </a>
               </div>
             </div>
-            <div class="col-md">
+            <div class="col">
               <div class="mx-auto py-1">
                 <a href="{{url('/laporan-akhir')}}" id="menu-ikon" class="text-center mx-auto">
                   <img src="{{asset('images/ikon/notebook2.gif')}}" alt="" class="ikon-daftar">
@@ -65,7 +65,7 @@
                 </a>
               </div>
             </div>
-            <div class="col-md">
+            <div class="col">
               <div class="mx-auto py-1">
                 <a href="{{url('/nilai-siswa')}}" id="menu-ikon" class="text-center mx-auto">
                   <img src="{{asset('images/ikon/book2.gif')}}" alt="" class="ikon-daftar">

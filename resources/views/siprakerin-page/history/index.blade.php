@@ -3,7 +3,7 @@
 @if (Auth::user()->role->name == 'pembimbing_lapangan')
 <div class="row">
     <div class="col text-center mt-5">
-      <img src="{{asset('images/closed.png')}}" class="img-fluid" style="max-width: 550px" alt="">
+      <img src="{{asset('images/closed.png')}}" class="img-fluid" alt="">
       <h2 style="color:gray;">Oops.. Anda Tidak Diizinkan Mengakses Halaman ini</h2>
     </div>
   </div>
@@ -28,7 +28,7 @@
         <div class="row">
             <div class="col-12">
                 <form action="" method="get" class="row row-cols-sm-auto g-1 mb-4">
-                           <p class="mx-2 my-auto">Filter</p>
+                           <p class="mx-3 my-auto">Filter</p>
                         <div class="col-sm">
                             <select name="prodi" id="" class="form-control form-control-sm">
                                 <option value="">Pilih prodi..</option>
@@ -48,7 +48,7 @@
             </div>
         </div>
       @isset($prakerin)
-        <table class="table table-hover">
+        <table class="table table-hover table-responsive">
             @if ($prodi or $angkatan)
                 <p>Hasil filter : <span style="color: #FF6B00">{{$prodi}}, {{$angkatan}}</span></p>
             @endif

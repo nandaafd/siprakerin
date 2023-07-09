@@ -17,6 +17,11 @@
 
 <div class="row">
     <div class="col" id="prakerin-page">
+        @if(session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
         <form action="{{url('/absensi-siswa')}}" method="POST">
             @method('post')
             @csrf

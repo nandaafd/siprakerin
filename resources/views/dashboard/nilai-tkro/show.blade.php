@@ -11,7 +11,7 @@
                 @foreach ($nilai as $data)
                 <h2>Nilai Siswa</h2>
                 <ul>
-                    <li>Nama : {{$data->siswa->user->fullname}}</li>
+                    <li>Nama : {{$data->siswa ? $data->siswa->user->fullname : 'Data Siswa Ini Telah Dihapus'}}</li>
                     <li>{{$data->prodi}}</li>
                     <li>{{$data->mitra}}</li>
                 </ul>

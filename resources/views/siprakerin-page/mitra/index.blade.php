@@ -21,7 +21,7 @@
       <div class="container text-center">
         <div class="row">
           @foreach ($mitra as $data)
-          <div class="col-3 my-3" id="mitra-card">
+          <div class="col-md my-3" id="mitra-card">
             <div id="content-mitra" class="row text-center mx-auto">
                 <img src="{{asset('storage/'. $data->foto_mitra)}}" alt="" id="foto-mitra" class="mx-auto img-fluid">
                 <h5 class="my-3" id="nama-mitra">{{$data->nama_mitra}}</h5>

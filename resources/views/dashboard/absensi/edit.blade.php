@@ -15,7 +15,7 @@
     @csrf
     <div>
         <label for="siswa" class="form-label">Siswa:</label>
-        <input type="text" readonly class="form-control" name="siswa" value="{{$absensi->siswa->user->fullname}}">
+        <input type="text" readonly class="form-control" name="siswa" value="{{$absensi->siswa ? $absensi->siswa->user->fullname : 'Data Siswa Ini Telah Dihapus'}}">
         <input type="text" hidden name="siswa_id" value="{{$absensi->siswa_id}}">
         @error('siswa')
             <div class="invalid-feedback">

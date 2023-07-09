@@ -79,3 +79,8 @@ a:hover{
 #show-password{
   margin-left: 30px;
 }
+@media screen and (max-width : 500px) {
+  #img-left{
+    display: none;
+  }
+}

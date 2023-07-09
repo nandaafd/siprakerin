@@ -65,15 +65,19 @@ class LogbookController extends Controller
 
     public function store(Request $request)
     {
-        $tanggal = Logbook::get()->value('tanggal');
+        $tanggal = $request->tanggal;
+        $siswa_id = $request->siswa_id;
         $validatedData = $request->validate([
             'siswa_id' => 'required',
             'impresi' => 'required',
             'kegiatan'=>'required',
             'deskripsi_kegiatan' => 'required',
-            'tanggal' => 'required|unique:logbook'
+            'tanggal' => 'required'
         ]);
-
+        $exists = Logbook::where('siswa_id',$siswa_id)->where('tanggal',$tanggal)->exists();
+        if ($exists) {
+            return redirect()->back()->with('error','logbook pada tanggal ini sudah ada');
+        }
             $logbook = new Logbook();
             $logbook->siswa_id = $request->siswa_id;
             $logbook->impresi = $request->impresi;

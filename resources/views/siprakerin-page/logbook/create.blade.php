@@ -23,6 +23,11 @@
                       {{ session('messageWarning') }}
                   </div>
               @endif
+              @if(session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
                 @can('siswa')
                 <form action="{{url('/logbooks')}}" method="POST">
                     @method('post')

@@ -5,6 +5,11 @@
 }
 #body{
     background-color: rgb(244, 244, 244);
+    animation: body ease 3s;
+}
+@keyframes body{
+    0%{opacity: 0;}
+    100%{opacity: 1;}
 }
 .btn-primary:hover{
     background-color: yellow;
@@ -265,4 +270,47 @@ ul li{
     font-weight: 600;
     text-transform: capitalize;
     text-align: center;
+}
+@media screen and (max-width : 500px) {
+    *{
+        font-size: 12px;
+    }
+    #prakerin-header h2{
+        font-size: 16px;
+    }
+    #prakerin-page h3{
+        font-size: 14px;
+    }
+    #prakerin-header span{
+        font-size: 16px;
+    }
+    #prakerin-header h4{
+        font-size: 14px;
+    }
+    #prakerin-data h5{
+        font-size: 14px;
+    }
+    table{
+        font-size: 12px;
+    }
+    #isi_berita{
+        font-size: 10px;
+        text-align: justify;
+    }
+    #btn-addlogbook{
+        width: 80px;
+        font-size: 10px;
+        margin-top: 20px;
+    }
+    #btn-addlogbook i{
+        font-size: 10px;
+    }
+    #btn-addabsen{
+        width: 80px;
+        font-size: 10px;
+        margin-top: 20px;
+    }
+    #btn-addabsen i{
+        font-size: 10px;
+    }
 }

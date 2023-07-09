@@ -19,16 +19,14 @@
   
 <div class="row {{$prakerin->where('user_id',Auth::user()->id)->isEmpty() ? 'd-none':'' }}">
     <div class="col" id="prakerin-data">
-        <h5><span>{{Auth::user()->nickname}},</span> ini adalah data pendaftaran anda</h5>
+        <h5><span>{{Auth::user()->nickname}},</span> ini adalah data pendaftaran anda!</h5>
         <p style="font-size:14px;">Apakah terdapat kesalahan pada data anda? kalau ada, langsung diedit ya!</p>
-        <table class="table mb-0 text-center table-striped table-sm">
+        <table class="table mb-0 text-center table-responsive table-striped table-sm">
             <tr>
               <th>No</th>
               <th>Nama</th>
               <th>Prodi</th>
-              <th>Angkatan</th>
               <th>Mitra</th>
-              <th>Surat Permohonan</th>
               <th>Detail</th>
               <th colspan="2">Aksi</th>
             </tr>
@@ -37,15 +35,7 @@
               <td>{{ $loop->iteration }}</td>
               <td>{{$data->nama}}</td>
               <td>{{$data->prodi}}</td>
-              <td>{{$data->angkatan}}</td>
               <td>{{$data->mitra_perusahaan}}</td>
-              <td>
-                @if ($surat == null)
-                    Belum Mendapatkan Surat
-                @else
-                    <a href="{{asset('storage/'.$data->surat_permohonan)}}" download="surat_permohonan_{{$data->nama}}" class="btn btn-primary">Download</a>
-                @endif
-              </td>
                 <td> <a id="bukti" href="{{route('daftar-prakerin.show',$data->id)}}">Lihat detail</a></td>
                 <td>
                     <form action="{{ route('daftar-prakerin.destroy',$data->id) }}" method="POST">
@@ -126,7 +116,7 @@
         @endif
     @else
     <div class="text-center">
-        <img src="{{asset('images/closed.png')}}" class="img-fluid" style="max-width: 550px" alt="">
+        <img src="{{asset('images/closed.png')}}" class="img-fluid"  alt="">
         <h5>Maaf Anda Tidak Dapat Mengakses Halaman Ini Karena Anda Bukan Siswa</h5>
     </div>
     @endif
@@ -136,7 +126,7 @@
 @else
     <div class="row">
       <div class="col text-center mt-5">
-        <img src="{{asset('images/closed.png')}}" class="img-fluid" style="max-width: 550px" alt="">
+        <img src="{{asset('images/closed.png')}}" class="img img-fluid" alt="">
         <h2 style="color:gray;">Oops.. Pendaftaran Sedang Ditutup Nih</h2>
       </div>
     </div>

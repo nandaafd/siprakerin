@@ -17,7 +17,7 @@
               </div>
             <div class="mb-3">
                 <label for="siswa" class="form-label">Nama Siswa</label>
-                <input type="text" readonly class="form-control" id="" name="siswa" value="{{$data->siswa->user->fullname}}">
+                <input type="text" readonly class="form-control" id="" name="siswa" value="{{$data->siswa ? $data->siswa->user->fullname : 'Data Siswa Ini Telah Dihapus'}}">
               </div>
             <div class="mb-3">
                 <label for="angkatan" class="form-label">Prodi</label>

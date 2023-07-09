@@ -8,6 +8,7 @@ use App\Models\Siswa;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class SiswaController extends Controller
 {
@@ -121,6 +122,7 @@ class SiswaController extends Controller
 
     public function destroy($id)
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         Siswa::where('user_id',$id)->delete();
         User::where('id',$id)->delete();
         return redirect('/siswa')->with('success', 'Data absensi berhasil dihapus');
